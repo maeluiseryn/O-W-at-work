@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20110219224237) do
     t.integer  "zip"
     t.string   "city"
     t.string   "country"
+    t.integer  "place_id"
+    t.string   "place_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
