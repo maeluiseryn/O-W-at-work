@@ -18,7 +18,7 @@ attr_accessor :password
 
  # email_regex =  /(\A[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}\z)/i ou ((\A[\w.]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}\z))
 
- validates :password, :presence=> true,
+ validates  :password , :presence=> true,
                       :confirmation => true,
                       :length => { :within => 8..40 }
  #validates :salt, :presence=> true

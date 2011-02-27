@@ -1,0 +1,30 @@
+<h1>Listing tp_dbs</h1>
+<h3>Number of records: <%= @users.count %> </h3>
+
+
+<table>
+  <tr>
+    <th>Action</th>
+    <th>Operation</th>
+    <th>Category</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.created_at %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= #noinspection RubyArgCount
+            link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
