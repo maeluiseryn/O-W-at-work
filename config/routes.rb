@@ -1,6 +1,13 @@
 OW::Application.routes.draw do
+  get "files/upload"
+
+  get "files/index"
+
   get "users/show"
   resources :users
+  
+  post "files/post_upload"
+  resources :files
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

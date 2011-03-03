@@ -73,6 +73,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.9, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/treetop-1.4.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.3, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/activemodel-3.0.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.6, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/arel-2.0.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.10.1, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/pg-0.10.1)" level="application" />
   </component>
 </module>
 

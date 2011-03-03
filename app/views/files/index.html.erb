@@ -1,0 +1,34 @@
+<h1>Listing Files</h1>
+
+<div id="flash" style="min-height: 50px" >
+
+
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
+     <% content_tag :script, :type => "text/javascript" do %>
+     $('#<%="notice_#{key}" %>').fadeOut(5000);
+  <% end %>
+<% end %>
+
+</div>
+
+<h3>Number of records: <%= @uploaded_files.count %> </h3>
+<%= link_to 'New upload', :action => 'upload' %>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Path</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @uploaded_files.each do |uploaded| %>
+  <tr>
+    <td><%= uploaded.id %></td>
+     <td><a href="data/<%= uploaded.path %>"><%= uploaded.path %></a> </td>
+
+  </tr>
+<% end %>
+</table>
+<br />
