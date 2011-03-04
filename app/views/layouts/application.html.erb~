@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container ">
   <div class="span-24 last" id="container">
     <div class="span-24 last box " id="header">Â </div>
     <div class="clear span-24 last" id="content">
-      <div class="span-5  box" id="sidebar">Â </div>
+      <div class="span-5  box" id="sidebar ">Â </div>
       <div class="span-18 last" id="contentcolumn">
          <%= yield %>
          <%= debug(params) if Rails.env.development? %> </div>
