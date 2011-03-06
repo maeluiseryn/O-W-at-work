@@ -1,0 +1,9 @@
+--- !ruby/object:Objetest 
+array: 
+- Muffins
+- Pie
+hash: 
+  :muffins: filled with woodfruit
+  :pie: oignon with french lardon
+time: 2011-01-22 14:36:02.216041 +01:00
+word: saturday

@@ -17,17 +17,19 @@
 <table>
   <tr>
     <th>Id</th>
+    <th>Name </th>
     <th>Path</th>
-    <th></th>
-    <th></th>
+    <th>Content_Type</th>
     <th></th>
   </tr>
 
 <% @uploaded_files.each do |uploaded| %>
   <tr>
     <td><%= uploaded.id %></td>
-     <td><a href="data/<%= uploaded.path %>"><%= uploaded.path %></a> </td>
-
+    <td><a href="data/<%= uploaded.filename %>"><%= uploaded.filename %></a> </td>
+    <td><%= uploaded.path %></td>
+    <td><%= uploaded.content_type %></td>
+    <td><%=  link_to "Download #{uploaded.filename}", :action => 'download' ,:id =>uploaded %></td>
   </tr>
 <% end %>
 </table>

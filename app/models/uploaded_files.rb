@@ -1,5 +1,15 @@
 class UploadedFiles < ActiveRecord::Base
-
+  def self.is_savable?(post_upload)
+    if post_upload!=nil
+       if post_upload['datafile'].size != 0
+       return true
+       else
+       return false
+       end
+    else
+    return false
+    end
+  end
   def self.save(post_upload)
 
     @f= UploadedFiles.new
@@ -9,8 +19,14 @@ class UploadedFiles < ActiveRecord::Base
     path = File.join(directory, name)
     # write the file
     File.open(path, "wb") { |f| f.write(post_upload['datafile'].read) }
-    @f.path=name
+    @f.content_type=post_upload['datafile'].content_type
+    @f.filename=name
+    @f.path=path
     @f.save
-  end
+
+  
+    end
+
+
 end
 

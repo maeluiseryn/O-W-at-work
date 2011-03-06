@@ -7,7 +7,9 @@ OW::Application.routes.draw do
   resources :users
   
   post "files/post_upload"
+  match 'files/download' =>'files#download'
   resources :files
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
