@@ -1,9 +1,0 @@
-c999p9odp-Nom
-http://www.rubular.com/r/zlxiezXl6O
-(\A[c,C]\d\d\d[p,P]\d[o,O][d,D][p,P][-][a-zA-Z]+\z)
-c999p9odp
-http://www.rubular.com/r/GrrEeveMZ8
-(\A[c,C]\d\d\d[p,P]\d[o,O][d,D][p,P]\z)
-email ( xxxx@xxxx.xx ou xxxxx@xxxxxx.xxx )
-http://www.rubular.com/r/gStzpOoqxl
-((\A[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}\z))
