@@ -20,6 +20,7 @@
     <th>Name </th>
     <th>Path</th>
     <th>Content_Type</th>
+    <th>File_Size</th>
     <th></th>
   </tr>
 
@@ -29,7 +30,9 @@
     <td><a href="data/<%= uploaded.filename %>"><%= uploaded.filename %></a> </td>
     <td><%= uploaded.path %></td>
     <td><%= uploaded.content_type %></td>
+    <td><%= number_to_human_size(uploaded.file_size) %></td>
     <td><%=  link_to "Download #{uploaded.filename}", :action => 'download' ,:id =>uploaded %></td>
+    <td><%= link_to 'Destroy', file_path(uploaded), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
