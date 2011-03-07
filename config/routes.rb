@@ -1,4 +1,6 @@
 OW::Application.routes.draw do
+  get "sessions/new"
+
   get "files/upload"
 
   get "files/index"
@@ -9,6 +11,10 @@ OW::Application.routes.draw do
   post "files/post_upload"
   match 'files/download' =>'files#download'
   resources :files
+  resources :sessions, :only => [:new, :create, :destroy]
+   match '/signup', :to => 'users#new'
+   match '/signin', :to => 'sessions#new'
+   match '/signout', :to => 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
