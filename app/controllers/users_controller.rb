@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate , :only=>[:edit, :update]
   def index
     @title='Users List'
     @users = User.order('id')
@@ -47,7 +48,7 @@ end
        format.html # new.html.erb
        format.xml  { render :xml => @user }
      end
-   end
+  end
 
    # GET /users/1/edit
    def edit
@@ -70,5 +71,8 @@ end
        end
      end
    end
-
+   private
+   def authenticate
+     deny_access unless signed_in?
+   end
 end
