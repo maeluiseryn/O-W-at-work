@@ -15,12 +15,9 @@ module ApplicationHelper
  end
   def show_sign_in_status
       if signed_in?
-         link_to 'Sign-out' ,:controller =>'sessions' ,:action =>'destroy'
-
-
+         render:partial => 'shared/signed'
       else
-         link_to 'Sign-in' ,:controller =>'sessions' ,:action =>'new'
-
+         render :partial => "shared/not_signed"
       end
   end
 end
