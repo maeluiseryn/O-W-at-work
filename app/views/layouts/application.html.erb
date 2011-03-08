@@ -8,18 +8,20 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
 <div class="container">
   <div class="span-24 last" id="container">
     <div class="span-24 last box " id="header">Â </div>
     <div class="clear span-24 last" id="content">
-      <div class="span-5  box" id="sidebar">Â </div>
+      <div class="span-5  box" id="sidebar"> <%= show_sign_in_status %></div>
+
       <div class="span-18 last" id="content_column">
-         <%= yield %>
-         <%= debug(params) if Rails.env.development? %> </div>
+        <%=show_flash %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %> </div>
     </div>
     <div class="clear span-24 last box" id="footer"> 
-</div>
+
+    </div>
   </div>
 </div>
 </body>
