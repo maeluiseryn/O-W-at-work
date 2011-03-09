@@ -1,4 +1,9 @@
 OW::Application.routes.draw do
+  #get "user_profiles/edit"
+
+  #get "user_profiles/show"
+  #get "user_profiles/new"
+
   get "sessions/new"
 
   get "files/upload"
@@ -6,7 +11,10 @@ OW::Application.routes.draw do
   get "files/index"
 
   get "users/show"
-  resources :users
+  resources :user_profiles
+  resources :users do
+    resource :user_profiles # a verifier
+  end
 
   post "files/post_upload"
   match 'files/download' =>'files#download'

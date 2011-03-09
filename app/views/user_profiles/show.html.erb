@@ -1,0 +1,24 @@
+<h1>Users#show</h1>
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <b>Name:</b>
+  <%= @user_profile.name %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%= @user_profile.surname %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%= @user_profile.user_id %>
+</p>
+
+
+<%= link_to 'Back', users_path %>
+<td><%= #noinspection RubyArgCount
+            link_to 'Edit', edit_user_profile_path(@user_profile) %></td>
