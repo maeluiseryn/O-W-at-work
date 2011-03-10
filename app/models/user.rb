@@ -28,7 +28,13 @@ attr_accessor :password
  def has_password?(submitted_password)
    encrypted_password == encrypt(submitted_password)
  end
-
+  def has_profile?
+     if self.user_profile==nil
+       return false
+     else
+       return true
+     end
+  end
  private
 
  def encrypt_password

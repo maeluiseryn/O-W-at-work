@@ -20,8 +20,9 @@
     <%= f.label :surname %><br />
     <%= f.text_field :surname %>
   </div>
-    <%  f.hidden_field "user_id", :value => :user_id%>
-
+  <div class="field">
+    <%=  f.hidden_field :user_id , :value => @user_profile.user_id%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

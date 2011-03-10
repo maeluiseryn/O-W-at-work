@@ -10,9 +10,9 @@ class UserProfilesController < ApplicationController
   end
 
   def new
-    user=User.find params[:user_id]
-    @user_profile=user.create_user_profile
-
+    #@user=User.find params[:user_id]
+    @user_profile=UserProfile.new
+    @user_profile.user_id=params[:user_id]
     respond_to do |format|
        format.html  # new.html.erb
        format.xml  { render :xml => @user_profile }
@@ -32,19 +32,24 @@ class UserProfilesController < ApplicationController
        end
      end
    end
-  def update
+  def update # !!!!!!! hidden input type can be used to change profile parent
     @user_profile = UserProfile.find(params[:id])
 
     respond_to do |format|
-      if @user_profile.update_attributes(params[:user_profile])
-        format.html { redirect_to(@user_profile, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user_profile.errors, :status => :unprocessable_entity }
-      end
+        if params[:user_profile][:user_id].to_i.eql? @user_profile.user_id
+        if @user_profile.update_attributes(params[:user_profile])
+          format.html { redirect_to(@user_profile, :notice => 'User was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @user_profile.errors, :status => :unprocessable_entity }
+        end
+        else
+          format.html { redirect_to(@user_profile, :notice => "Foreign key modification attempt.") }
+          format.xml  { head :ok }
+        end
     end
-end
+  end
  def destroy
     @user_profile = UserProfile.find(params[:id])
     @user_profile.destroy

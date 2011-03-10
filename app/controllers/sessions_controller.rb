@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
         render 'new'
         else
         sign_in user
-        if signed_in?  # test not vital
-        redirect_to user
+        if signed_in?
+        redirect_back_or user
         else
         redirect_to users_path
         end

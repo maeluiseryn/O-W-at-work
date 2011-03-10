@@ -11,6 +11,12 @@ OW::Application.routes.draw do
   get "files/index"
 
   get "users/show"
+
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+
+
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier
@@ -20,9 +26,6 @@ OW::Application.routes.draw do
   match 'files/download' =>'files#download'
   resources :files
   resources :sessions, :only => [:new, :create, :destroy]
-   match '/signup', :to => 'users#new'
-   match '/signin', :to => 'sessions#new'
-   match '/signout', :to => 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
