@@ -4,3 +4,11 @@ min-height: 600px;
 max-height: 600px;
 background-color: lightgreen;
 }
+#sign_in {
+width: 200px;
+
+}
+#sign_in_legend{
+ color: red;
+
+}
