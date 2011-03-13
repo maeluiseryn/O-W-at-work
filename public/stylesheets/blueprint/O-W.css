@@ -12,3 +12,6 @@ width: 200px;
  color: red;
 
 }
+#sign_in_status_box{
+    float: right
+}

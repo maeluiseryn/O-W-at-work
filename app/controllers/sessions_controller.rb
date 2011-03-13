@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
     @title='User Sign-In'
+    respond_to do |format|
+       format.html # new.html.erb
+       format.js
+     end
   end
   def create
      user = User.authenticate(params[:session][:email],params[:session][:password])

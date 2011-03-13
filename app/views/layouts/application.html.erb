@@ -10,9 +10,11 @@
 <body>
 <div class="container">
   <div class="span-24 last" id="container">
-    <div class="span-24 last box " id="header">Â </div>
+    <div class="span-24 last" id="header">
+      <div class="span-16 box"></div><div id='sign_in_status_box' class="span-6 last box"> <%= show_sign_in_status %></div>
+    </div>
     <div class="clear span-24 last" id="content">
-      <div class="span-5  box" id="sidebar"> <%= show_sign_in_status %></div>
+      <div class="span-5  box" id="sidebar"></div>
 
       <div class="span-18 last" id="content_column">
         <%=show_flash %>

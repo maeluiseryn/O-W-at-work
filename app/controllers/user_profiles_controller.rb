@@ -2,6 +2,7 @@ class UserProfilesController < ApplicationController
    def edit
      
      @user_profile=UserProfile.find(params[:id])
+
    end
 
   def show
@@ -13,6 +14,7 @@ class UserProfilesController < ApplicationController
     #@user=User.find params[:user_id]
     @user_profile=UserProfile.new
     @user_profile.user_id=params[:user_id]
+
     respond_to do |format|
        format.html  # new.html.erb
        format.xml  { render :xml => @user_profile }
@@ -21,7 +23,6 @@ class UserProfilesController < ApplicationController
   end
  def create
     @user_profile = UserProfile.new(params[:user_profile])
-
     respond_to do |format|
       if @user_profile.save
          format.html { redirect_to(@user_profile, :notice => 'User profile was successfully created.') }

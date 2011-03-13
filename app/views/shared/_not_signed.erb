@@ -1,5 +1,5 @@
-<div id="sign_in_status" class="span-4 box">
+<div id="sign_in_status" class="span-4 box ">
   <p>You are not signed in... </p>
-  <%= link_to 'Sign-in' ,:controller =>'sessions' ,:action =>'new' %>
+
+   <%= link_to 'Sign-in' , signin_path(:format =>:js),:remote=>true%>
 </div>
-    

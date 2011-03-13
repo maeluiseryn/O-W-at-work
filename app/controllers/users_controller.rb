@@ -48,6 +48,7 @@ end
      respond_to do |format|
        format.html # new.html.erb
        format.xml  { render :xml => @user }
+       format.js
      end
   end
 
