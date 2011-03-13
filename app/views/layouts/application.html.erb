@@ -9,6 +9,9 @@
 </head>
 <body>
 <div class="container">
+  <%= link_to 'new',new_user_user_profiles_path(1)%>
+  <%= link_to 'new',edit_user_user_profiles_path(1)%>
+  <%= link_to 'new',user_user_profiles_path(1)%>
   <div class="span-24 last" id="container">
     <div class="span-24 last" id="header">
       <div class="span-16 box"></div><div id='sign_in_status_box' class="span-6 last box"> <%= show_sign_in_status %></div>

@@ -1,13 +1,16 @@
 class UserProfilesController < ApplicationController
    def edit
-     
-     @user_profile=UserProfile.find(params[:id])
+     user=User.find(params[:user_id])
+     @user_profile=user.user_profile
+
+     #@user_profile=UserProfile.find(params[:id])
 
    end
 
   def show
-
-    @user_profile=UserProfile.find(params[:id])
+     user=User.find(params[:user_id])
+     @user_profile=user.user_profile
+     #@user_profile=UserProfile.find(params[:id])
   end
 
   def new
