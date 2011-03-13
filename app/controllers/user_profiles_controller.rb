@@ -28,7 +28,7 @@ class UserProfilesController < ApplicationController
     @user_profile = UserProfile.new(params[:user_profile])
     respond_to do |format|
       if @user_profile.save
-         format.html { redirect_to(@user_profile, :notice => 'User profile was successfully created.') }
+         format.html { redirect_to(user_user_profiles_path(@user_profile.user_id), :notice => 'User profile was successfully created.') }
          format.xml  { render :xml => @user_profile, :status => :created, :location => @user_profile }
        else
          format.html { render :action => "new" }
