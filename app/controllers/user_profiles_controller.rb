@@ -17,7 +17,7 @@ class UserProfilesController < ApplicationController
     #@user=User.find params[:user_id]
     @user_profile=UserProfile.new
     @user_profile.user_id=params[:user_id]
-
+    @user_profile.contacts.build
     respond_to do |format|
        format.html  # new.html.erb
        format.xml  { render :xml => @user_profile }
@@ -25,7 +25,10 @@ class UserProfilesController < ApplicationController
 
   end
  def create
-    @user_profile = UserProfile.new(params[:user_profile])
+    @user_profile = UserProfile.create(params[:user_profile])
+    
+   
+
     respond_to do |format|
       if @user_profile.save
          format.html { redirect_to(user_user_profiles_path(@user_profile.user_id), :notice => 'User profile was successfully created.') }
@@ -42,14 +45,14 @@ class UserProfilesController < ApplicationController
     respond_to do |format|
         if params[:user_profile][:user_id].to_i.eql? @user_profile.user_id
         if @user_profile.update_attributes(params[:user_profile])
-          format.html { redirect_to(@user_profile, :notice => 'User was successfully updated.') }
+          format.html { redirect_to(user_user_profiles_path(@user_profile.user_id), :notice => 'User was successfully updated.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
           format.xml  { render :xml => @user_profile.errors, :status => :unprocessable_entity }
         end
         else
-          format.html { redirect_to(@user_profile, :notice => "Foreign key modification attempt.") }
+          format.html { redirect_to(user_user_profiles_path(@user_profile.user_id), :notice => "Foreign key modification attempt.") }
           format.xml  { head :ok }
         end
     end
