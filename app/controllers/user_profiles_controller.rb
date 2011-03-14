@@ -18,8 +18,8 @@ class UserProfilesController < ApplicationController
     @user_profile=UserProfile.new
     @user_profile.user_id=params[:user_id]
     @user_profile.build_address
-    @user_profile.contacts.build
-
+    @user_profile.contacts.build :contact_data =>@user_profile.user.email, :genre=>'Email', :description=>"Email de #{@user_profile.user.name}"
+    @user_profile.contacts.build 
     respond_to do |format|
        format.html  # new.html.erb
        format.xml  { render :xml => @user_profile }

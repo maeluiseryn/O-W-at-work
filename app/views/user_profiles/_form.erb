@@ -33,35 +33,15 @@
   <fieldset>
     <legend><%= set_legend 'Contactes' %></legend>
     <% f.fields_for :contacts do |contact_form| %>
-        <fieldset>
-
-       <%= contact_form.label :description %>
-       <%= contact_form.text_field :description %>
-        <%= contact_form.label :genre %>
-       <%= contact_form.text_field :genre %>
-        <%= contact_form.label :contact_data %>
-       <%= contact_form.text_field :contact_data %>
-       </fieldset>
+        <%= render 'contact_fields' ,:f=>contact_form%>
      <% end %>
+    <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
    </fieldset>
   <fieldset>
 
     <legend><%= set_legend 'Addresse' %></legend>
     <%= f.fields_for :address do |address_form| %>
-        <fieldset>
-
-       <%= address_form.label :street %>
-       <%= address_form.text_field :street %>
-       <%= address_form.label :street_number %>
-       <%= address_form.text_field :street_number %>
-       <%= address_form.label :zip %>
-       <%= address_form.text_field :zip %>
-       <%= address_form.label :city %>
-       <%= address_form.text_field :city%>
-       <%= address_form.label :country %>
-       <%= address_form.text_field :country %>
-
-       </fieldset>
+        <%= render 'address_fields',:f=>address_form %>
      <% end %>
    </fieldset>
    </fieldset>
