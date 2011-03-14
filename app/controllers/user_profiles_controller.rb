@@ -17,7 +17,9 @@ class UserProfilesController < ApplicationController
     #@user=User.find params[:user_id]
     @user_profile=UserProfile.new
     @user_profile.user_id=params[:user_id]
+    @user_profile.build_address
     @user_profile.contacts.build
+
     respond_to do |format|
        format.html  # new.html.erb
        format.xml  { render :xml => @user_profile }
@@ -39,7 +41,7 @@ class UserProfilesController < ApplicationController
        end
      end
    end
-  def update # !!!!!!! hidden input type can be used to change profile parent
+  def update # !!!!!!! hidden input type can be used to change profile parent// no more
     @user_profile = UserProfile.find(params[:id])
 
     respond_to do |format|

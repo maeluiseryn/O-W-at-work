@@ -12,6 +12,10 @@
     </div>
   <% end %>
 
+<fieldset>
+  <legend>
+    <%="Profile de #{set_legend @user_profile.user.name}." %>
+  </legend>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -24,7 +28,43 @@
   <div class="field">
     <%=  f.hidden_field :user_id , :value => @user_profile.user_id%>
   </div>
- 
+
+
+  <fieldset>
+    <legend><%= set_legend 'Contactes' %></legend>
+    <% f.fields_for :contacts do |contact_form| %>
+        <fieldset>
+
+       <%= contact_form.label :description %>
+       <%= contact_form.text_field :description %>
+        <%= contact_form.label :genre %>
+       <%= contact_form.text_field :genre %>
+        <%= contact_form.label :contact_data %>
+       <%= contact_form.text_field :contact_data %>
+       </fieldset>
+     <% end %>
+   </fieldset>
+  <fieldset>
+
+    <legend><%= set_legend 'Addresse' %></legend>
+    <%= f.fields_for :address do |address_form| %>
+        <fieldset>
+
+       <%= address_form.label :street %>
+       <%= address_form.text_field :street %>
+       <%= address_form.label :street_number %>
+       <%= address_form.text_field :street_number %>
+       <%= address_form.label :zip %>
+       <%= address_form.text_field :zip %>
+       <%= address_form.label :city %>
+       <%= address_form.text_field :city%>
+       <%= address_form.label :country %>
+       <%= address_form.text_field :country %>
+
+       </fieldset>
+     <% end %>
+   </fieldset>
+   </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
