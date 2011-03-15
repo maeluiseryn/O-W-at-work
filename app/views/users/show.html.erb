@@ -26,5 +26,5 @@
 <%= link_to 'Back', users_path %>
 <td><%= #noinspection RubyArgCount
             link_to 'Edit', edit_user_path(@user) %></td>
-<%= #noinspection RubyArgCount
-            link_to 'Profile',user_user_profiles_path(@user) %>
+<%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
+            profile_show_or_create @user %>
