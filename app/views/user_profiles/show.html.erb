@@ -11,10 +11,11 @@
   <%= @user_profile.surname %>
 </p>
 <fieldset>
+   <legend><%= set_legend"Addresse de #{@user_profile.name_surname_to_string}"  %></legend>
    <%=  render :partial => "address_show" ,:object=> @user_profile.address ,:as=>:address%>
 </fieldset>
 <fieldset>
-   <legend><%= set_legend"Informations de contact de #{profile_owner(@user_profile).name}"  %></legend>
+   <legend><%= set_legend"Informations de contact de #{@user_profile.name_surname_to_string}"  %></legend>
   <%=  render :partial => "contact_show", :collection => @user_profile.contacts ,:as=>:contact%>
 </fieldset>
 

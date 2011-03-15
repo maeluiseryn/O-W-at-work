@@ -4,7 +4,7 @@ gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'aasm'
 gem 'pg'
 gem 'mongrel'
 gem 'jquery-rails'

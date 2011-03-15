@@ -4,7 +4,7 @@ class Address < ActiveRecord::Base
   validates :street_number, :zip , :presence => true , :numericality => true
   
 def address_to_string
-  "#{street_number} #{street} #{zip} #{city} #{country}"
+  "#{street_number} , #{street} , #{zip} #{city} , #{country}"
 end
 end
 #address.place => user_profile

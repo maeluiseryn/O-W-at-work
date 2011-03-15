@@ -1,4 +1,8 @@
 OW::Application.routes.draw do
+  root :to => 'home_page#home'
+
+  get "home_page/home"
+
   #get "user_profiles/edit"
 
   #get "user_profiles/show"
