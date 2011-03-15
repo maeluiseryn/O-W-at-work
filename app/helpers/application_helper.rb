@@ -30,4 +30,10 @@ module ApplicationHelper
          render :partial => "shared/not_signed"
       end
   end
+#
+# not sure of correct location
+#
+  def get_contact_type
+    Contact.get_contact_type
+  end
 end
