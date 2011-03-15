@@ -3,7 +3,7 @@ class UserProfile < ActiveRecord::Base
 belongs_to :user
 has_one  :address , :as => :place ,:dependent =>:destroy
 has_many :contacts , :as => :contact_ref ,:dependent=>:destroy
-accepts_nested_attributes_for :contacts , :allow_destroy => true
+accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 
 accepts_nested_attributes_for :address
 

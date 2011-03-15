@@ -1,5 +1,5 @@
 module UsersHelper
-  def profile_show_or_create user
+  def profile_show_or_create_link user
     if user.has_profile?
         link_to 'View Profile',user_user_profiles_path(user)
     else
