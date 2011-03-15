@@ -4,4 +4,7 @@
 <p><b>Code postal: </b><%=address.zip%></p>
 <p><b>Ville : </b><%=address.city%></p>
 <p><b>Pays : </b><%=address.country%></p>
+ <%=link_to_external address.format_url_for_google_maps,"Trouver sur Google-Maps"%>
+ <%=link_to_external address.format_url_for_mappy_maps,"Trouver sur Mappy"%>
+ <%#link_to_external address.format_url_for_mappy_itinerary("Bruxelles,+1050,+rue du sceptre,+85,+belgique"),"Trouver sur Mappy"%>
 </fieldset>

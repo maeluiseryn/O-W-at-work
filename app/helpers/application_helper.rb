@@ -33,6 +33,9 @@ module ApplicationHelper
 #
 # not sure of correct location
 #
+  def link_to_external url ,link_label
+   link_to "#{link_label}" ,"#{url}" , :target=>'_blank'
+  end
   def get_contact_type
     Contact.get_contact_type
   end

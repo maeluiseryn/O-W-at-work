@@ -1,4 +1,6 @@
 OW::Application.routes.draw do
+  resources :clients
+
   root :to => 'home_page#home'
 
   get "home_page/home"
