@@ -1,0 +1,2 @@
+module FileBrowserHelper
+end

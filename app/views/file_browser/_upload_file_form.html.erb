@@ -1,0 +1,9 @@
+<%= form_tag  'file_browser/file/create',:id=>"new_file",
+              :multipart => true do %>
+    <input type="hidden" name="post_upload[path]" value="<%= @current_url %>" />
+    <h2>Add a file</h2>
+    <%= label 'post_upload','Select file:'%>
+
+    <%= file_field 'post_upload', 'datafile' ,:size =>20 %>
+    <%= submit_tag "Upload" %>
+<% end %>

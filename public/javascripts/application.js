@@ -10,3 +10,25 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association , "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+$(function() {
+  var tallest = 0;
+  var $columnsToEqualize = $(".column");
+  $columnsToEqualize.each(function() {
+    var thisHeight = $(this).height();
+    if (thisHeight > tallest) {
+      tallest = thisHeight;
+    }
+  });
+  $columnsToEqualize.height(tallest);
+});
+$(function() {
+  var tallest = 0;
+  var $columnsToEqualize = $(".header");
+  $columnsToEqualize.each(function() {
+    var thisHeight = $(this).height();
+    if (thisHeight > tallest) {
+      tallest = thisHeight;
+    }
+  });
+  $columnsToEqualize.height(tallest);
+});
