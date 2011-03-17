@@ -32,3 +32,11 @@ $(function() {
   });
   $columnsToEqualize.height(tallest);
 });
+ $(document).ready( function() {
+    stretch_portal_content();
+ $(window).resize( stretch_portal_content );
+ });
+function stretch_portal_content() {
+            if ($(window).height() > $('body').innerHeight())
+            {$('#portal-content').height(
+       $(window).height() -($('body').innerHeight() - $('#portal-content').outerHeight(true)));}}

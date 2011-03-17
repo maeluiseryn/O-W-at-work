@@ -31,13 +31,7 @@
   </div>
 
 
-  <fieldset>
-    <legend><%= set_legend 'Contactes' %></legend>
-    <% f.fields_for :contacts do |contact_form| %>
-        <%= render 'contact_fields' ,:f=>contact_form%>
-     <% end %>
-    <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
-   </fieldset>
+
   <fieldset>
 
     <legend><%= set_legend 'Addresse' %></legend>
@@ -45,9 +39,19 @@
         <%= render 'address_fields',:f=>address_form %>
      <% end %>
    </fieldset>
+   <fieldset>
+    <legend><%= set_legend 'Contactes' %></legend>
+    <% f.fields_for :contacts do |contact_form| %>
+        <%= render 'contact_fields' ,:f=>contact_form%>
+     <% end %>
+    <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
    </fieldset>
+
+
+</fieldset>
   <div class="actions">
     <%= f.submit %>
+
   </div>
 
 
