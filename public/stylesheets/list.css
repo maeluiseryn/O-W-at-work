@@ -1,16 +1,16 @@
 form#new_file, form#new_dir {
-  float: left;
+  /*float: left;
   background-color: #EEE;
   border: 1px solid #999;
   color:  #333;
-  margin-right: 50px;
+  margin-right: 50px;*/
   padding:  10px;
   width:  300px;
 }
 
 form#new_file h2, form#new_dir h2 {
   font-size:  1.2em;
-  color:      #333;
+  color:      orange;
   margin:     0;
 }
 
