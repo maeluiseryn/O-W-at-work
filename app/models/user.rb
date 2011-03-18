@@ -3,6 +3,8 @@ has_one :user_profile ,:dependent =>:destroy
 has_many :user_projects , :dependent =>:destroy #maybe not necessary
 has_many :projects, :through => :user_projects
 has_one :user_address, :through => :user_profile, :source => :address
+has_many :user_clients , :dependent =>:destroy
+has_many :clients ,:through => :user_clients
  
  attr_accessor :password
 

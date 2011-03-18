@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313180417) do
+ActiveRecord::Schema.define(:version => 20110318144500) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110313180417) do
     t.string   "surname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "client_state"
   end
 
   create_table "contacts", :force => true do |t|
@@ -54,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20110313180417) do
     t.string   "filename"
     t.string   "content_type"
     t.integer  "file_size"
+  end
+
+  create_table "user_clients", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "join_type"
   end
 
   create_table "user_profiles", :force => true do |t|

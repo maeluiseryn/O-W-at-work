@@ -1,4 +1,6 @@
 <h1>HomePage#home</h1>
 
-<%= link_to 'users ',users_path %>
-
+<ul>
+ <li><%= link_to 'user ',user_path(current_user.id) %></li>
+ <li><%= link_to 'new client ',new_client_path %></li>
+</ul>

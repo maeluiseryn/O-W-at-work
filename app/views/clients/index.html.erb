@@ -8,17 +8,7 @@
     <th></th>
     <th></th>
   </tr>
-<%= current_user %>
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.name %></td>
-    <td><%= client.surname %></td>
-    <td><%= client.has_projects? %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<%= render :partial => 'client_list',:collection => @clients ,:as=>:client %>
 </table>
 
 <br />

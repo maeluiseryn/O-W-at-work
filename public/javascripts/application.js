@@ -1,5 +1,10 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+function stretch_portal_content() {
+            if ($(window).height() > $('body').innerHeight())
+            {$('#container').height(
+       $(window).height() -($('body').innerHeight() - $('#container').outerHeight(true)));}}
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
@@ -19,6 +24,9 @@ $(function() {
       tallest = thisHeight;
     }
   });
+     if(tallest<450){
+        tallest=450;
+    }
   $columnsToEqualize.height(tallest);
 });
 $(function() {
@@ -29,17 +37,15 @@ $(function() {
     if (thisHeight > tallest) {
       tallest = thisHeight;
     }
+
   });
+
   $columnsToEqualize.height(tallest);
 });
  $(document).ready( function() {
     stretch_portal_content();
  $(window).resize( stretch_portal_content );
  });
-function stretch_portal_content() {
-            if ($(window).height() > $('body').innerHeight())
-            {$('#portal-content').height(
-       $(window).height() -($('body').innerHeight() - $('#portal-content').outerHeight(true)));}}
 
 $(document).ready(function(){
 

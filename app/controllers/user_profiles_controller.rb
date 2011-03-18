@@ -1,4 +1,6 @@
 class UserProfilesController < ApplicationController
+   before_filter :authenticate , :only=>[:show]
+   before_filter :correct_user_profile , :only=>[:show]
    def edit
      user=User.find(params[:user_id])
      @user_profile=user.user_profile
@@ -68,5 +70,8 @@ class UserProfilesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
+  def correct_user_profile
+     @user = User.find(params[:user_id])
+     redirect_to(root_path,:notice =>'not authorized to access this profile ') unless current_user?(@user)
+  end
 end

@@ -22,9 +22,18 @@
 </p>
 
 
-
 <%= link_to 'Back', users_path %>
 <td><%= #noinspection RubyArgCount
             link_to 'Edit', edit_user_path(@user) %></td>
 <%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
             profile_show_or_create_link @user %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Has_project?</th>
+    <th></th>
+    <th></th>
+  </tr>
+<%=render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client %>
+</table>

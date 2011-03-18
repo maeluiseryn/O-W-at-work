@@ -45,7 +45,8 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save
         current_user.clients<<@client
-        format.html { redirect_to(@client, :notice => 'Client was successfully created.') }
+        client_user=UserClient.assign_join_type_to_user_client(current_user.id,@client.id,"created_by_#{current_user.name}")
+        format.html { redirect_to(@client, :notice => "Client was successfully created.") }
         format.xml  { render :xml => @client, :status => :created, :location => @client }
       else
         format.html { render :action => "new" }
@@ -61,6 +62,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
+        client_user=UserClient.assign_join_type_to_user_client(current_user.id,@client.id,"updated_by_#{current_user.name}")
         format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
         format.xml  { head :ok }
       else
