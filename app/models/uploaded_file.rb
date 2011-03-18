@@ -1,4 +1,4 @@
-class UploadedFiles < ActiveRecord::Base
+class UploadedFile < ActiveRecord::Base
 
   validates :path , :uniqueness =>true
 
@@ -83,7 +83,7 @@ class UploadedFiles < ActiveRecord::Base
 
   def self.save(post_upload)
 
-      @f= UploadedFiles.new
+      @f= UploadedFile.new
 
       name =  post_upload['datafile'].original_filename
       directory = "public/data/"

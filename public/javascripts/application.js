@@ -40,3 +40,17 @@ function stretch_portal_content() {
             if ($(window).height() > $('body').innerHeight())
             {$('#portal-content').height(
        $(window).height() -($('body').innerHeight() - $('#portal-content').outerHeight(true)));}}
+
+$(document).ready(function(){
+
+$('a[rel=celeb]').colorbox({
+  height:'80%',
+  width:'60%',
+  transition: 'fade',
+  speed: 500,
+  current: "{current} of {total} celebrity photos"
+});
+
+});
+
+

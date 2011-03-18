@@ -44,6 +44,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
+        current_user.clients<<@client
         format.html { redirect_to(@client, :notice => 'Client was successfully created.') }
         format.xml  { render :xml => @client, :status => :created, :location => @client }
       else

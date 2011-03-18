@@ -1,6 +1,6 @@
  class FilesController < ApplicationController
   def download
-    file= UploadedFiles.find(params[:id])
+    file= UploadedFile.find(params[:id])
     if file.file_exist_on_disk?
       send_file file.path , :type =>file.content_type , :filename => file.filename ,:disposition =>file.disposition
     else
@@ -10,7 +10,7 @@
   end
   def index
 
-    @uploaded_files = UploadedFiles.all
+    @uploaded_files = UploadedFile.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,8 +19,8 @@
   end
 
   def post_upload
-   if UploadedFiles.is_savable?(params[:post_upload])
-     if UploadedFiles.save(params[:post_upload])
+   if UploadedFile.is_savable?(params[:post_upload])
+     if UploadedFile.save(params[:post_upload])
         redirect_to files_path , :flash => { :success => "The file was successfully uploaded "  }
      else
         redirect_to files_path , :flash => { :error => "Sorry , The file wasn't saved properly  " }
@@ -37,7 +37,7 @@
 
   end
   def destroy
-    @file = UploadedFiles.find(params[:id])
+    @file = UploadedFile.find(params[:id])
     @file.delete_file
     @file.destroy
 
