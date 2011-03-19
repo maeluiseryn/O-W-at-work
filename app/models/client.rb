@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+CLIENT_TITRE=['Monsieur','Madame','Mr','Mde' ]
 include AASM
 has_many :projects
 has_many :addresses , :as => :place
@@ -7,6 +8,7 @@ has_many :contacts , :as => :contact_ref
 has_many :user_clients , :dependent => :destroy
 has_many :users ,:through => :user_clients
 validates :name , :surname , :presence => true
+validates :titre ,:presence=>true ,:inclusion => {:in =>CLIENT_TITRE  }
 aasm_column :client_state # defaults to aasm_state
 
     aasm_initial_state :created
@@ -46,4 +48,10 @@ def has_projects?
        return true
      end
  end
+def self.get_client_titre
+    CLIENT_TITRE
+end
+def get_client_titre
+    CLIENT_TITRE
+end
 end

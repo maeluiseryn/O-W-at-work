@@ -39,6 +39,7 @@ module ApplicationHelper
   def get_contact_type
     Contact.get_contact_type
   end
+
 end
  def authenticate # doublon avec users controller
      deny_access unless signed_in?
