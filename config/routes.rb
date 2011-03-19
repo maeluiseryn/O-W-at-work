@@ -1,5 +1,7 @@
 OW::Application.routes.draw do
-  resources :clients
+  resources :projects
+
+  #resources :clients
 
   root :to => 'home_page#home'
 
@@ -9,6 +11,10 @@ OW::Application.routes.draw do
 
   #get "user_profiles/show"
   #get "user_profiles/new"
+
+  resources :clients do
+    resources :projects
+  end
 
   get "sessions/new"
 
@@ -21,7 +27,7 @@ OW::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+  match '/redirect', :to =>'application#redirect_to_last_visited'
 
   resources :user_profiles
   resources :users do

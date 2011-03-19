@@ -2,7 +2,7 @@
 
 <h3>Number of records: <%= @uploaded_files.count %> </h3>
 <%= link_to 'New upload', :action => 'upload' %>
-<table>
+<table id="gallery">
   <tr>
     <th>Id</th>
     <th>Name </th>
@@ -11,18 +11,9 @@
     <th>File_Size</th>
     <th></th>
   </tr>
-  <a rel='celeb'href="data/cleric.jpg"><img src="/images/cleric.jpg" alt="" title="Example" width="100" height="100" class="alignnone size-full wp-image-53285 colorbox-manual" />This is a test</a>.
-<% @uploaded_files.each do |uploaded| %>
-  <tr>
-    <td><%= uploaded.id %></td>
-    <td><a rel="celeb"  width="1000px" height="1000px" href="data/<%= uploaded.filename %>"><%= uploaded.filename %></a> </td>
-    <td><%= uploaded.path %></td>
-    <td><%= uploaded.content_type %></td>
-    <td><%= number_to_human_size(uploaded.file_size) %></td>
-    <td><%=  link_to "Download #{uploaded.filename}", :action => 'download' ,:id =>uploaded %></td>
-    <td><%= link_to 'Destroy', file_path(uploaded), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+
+  <%= render :partial => 'show_file' ,:collection => @uploaded_files ,:as=>:uploaded%>
+
 </table>
 
 <br />

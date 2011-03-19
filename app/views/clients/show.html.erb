@@ -10,6 +10,6 @@
   <%= @client.surname %>
 </p>
 
-
+ <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

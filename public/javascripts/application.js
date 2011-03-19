@@ -50,8 +50,10 @@ $(function() {
 $(document).ready(function(){
 
 $('a[rel=celeb]').colorbox({
-  height:'80%',
-  width:'60%',
+  scalePhotos: false,
+  preloading:true,
+  height: '85%',
+  width:  '90%',
   transition: 'fade',
   speed: 500,
   current: "{current} of {total} celebrity photos"

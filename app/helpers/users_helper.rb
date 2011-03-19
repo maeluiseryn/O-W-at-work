@@ -16,5 +16,17 @@ module UsersHelper
 
     
   end
+  def has_clients? user
+    if user.clients.empty?
+      return false
+    else
+      return true
+    end
+  end
+ def show_clients user
+   if has_clients? user
+      render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client
+   end
+ end
 
 end

@@ -14,7 +14,6 @@ class ClientsController < ApplicationController
   # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }
@@ -22,6 +21,7 @@ class ClientsController < ApplicationController
   end
 
   # GET /clients/new
+
   # GET /clients/new.xml
   def new
     @client = Client.new
