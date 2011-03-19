@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
 CLIENT_TITRE=['Monsieur','Madame','Mr','Mde' ]
 include AASM
+has_one :financial_data
 has_many :projects
 has_many :addresses , :as => :place
 has_many :projects_addresses, :through => :projects, :source => :addresses

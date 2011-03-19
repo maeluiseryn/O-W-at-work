@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
   CONTACT_TYPE=['Fax','GSM','Email','Fixe']
+
   belongs_to :contact_ref , :polymorphic => true
   validates :description ,:presence=>true
   validates :genre ,:presence=>true ,:inclusion => {:in =>CONTACT_TYPE  }
