@@ -26,6 +26,15 @@
     <%= f.label :reference %><br />
     <%= f.text_field :reference  %>
   </div>
+  <div class="field">
+     <%= f.label :client_type %><br>
+    <%= f.select(:client_type, get_client_type) %><br>
+  </div>
+  <div class="field">
+    <%= f.label :society%><br />
+    <%= f.text_field :society  %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

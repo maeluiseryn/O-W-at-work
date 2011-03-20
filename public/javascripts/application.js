@@ -14,6 +14,7 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association , "g")
   $(link).parent().before(content.replace(regexp, new_id));
+
 }
 $(function() {
   var tallest = 0;
@@ -49,16 +50,31 @@ $(function() {
 
 $(document).ready(function(){
 
-$('a[rel=celeb]').colorbox({
+$('a[rel=image]').colorbox({
   scalePhotos: false,
   preloading:true,
   height: '85%',
   width:  '90%',
   transition: 'fade',
   speed: 500,
-  current: "{current} of {total} celebrity photos"
+  current: "{current} of {total} photos"
 });
 
 });
 
+$(document).ready(function(){
 
+ $('#toggle_address_fields').toggle( function() {$('#toggle_contact_fields').attr('value','Activé');
+     $('#address :input').removeAttr('disabled');
+},function() {$('#toggle_contact_fields').attr('value','Désactiver');
+  $('#address :input').attr('disabled', 'disabled');
+
+});});
+
+$(document).ready(function(){
+ $('#toggle_contact_fields').toggle(function() {$('#toggle_contact_fields').attr('value','Activé');
+     $('#contact :input').removeAttr('disabled');
+},function() {$('#toggle_contact_fields').attr('value','Désactiver');
+  $('#contact :input').attr('disabled', 'disabled');
+
+} );});

@@ -12,11 +12,11 @@
 </p>
 <fieldset>
    <legend><%= set_legend"Addresse de #{@user_profile.name_surname_to_string}"  %></legend>
-   <%=  render :partial => "address_show" ,:object=> @user_profile.address ,:as=>:address%>
+   <%= if @user_profile.address !=nil then render :partial => "address_show" ,:object=> @user_profile.address ,:as=>:address end%>
 </fieldset>
 <fieldset>
    <legend><%= set_legend"Informations de contact de #{@user_profile.name_surname_to_string}"  %></legend>
-  <%=  render :partial => "contact_show", :collection => @user_profile.contacts ,:as=>:contact%>
+  <%= if !@user_profile.contacts.empty? then render :partial => "contact_show", :collection => @user_profile.contacts ,:as=>:contact end%>
 </fieldset>
 
 </fieldset>

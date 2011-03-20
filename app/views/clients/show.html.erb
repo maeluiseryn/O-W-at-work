@@ -18,6 +18,23 @@
   <b>Reference:</b>
   <%= @client.reference %>
 </p>
+<p>
+<b>Type de Client:</b>
+ <%= @client.client_type %>
+   </p>
+   <p>
+ <b>Societée:</b>
+ <%= @client.society %>
+   </p>
+<p>
+<b>A des Projets:</b>
+ <%= @client.has_projects? %>
+   </p>
+   <p>
+ <b>Etat:</b>
+ <%= @client.client_state %>
+   </p>
+
 
  <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |

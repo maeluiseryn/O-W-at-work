@@ -29,16 +29,27 @@
   <div class="field">
     <%=  f.hidden_field :user_id , :value => @user_profile.user_id%>
   </div>
+ <div class="span-15">
+   <%=label_tag 'modifier addresse'%>
+ <input type="button" value="Activer" id="toggle_address_fields">
 
-
-
+ </div>
+ <div id="address" class="span-12">
   <fieldset>
+
 
     <legend><%= set_legend 'Addresse' %></legend>
     <%= f.fields_for :address do |address_form| %>
         <%= render 'address_fields',:f=>address_form %>
      <% end %>
+
    </fieldset>
+ </div>
+  <div class="span-15">
+   <%=label_tag 'modifier contacts'%>
+   <input type="button" value="Activer" id="toggle_contact_fields">
+   </div>
+  <div id='contact' class='span-12'>
    <fieldset>
     <legend><%= set_legend 'Contactes' %></legend>
     <% f.fields_for :contacts do |contact_form| %>
@@ -46,7 +57,7 @@
      <% end %>
     <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
    </fieldset>
-
+   </div>
 
 </fieldset>
   <div class="actions">
