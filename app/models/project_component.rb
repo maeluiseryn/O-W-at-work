@@ -1,0 +1,4 @@
+class ProjectComponent < ActiveRecord::Base
+  belongs_to :project
+
+end

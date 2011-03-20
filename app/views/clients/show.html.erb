@@ -34,6 +34,14 @@
  <b>Etat:</b>
  <%= @client.client_state %>
    </p>
+<fieldset>
+   <legend><%= set_legend"Addresse de #{@client.name}"  %></legend>
+   <%= if !@client.addresses.empty? then render :partial => "shared/address_show" ,:collection=> @client.addresses ,:as=>:address end%>
+</fieldset>
+<fieldset>
+   <legend><%= set_legend"Informations de contact de #{@client.name}"  %></legend>
+  <%= if !@client.contacts.empty? then render :partial => "shared/contact_show", :collection => @client.contacts ,:as=>:contact end%>
+</fieldset>
 
 
  <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>

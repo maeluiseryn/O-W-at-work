@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
     if user.nil?
         flash[:error] = "Invalid email/password combination."
         @title = "Failed Sign in"
-        redirect_to root_path
+        redirect_to request.referer
         else
         sign_in user
         if signed_in?
         redirect_back_or user
         else
-        redirect_to root_path
+        redirect_to request.referer ,:notice => 'pui'
         end
     end
   end

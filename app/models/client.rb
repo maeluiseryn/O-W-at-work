@@ -11,6 +11,9 @@ has_many :user_clients , :dependent => :destroy
 has_many :users ,:through => :user_clients
 validates :name , :surname , :presence => true
 validates :titre ,:presence=>true ,:inclusion => {:in =>CLIENT_TITRE  }
+accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
+accepts_nested_attributes_for :financial_data
+accepts_nested_attributes_for :addresses
 
 aasm_column :client_state # defaults to aasm_state
 

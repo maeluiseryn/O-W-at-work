@@ -26,6 +26,10 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
 
+    @client.addresses.build
+    @client.contacts.build
+    @client.build_financial_data
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @client }
@@ -44,7 +48,10 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
+
         current_user.clients<<@client
+        @client.activated
+        @client.save
         client_user=UserClient.assign_join_type_to_user_client(current_user.id,@client.id,"created_by_#{current_user.name}")
         format.html { redirect_to(@client, :notice => "Client was successfully created.") }
         format.xml  { render :xml => @client, :status => :created, :location => @client }

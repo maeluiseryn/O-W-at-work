@@ -10,32 +10,73 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-     <%= f.label :titre %><br>
+
+ <div class="field">
+    <%= f.label :titre %><br>
     <%= f.select(:titre, get_client_titre) %><br>
-  </div>
-  <div class="field">
+</div>
+<div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
+</div>
+<div class="field">
     <%= f.label :surname %><br />
     <%= f.text_field :surname %>
-  </div>
-  <div class="field">
+</div>
+<div class="field">
     <%= f.label :reference %><br />
     <%= f.text_field :reference  %>
-  </div>
-  <div class="field">
-     <%= f.label :client_type %><br>
+</div>
+<div class="field">
+    <%= f.label :client_type %><br>
     <%= f.select(:client_type, get_client_type) %><br>
-  </div>
-  <div class="field">
+</div>
+<div class="field">
     <%= f.label :society%><br />
     <%= f.text_field :society  %>
-  </div>
+</div>
 
-  <div class="actions">
+  <div class="span-15">
+  <%=label_tag 'modifier addresse'%>
+ <input type="button" value="Activer" id="toggle_address_fields">
+
+ </div>
+ <div id="address" class="span-12">
+    <fieldset>
+
+
+    <legend><%= set_legend 'Addresse' %></legend>
+    <%= f.fields_for :addresses do |address_form| %>
+        <%= render 'shared/address_fields',:f=>address_form %>
+     <% end %>
+     <p><%= link_to_add_fields "Add Addresses", f, :addresses %></p>
+   </fieldset>
+    </div> 
+    <div class="span-15">
+   <%=label_tag 'modifier contacts'%>
+   <input type="button" value="Activer" id="toggle_contact_fields">
+   </div>
+
+  <div id='contact' class='span-12'>
+    <fieldset>
+    <legend><%= set_legend 'Contactes' %></legend>
+    <% f.fields_for :contacts do |contact_form| %>
+        <%= render 'shared/contact_fields' ,:f=>contact_form%>
+     <% end %>
+    <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
+   </fieldset>
+    </div>
+    <div id='financial_data' class='span-12'>
+    <fieldset>
+
+    <legend><%= set_legend 'Donnée financiere' %></legend>
+   <%= f.fields_for :financial_data do |financial_data_form| %>
+
+        <%= render "financial_data_fields",:f=>financial_data_form %>
+     <% end %>
+
+</fieldset></div>
+  <div class="actions span-12">
     <%= f.submit %>
   </div>
 <% end %>

@@ -1,10 +1,10 @@
 <div class="fields">
   <fieldset>
-
+    
     <%= f.label :description %><br>
     <%= f.text_field :description ,:disabled=>true%><br>
     <%= f.label :genre %><br>
-    <%= f.select :genre, get_contact_type,:disabled=> get_contact_type  %><br>
+    <%= f.select :genre, get_contact_type  %><br>
     <%= f.label :contact_data %><br>
     <%= f.text_field :contact_data ,:disabled=>true%><br>
     <%= link_to_remove_fields "Effacer Contact", f %>

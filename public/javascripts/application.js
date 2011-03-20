@@ -14,9 +14,23 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association , "g")
   $(link).parent().before(content.replace(regexp, new_id));
-
+  
 }
-$(function() {
+function equalize_column(){
+var tallest = 0;
+  var $columnsToEqualize = $(".column");
+  $columnsToEqualize.each(function() {
+    var thisHeight = $(this).height();
+    if (thisHeight > tallest) {
+      tallest = thisHeight;
+    }
+  });
+     if(tallest<450){
+        tallest=450;
+    }
+  $columnsToEqualize.height(tallest);
+}
+/*$(function() {
   var tallest = 0;
   var $columnsToEqualize = $(".column");
   $columnsToEqualize.each(function() {
@@ -29,7 +43,7 @@ $(function() {
         tallest=450;
     }
   $columnsToEqualize.height(tallest);
-});
+});*/
 $(function() {
   var tallest = 0;
   var $columnsToEqualize = $(".header");
@@ -43,7 +57,7 @@ $(function() {
 
   $columnsToEqualize.height(tallest);
 });
- $(document).ready( function() {
+$(document).ready( function() {
     stretch_portal_content();
  $(window).resize( stretch_portal_content );
  });
