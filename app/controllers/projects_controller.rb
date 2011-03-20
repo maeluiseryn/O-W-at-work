@@ -27,7 +27,9 @@ class ProjectsController < ApplicationController
   def new
     @client=Client.find(params[:client_id])
     @project=@client.projects.new(:client_id =>params[:client_id])
-
+    @project.contacts.build
+    @project.build_address
+    @project.project_components.build
 
     respond_to do |format|
       format.html # new.html.erb

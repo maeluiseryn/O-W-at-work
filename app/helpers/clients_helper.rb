@@ -6,6 +6,6 @@ module ClientsHelper
      Client.get_client_type
   end
   def get_tva_rate
-     Client.get_client_type
+     FinancialData.get_tva_rate
   end
 end

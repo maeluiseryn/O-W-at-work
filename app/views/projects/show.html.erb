@@ -4,7 +4,18 @@
   <b>Client:</b>
   <%= @project.client_id %>
 </p>
-
+<fieldset>
+   <legend><%= set_legend"Addresse de #{@project}"  %></legend>
+   <%= if !@project.address.nil? then render :partial => "shared/address_show" ,:object=> @project.address ,:as=>:address end%>
+</fieldset>
+<fieldset>
+   <legend><%= set_legend"Informations de contact de #{@project}"  %></legend>
+  <%= if !@project.contacts.empty? then render :partial => "shared/contact_show", :collection => @project.contacts ,:as=>:contact end%>
+</fieldset>
+<fieldset>
+   <legend><%= set_legend"Composant de #{@project}"  %></legend>
+  <%= if !@project.project_components.empty? then render :partial => "project_component_show", :collection => @project.project_components,:as=>:project_component end%>
+</fieldset>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', client_projects_path(@project.client_id) %>

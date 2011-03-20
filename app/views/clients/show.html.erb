@@ -42,7 +42,10 @@
    <legend><%= set_legend"Informations de contact de #{@client.name}"  %></legend>
   <%= if !@client.contacts.empty? then render :partial => "shared/contact_show", :collection => @client.contacts ,:as=>:contact end%>
 </fieldset>
-
+<fieldset>
+   <legend><%= set_legend"Informations financiere de #{@client.name}"  %></legend>
+  <%= if !@client.financial_data.nil? then render :partial => "financial_data_show", :object => @client.financial_data ,:as=>:financial_data end%>
+</fieldset>
 
  <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |
