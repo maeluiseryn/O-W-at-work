@@ -14,34 +14,7 @@
 
     <div class="span-24 last" id="header">
          <div id='sign_in_status_box' class="disclaimer"> <%= show_sign_in_status %></div>
-         <ul class="topnav">
-            <li><a href="#">Home</a></li>
-            <li>
-                <a href="#">Users</a>
-
-                <ul class="subnav">
-                    <%= admin_links(current_user)  %>
-
-                </ul>
-            </li>
-            <li>
-                <a href="#">Resources</a>
-                <ul class="subnav">
-                    <li><a href="#">Sub Nav Link</a></li>
-                    <li><a href="#">Sub Nav Link</a></li>
-
-                    <li><a href="#">Sub Nav Link</a></li>
-                    <li><a href="#">Sub Nav Link</a></li>
-                    <li><a href="#">Sub Nav Link</a></li>
-                    <li><a href="#">Sub Nav Link</a></li>
-                </ul>
-            </li>
-            <li><a href="#">About Us</a></li>
-
-            <li><a href="#">Advertise</a></li>
-            <li><a href="#">Submit</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
+         <%=populate_menu%>
     </div>
     <div class="clear span-24 last" id="content">
       <div class="span-4 column  box" id="sidebar"></div>
@@ -51,9 +24,6 @@
         <%= yield %>
 
     </div>
-      <% @arr=[link_to('new',users_path),link_to('new', root_path)]%>
-      <%= content_tag("div",(content_tag("ul", content_tag("li",@arr[0])+content_tag("li",@arr[1])))) %>
-
 
     <div class="clear span-24 last " id="footer"> 
        <%= debug(params) if Rails.env.development? %> </div>

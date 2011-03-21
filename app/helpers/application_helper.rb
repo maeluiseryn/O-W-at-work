@@ -1,5 +1,7 @@
 module ApplicationHelper
- def link_to_remove_fields(name, f)
+
+
+  def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
@@ -42,11 +44,49 @@ module ApplicationHelper
 def authenticate # doublon avec users controller
      deny_access unless signed_in?
  end
-def admin_links(user)
-  "<ul><li><%= link_to 'Show', user_path(#{user}) %></li>
-  <li><%= link_to 'Edit', edit_user_path(#{user}) %></li>
-  <li><%= link_to 'Destroy', user_path(#{user}), :confirm => 'Are you
-sure', :method => :delete %></ul>"
-end
+
+  def populate_menu_ul
+    ret=''.html_safe
+    @arr=[link_to('1', users_path),link_to('2',root_path),link_to('3',user_path(current_user))]
+      ret=content_tag(:ul,populate_menu_li(@arr),:class=>'subnav')
+      ret.html_safe
+  end
+  def populate_menu_li(arr)
+    ret=''.html_safe
+     arr.each do |a|
+       ret=ret+content_tag(:li,a)
+     end
+     ret.html_safe
+  end
+
+  def populate_menu
+    ret=''.html_safe
+
+      ret=content_tag(:ul,test,:class=>'topnav')
+      ret.html_safe
+  end
+  def test
+    @arr={:users=>{:user_list=>link_to('liste des utilisateurs',users_path),:user=>link_to('votre utilisateur',
+      (user_path(current_user)))},:clients=>{:client=>link_to('liste des clients',users_path),:client_list=>'link_to_client_list'}}
+     ret=''.html_safe
+    @arr.each_pair do|key,value|
+      ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
+
+    end
+     ret.html_safe
+  end
+  def test2(value)
+      ret=''.html_safe
+      ret=content_tag(:ul,test3(value),:class=>'subnav')
+      ret.html_safe
+  end
+
+  def test3(value)
+      ret=''.html_safe
+      value.each_value do |value2|
+         ret=ret+content_tag(:li,value2)
+      end
+      ret.html_safe
+  end
 end
 
