@@ -39,8 +39,14 @@ module ApplicationHelper
   def get_contact_type
     Contact.get_contact_type
   end
-
-end
- def authenticate # doublon avec users controller
+def authenticate # doublon avec users controller
      deny_access unless signed_in?
  end
+def admin_links(user)
+  "<ul><li><%= link_to 'Show', user_path(#{user}) %></li>
+  <li><%= link_to 'Edit', edit_user_path(#{user}) %></li>
+  <li><%= link_to 'Destroy', user_path(#{user}), :confirm => 'Are you
+sure', :method => :delete %></ul>"
+end
+end
+
