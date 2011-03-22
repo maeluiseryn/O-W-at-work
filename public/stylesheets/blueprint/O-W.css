@@ -1,8 +1,4 @@
-#sidebar { 
 
-
-background-color: lightgreen;
-}
 #sign_in {
 width: 200px;
 
@@ -14,25 +10,27 @@ width: 200px;
 #sign_in_status_box{
     float: right;
     margin-top: -50px;
-
+    /*background: url(/images/hazard-login.gif) no-repeat center top;*/
 }
+
 #sign_in_status p  {
     color: white;
 }
 #sign_in_status a  {
     color: white;
+
 }
 #sign_in_box{position: absolute;
              padding-left:10px;
              padding-right:10px}
 
-body{background-color:gray;}
+/*body{background-color: #444444}*/
 
 #content{
-    background-color:#f5f5f5;}
-#footer{
-    background-color:#E5ECF9;
-}
+    background-color:#555;
+    min-height:400px;
+    }
+
 
 #basic-modal-content {display:none;}
 #simplemodal-overlay {background-color:#000; cursor:wait;}
@@ -44,7 +42,7 @@ body{background-color:gray;}
 body {
 	margin: 0; padding: 0;
 	font: 10px normal Arial, Helvetica, sans-serif;
-	background: #ddd url(/images/body_bg.gif) repeat-x;
+	background: #555 url(/images/body_bg.gif) repeat-x;
 }
 .container {
 	width: 960px;
@@ -52,7 +50,7 @@ body {
 	position: relative;
 }
 #header {
-	background: url(/ilmages/header_bg.gif) no-repeat center top;
+	background: url(/images/head_back.gif) no-repeat center top;
 	padding-top: 120px;
 }
 #header .disclaimer {
@@ -130,4 +128,45 @@ html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
 }
 #header img {
 	margin: 20px 0 10px;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+}
+
+
+#footer {
+   position:absolute;
+   bottom:0;
+   
+   height:60px;   /* Height of the footer */
+   background-color:#888;
+
+}
+.debug_dump{
+    color: white;
+    margin-top:0px;
+    margin-left:10px
+}
+#content_column {
+    background-color:#f5f5f5
+
+}
+#content{
+    background-color: #f5f5f5;
+
+
+}
+#container{
+    background-color: #f5f5f5;
+
+}
+#pre_footer{
+    height:50px;
+}
+
+#sidebar {
+
+
+background-color: #f5f5f5;
 }

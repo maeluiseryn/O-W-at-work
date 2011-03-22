@@ -66,12 +66,23 @@ def authenticate # doublon avec users controller
       ret.html_safe
   end
   def test
+    ret=''.html_safe
+    if signed_in?
     @arr={:users=>{:user_list=>link_to('liste des utilisateurs',users_path),:user=>link_to('votre utilisateur',
       (user_path(current_user)))},:clients=>{:client=>link_to('liste des clients',users_path),:client_list=>'link_to_client_list'}}
-     ret=''.html_safe
+
+
+
     @arr.each_pair do|key,value|
+
+
+
       ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
 
+      ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
+    end
+    else
+      return visitor_menu
     end
      ret.html_safe
   end
@@ -89,4 +100,15 @@ def authenticate # doublon avec users controller
       ret.html_safe
   end
 end
-
+  def visitor_menu
+    return "<li><a href='#'>visitor</a><ul class='subnav'><li><a href='#{root_path}'>root_path</a></li></ul></li>".html_safe
+  end
+def admin_links(user)
+  if signed_in?
+    
+  return "<ul><li>#{link_to 'Show', user_path(user)} </li>
+  <li><%= link_to 'Edit', edit_user_path(#{user}) %></li>
+  <li><%= link_to 'Destroy', user_path(#{user}), :confirm => 'Are you
+sure', :method => :delete %></ul>".html_safe
+end
+  end
