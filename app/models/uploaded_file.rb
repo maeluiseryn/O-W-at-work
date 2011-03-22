@@ -1,17 +1,10 @@
 class UploadedFile < ActiveRecord::Base
 
+
   validates :path , :uniqueness =>true
 
   def self.is_savable?(post_upload)
-    if post_upload!=nil
-       if post_upload['datafile'].size != 0
-       return true
-       else
-       return false
-       end
-    else
-    return false
-    end
+      ServerFileOperation.is_savable?(post_upload)
   end
 
   def create_file_on_disk (datafile)
@@ -105,5 +98,17 @@ class UploadedFile < ActiveRecord::Base
     end
   end
 
+  def self.create_file(post_upload,public_path)
+    return ServerFileOperation.create_file(post_upload,public_path)
+  end
+  def self.create_directory(new_dir,public_path)
+   return ServerFileOperation.create_directory(new_dir,public_path)
+  end
+  def self.delete(file,public_path)
+    return ServerFileOperation.delete(file,public_path)
+  end
+  def self.list(current_path,public_path,current_url)
+     return ServerFileOperation.list(current_path,public_path,current_url)
+  end
 end
 

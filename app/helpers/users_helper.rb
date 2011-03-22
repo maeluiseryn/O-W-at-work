@@ -23,10 +23,21 @@ module UsersHelper
       return true
     end
   end
+  def self.has_clients? user
+    if user.clients.empty?
+      return false
+    else
+      return true
+    end
+  end
  def show_clients user
    if has_clients? user
-      render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client
+      render :partial=> 'clients/client_list',:collection => user.clients ,:as=>:client
    end
  end
-
+  def self.show_clients user
+   if has_clients? user
+     ActionController::render :partial=> 'clients/client_list',:collection => user.clients ,:as=>:client
+   end
+ end
 end

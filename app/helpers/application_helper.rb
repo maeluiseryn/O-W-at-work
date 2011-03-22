@@ -68,17 +68,16 @@ def authenticate # doublon avec users controller
   def test
     ret=''.html_safe
     if signed_in?
-    @arr={:users=>{:user_list=>link_to('liste des utilisateurs',users_path),:user=>link_to('votre utilisateur',
-      (user_path(current_user)))},:clients=>{:client=>link_to('liste des clients',users_path),:client_list=>'link_to_client_list'}}
-
-
+    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>link_to("Profile de l'utilisateur",
+        (user_user_profiles_path(current_user)))},
+      :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('liste des clients',clients_path),
+                 :user_client=>link_to("Clients de lutilisateur" )},
+      :Projets=>{},
+      :Gallerie=>{},
+      :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path)},
+      :Liens=>{}}
 
     @arr.each_pair do|key,value|
-
-
-
-      ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
-
       ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
     end
     else
@@ -111,4 +110,4 @@ def admin_links(user)
   <li><%= link_to 'Destroy', user_path(#{user}), :confirm => 'Are you
 sure', :method => :delete %></ul>".html_safe
 end
-  end
+end
