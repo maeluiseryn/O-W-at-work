@@ -1,7 +1,15 @@
 class ServerFileOperation
+
     def initialize
 
     end
+
+    def self.change_path(path)
+      array=path.partition('.')
+      array[0]<<'bis'
+      return array.join
+    end
+
     def self.is_savable?(post_upload)
        if post_upload!=nil
       if !post_upload['datafile'].nil?
@@ -34,7 +42,36 @@ class ServerFileOperation
        notice='no content'
     end
       return notice
-  end
+    end
+
+    def self.create_file_with_path(post_upload,public_path,path,uploaded_file)
+       if is_savable?(post_upload)
+         save_path=path
+         name =post_upload['datafile'].original_filename
+         path = File.join("#{public_path}#{save_path}", name)
+
+         if  !File.exist?("#{path}")
+           #content to change file name here
+
+         end
+         File.open(path, "wb") { |f| f.write(post_upload['datafile'].read) }
+         if File.exist?("#{path}")
+              notice='file uploaded'
+              result=true
+              uploaded_file.filename=name
+              uploaded_file.path=path
+              uploaded_file.content_type=post_upload[:datafile].content_type
+              uploaded_file.file_size=post_upload[:datafile].size
+         else
+              notice='error'
+              result=false
+         end
+       else
+            notice='no content'
+            result=false
+       end
+       return {:notice=>notice ,:result=>result}
+    end
   def self.create_directory(new_dir,public_path)
     slugged_name = slugify new_dir[:name]
     path = File.join(public_path, new_dir[:path])
@@ -55,6 +92,7 @@ class ServerFileOperation
     else
       notice = '"%s" could not be deleted' % File.basename(file)
     end
+      return notice
   end
 
   def self.slugify(value)
@@ -107,4 +145,8 @@ class ServerFileOperation
     end
   return{:dir=>dirs,:file=>files,:breadcrumb=>breadcrumb}
   end
+  def create_user_directory(home_directory,users_path)#user_path => root des users sur serveur , homedir = user.home_dir
+
+  end
+
 end

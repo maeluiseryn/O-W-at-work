@@ -9,5 +9,7 @@ class HomePageController < ApplicationController
       render 'visitor'
     end
   end
-
+  def test
+   #File.open('fuckyu.txt', "wb") { |f| f.write(render :test=>'hello'.humanize) }
+  end
 end

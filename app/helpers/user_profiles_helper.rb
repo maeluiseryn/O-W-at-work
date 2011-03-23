@@ -3,6 +3,7 @@ module UserProfilesHelper
      msg
   end
   def profile_owner user_profile
+
     user_profile.user
   end
 end

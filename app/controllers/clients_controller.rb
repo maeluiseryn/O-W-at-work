@@ -1,18 +1,38 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
+  def current_user_clients
+
+     @clients = current_user.clients
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @clients }
+      end
+
+  end
+   def user_clients
+    @user= User.find(params[:user_id])
+    @clients =@user.clients
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @clients }
+    end
+
+  end
   def index
+
     @clients = Client.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clients }
-    end
+      end
   end
 
   # GET /clients/1
   # GET /clients/1.xml
   def show
+
     @client = Client.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb

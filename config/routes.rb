@@ -6,7 +6,7 @@ OW::Application.routes.draw do
   root :to => 'home_page#home'
 
   get "home_page/home"
-
+   get "home_page/test"
   #get "user_profiles/edit"
 
   #get "user_profiles/show"
@@ -15,6 +15,9 @@ OW::Application.routes.draw do
   resources :clients do
     resources :projects
   end
+  match "/current_user_projects"=>'projects#current_user_projects',:as =>:current_user_projects
+  match "/current_user_clients"=>'clients#current_user_clients',:as =>:current_user_clients
+  match "/user_clients/:user_id"=>'clients#user_clients',:as =>:user_clients
 
   get "sessions/new"
 
@@ -32,6 +35,7 @@ OW::Application.routes.draw do
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier
+
   end
 
   post "files/post_upload"

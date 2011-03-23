@@ -1,6 +1,14 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
+  def current_user_projects
+    @projects=current_user.projects
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @projects }
+    end
+  end
+
   def index
     @client=Client.find(params[:client_id])
     @projects =@client.projects

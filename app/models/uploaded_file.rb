@@ -3,43 +3,7 @@ class UploadedFile < ActiveRecord::Base
 
   validates :path , :uniqueness =>true
 
-  def self.is_savable?(post_upload)
-      ServerFileOperation.is_savable?(post_upload)
-  end
-
-  def create_file_on_disk (datafile)
-    if !file_exist_on_disk?
-      File.open(path, "wb") { |f| f.write(datafile.read) }
-      return true
-    else
-      return false
-    end
-  end
-
-  def self.create_file_on_disk (path, datafile)
-    if !file_exist_on_disk(path)
-    File.open(path, "wb") { |f| f.write(datafile.read) }
-    @f.path=path
-    @f.filename=datafile.original_filename
-    @f.content_type=datafile.content_type
-    @f.file_size=datafile.size
-    return true
-    else
-     new_path=change_path(path)
-     create_file_on_disk(new_path,datafile)
-    end
-  end
-
-  #def create_directory_on_disk
-     #if !directory_exist_on_disk?
-      # Dir.mkdir path
-     #end
-  #end
-  def self.change_path(path)
-     array=path.partition('.')
-     array[0]<<'bis'
-     @f.path=array.join
-  end
+  
 
   def self.create_directory_on_disk (path)
        if !directory_exist_on_disk path
@@ -73,33 +37,33 @@ class UploadedFile < ActiveRecord::Base
     return disposition
   end
 
+def self.save(post_upload,public_path)
 
-  def self.save(post_upload)
-
-      @f= UploadedFile.new
+      uploaded_file= UploadedFile.new
 
       name =  post_upload['datafile'].original_filename
-      directory = "public/data/"
-      # create the file path
-      path = File.join(directory, name)
-      # write the file
-      create_directory_on_disk(directory)
-      if create_file_on_disk(path,post_upload['datafile'])
-        @f.save
-      else
-        @f.destroy
-        return false
-      end
+      directory = "/data/uploads/"#must come from object parent
 
+      result_hash=UploadedFile.create_file_with_path(post_upload,public_path,directory,uploaded_file)
+      if result_hash[:result]==true
+        uploaded_file.save
+      end
+      return result_hash
   end
-  def delete_file
+
+  def delete_file(public_path)
     if file_exist_on_disk?
-    File.delete(self.path)
+    UploadedFile.delete(self.path,public_path)
     end
   end
 
   def self.create_file(post_upload,public_path)
+    uploaded_file=UploadedFile.new
     return ServerFileOperation.create_file(post_upload,public_path)
+  end
+  def self.create_file_with_path(post_upload,public_path,path,uploaded_file)
+
+    return ServerFileOperation.create_file_with_path(post_upload,public_path,path,uploaded_file)
   end
   def self.create_directory(new_dir,public_path)
    return ServerFileOperation.create_directory(new_dir,public_path)

@@ -1,5 +1,7 @@
  class FilesController < ApplicationController
-  def download
+   before_filter :define_path
+
+   def download
     file= UploadedFile.find(params[:id])
     if file.file_exist_on_disk?
       send_file file.path , :type =>file.content_type , :filename => file.filename ,:disposition =>file.disposition
@@ -19,17 +21,16 @@
   end
 
   def post_upload
-   if UploadedFile.is_savable?(params[:post_upload])
-     if UploadedFile.save(params[:post_upload])
+
+     if UploadedFile.save(params[:post_upload],@public_path)[:result]==true
         redirect_to files_path , :flash => { :success => "The file was successfully uploaded "  }
      else
         redirect_to files_path , :flash => { :error => "Sorry , The file wasn't saved properly  " }
      end
-   else
-     redirect_to files_path , :flash => { :error => "Sorry , The file upload failed because there was no content " }
+
    end
     
-  end
+
   def upload
       respond_to do |format|
          format.html # index.html.erb
@@ -38,11 +39,11 @@
   end
   def destroy
     @file = UploadedFile.find(params[:id])
-    @file.delete_file
+    @file.delete_file(@public_path)
     @file.destroy
 
     respond_to do |format|
-      format.html { redirect_to(files_url) }
+      format.html { redirect_to request.referer }
       format.xml  { head :ok }
    end
   end

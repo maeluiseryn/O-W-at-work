@@ -1,15 +1,6 @@
 class FileBrowserController < ApplicationController
+  
   before_filter :define_path
-
-
-  def define_path
-    @public_path = File.join(Rails.root.to_s, 'public')
-    @uploads_url = '/data'
-    @upload_path = File.join(@public_path, @uploads_url)
-    @current_url = params[:dir] || @uploads_url
-    @current_path = File.join(@public_path, @current_url)+ '/*'
-  end
-
 
   def list
     list=UploadedFile.list(@current_path,@public_path,@current_url)

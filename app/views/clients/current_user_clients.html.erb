@@ -1,0 +1,20 @@
+<h1>Listing clients of <%=current_user.name %></h1>
+
+<table>
+  <tr>
+    <th>Titre</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Reference</th>
+    <th>Client_type</th>
+    <th>Society</th>
+    <th>Has_project?</th>
+    <th>State</th>
+    <th></th>
+  </tr>
+<%= render :partial => 'client_list',:collection => @clients ,:as=>:client %>
+</table>
+
+<br />
+
+<%= link_to 'New Client', new_client_path %>

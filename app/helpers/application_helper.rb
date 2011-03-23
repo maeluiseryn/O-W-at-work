@@ -71,8 +71,9 @@ def authenticate # doublon avec users controller
     @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>link_to("Profile de l'utilisateur",
         (user_user_profiles_path(current_user)))},
       :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('liste des clients',clients_path),
-                 :user_client=>link_to("Clients de lutilisateur" )},
-      :Projets=>{},
+                 :current_user_client=>link_to("Clients de l'utilisateur",current_user_clients_path),
+                 },
+      :Projets=>{:user_projects=>link_to("Projets de l'utilisateur",current_user_projects_path)},
       :Gallerie=>{},
       :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path)},
       :Liens=>{}}
@@ -110,4 +111,5 @@ def admin_links(user)
   <li><%= link_to 'Destroy', user_path(#{user}), :confirm => 'Are you
 sure', :method => :delete %></ul>".html_safe
 end
+
 end
