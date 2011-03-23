@@ -41,7 +41,7 @@ def self.save(post_upload,public_path)
 
       uploaded_file= UploadedFile.new
 
-      name =  post_upload['datafile'].original_filename
+
       directory = "/data/uploads/"#must come from object parent
 
       result_hash=UploadedFile.create_file_with_path(post_upload,public_path,directory,uploaded_file)

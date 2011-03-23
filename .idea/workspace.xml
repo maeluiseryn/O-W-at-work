@@ -45,10 +45,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" showNonProject="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="uploaded_file.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="uploaded_file.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/uploaded_file.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="2" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
+            <state line="43" column="0" selection-start="827" selection-end="827" vertical-scroll-proportion="0.60301507">
               <folding />
             </state>
           </provider>
@@ -126,10 +126,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server_file_operation.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="server_file_operation.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/server_file_operation.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="44" selection-start="1248" selection-end="1248" vertical-scroll-proportion="0.5276382">
+            <state line="71" column="12" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -203,8 +203,8 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/file_browser_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/files_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/uploaded_file.rb" />
         <option value="$PROJECT_DIR$/app/models/server_file_operation.rb" />
+        <option value="$PROJECT_DIR$/app/models/uploaded_file.rb" />
       </list>
     </option>
   </component>
@@ -1157,16 +1157,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/uploaded_file.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/server_file_operation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="2" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0">
+        <state line="71" column="12" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/server_file_operation.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/uploaded_file.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="44" selection-start="1248" selection-end="1248" vertical-scroll-proportion="0.5276382">
+        <state line="43" column="0" selection-start="827" selection-end="827" vertical-scroll-proportion="0.60301507">
           <folding />
         </state>
       </provider>

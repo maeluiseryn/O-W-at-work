@@ -50,10 +50,11 @@ class ServerFileOperation
          name =post_upload['datafile'].original_filename
          path = File.join("#{public_path}#{save_path}", name)
 
-         if  !File.exist?("#{path}")
-           #content to change file name here
+          while  File.exist?("#{path}")
 
-         end
+            path=change_path(path)#don't recreate !!!!!!!'
+
+          end
          File.open(path, "wb") { |f| f.write(post_upload['datafile'].read) }
          if File.exist?("#{path}")
               notice='file uploaded'
@@ -67,12 +68,14 @@ class ServerFileOperation
               result=false
          end
        else
-            notice='no content'
-            result=false
+             notice='no content'
+             result=false
        end
        return {:notice=>notice ,:result=>result}
     end
-  def self.create_directory(new_dir,public_path)
+
+
+    def self.create_directory(new_dir,public_path)
     slugged_name = slugify new_dir[:name]
     path = File.join(public_path, new_dir[:path])
     create_path = File.join(path, slugged_name)
