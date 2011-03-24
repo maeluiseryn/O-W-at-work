@@ -6,7 +6,7 @@ has_many :projects, :through => :user_projects
 has_one :user_address, :through => :user_profile, :source => :address
 has_many :user_clients , :dependent =>:destroy
 has_many :clients ,:through => :user_clients
- 
+has_many :uploaded_files ,:as =>:file_owner
  attr_accessor :password
 
  attr_accessible :name , :email ,:password , :password_confirmation
@@ -39,7 +39,7 @@ has_many :clients ,:through => :user_clients
      end
   end
   def create_home_directory(public_path)
-    self.home_directory=File.join('/data/users/',self.name)
+    self.home_directory=File.join('/data/users/',self.name.downcase)
     ServerFileOperation.create_directory({:path=>'/data/users',:name=>self.name},public_path)
 
   end

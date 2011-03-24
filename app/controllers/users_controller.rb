@@ -75,7 +75,11 @@ end
        end
      end
    end
-
+   def upload_a_file
+      session[:model_id]=current_user.id
+      session[:model]=current_user.class
+      redirect_to :controller =>'files', :action=>'upload'
+   end
    private
   # def authenticate
    #  deny_access unless signed_in?

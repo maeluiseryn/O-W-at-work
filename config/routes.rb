@@ -27,6 +27,10 @@ OW::Application.routes.draw do
 
   get "users/show"
 
+
+  match 'user_upload', :to => 'users#upload_a_file'
+
+
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'

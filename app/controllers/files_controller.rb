@@ -21,17 +21,25 @@
   end
 
   def post_upload
-
-     if UploadedFile.save(params[:post_upload],@public_path)[:result]==true
-        redirect_to files_path , :flash => { :success => "The file was successfully uploaded "  }
+     if session[:model]==nil||session[:model_id]==nil
+       model=current_user
      else
-        redirect_to files_path , :flash => { :error => "Sorry , The file wasn't saved properly  " }
+       model=session[:model].find(session[:model_id])
+       session[:model]=nil
+       session[:model_id]=nil
+     end
+
+     if UploadedFile.save(params[:post_upload],@public_path,model)[:result]==true
+        redirect_to session[:referer] , :flash => { :success => "The file was successfully uploaded "  }
+     else
+        redirect_to session[:referer] , :flash => { :error => "Sorry , The file wasn't saved properly  " }
      end
 
    end
     
 
   def upload
+    session[:referer]=request.referer
       respond_to do |format|
          format.html # index.html.erb
       end
@@ -39,11 +47,11 @@
   end
   def destroy
     @file = UploadedFile.find(params[:id])
-    @file.delete_file(@public_path)
+    notice=@file.delete_file("")
     @file.destroy
 
     respond_to do |format|
-      format.html { redirect_to request.referer }
+      format.html { redirect_to request.referer ,:notice=>notice}
       format.xml  { head :ok }
    end
   end

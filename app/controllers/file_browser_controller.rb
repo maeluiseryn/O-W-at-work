@@ -10,7 +10,7 @@ class FileBrowserController < ApplicationController
   end
 
   def user_list
-   define_root
+   define_root(current_user)
     list=UploadedFile.list(@current_path,@public_path,@current_url)
     @dirs=list[:dir]
     @files=list[:file]
@@ -24,12 +24,21 @@ class FileBrowserController < ApplicationController
 
 
   def create_file
-    notice=UploadedFile.create_file(params['post_upload'],@public_path)
+    notice=UploadedFile.create_file(params['post_upload'],@public_path,current_user)
     redirect_to request.referer, :notice => notice
   end
 
   def delete
-    notice=UploadedFile.delete(params[:file],@public_path)
+    #file=UploadedFile.find_by_path(params[:file])
+    file=UploadedFile.find_by_path(File.join(@public_path,params[:file]))
+    if file!=nil
+      file.destroy
+      notice=file.path+" "
+    else
+      notice='if it is not a dir it is an error '
+    end
+
+    notice=notice+UploadedFile.delete(params[:file],@public_path)
     redirect_to request.referer, :notice => notice
   end
 end

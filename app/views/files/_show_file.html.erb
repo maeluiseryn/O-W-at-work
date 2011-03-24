@@ -1,6 +1,6 @@
 <tr>
     <td><%= uploaded.id %></td>
-    <td><a rel='image' href="data/<%= uploaded.filename %>"><%= uploaded.filename %>  </a> </td>
+    <td><a rel='image' href="<%= uploaded.file_url %>"><%= uploaded.filename %>  </a> </td>
     <td><%= uploaded.path %></td>
     <td><%= uploaded.content_type %></td>
     <td><%= number_to_human_size(uploaded.file_size) %></td>

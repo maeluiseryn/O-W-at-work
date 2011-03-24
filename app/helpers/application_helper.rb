@@ -68,8 +68,8 @@ def authenticate # doublon avec users controller
   def test
     ret=''.html_safe
     if signed_in?
-    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>link_to("Profile de l'utilisateur",
-        (user_user_profiles_path(current_user)))},
+    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>
+        (profile_show_or_create_link(current_user)),:edit_user=>link_to('Editer l utilisateur',edit_user_path(current_user))},
       :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('liste des clients',clients_path),
                  :current_user_client=>link_to("Clients de l'utilisateur",current_user_clients_path),
                  },

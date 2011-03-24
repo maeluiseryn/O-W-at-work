@@ -37,3 +37,5 @@
   </tr>
 <%=render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client %>
 </table>
+<%= link_to'upload' ,:controller =>'users' ,:action=>'upload_a_file'%>
+<%= link_to'voir dossier personnel' ,:controller =>'file_browser' ,:action=>'user_list'%>

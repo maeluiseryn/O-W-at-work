@@ -4,10 +4,13 @@ class ServerFileOperation
 
     end
 
-    def self.change_path(path)
+    def self.change_path(path,name)
       array=path.partition('.')
       array[0]<<'bis'
-      return array.join
+      array2=name.partition('.')
+      array2[0]<<'bis'
+
+      return {:path=>array.join,:name=>array2.join}
     end
 
     def self.is_savable?(post_upload)
@@ -26,22 +29,35 @@ class ServerFileOperation
     end
 
     end
-    def self.create_file(post_upload,public_path)
+    def self.create_file(post_upload,public_path,uploaded_file)
     if is_savable?(post_upload)
     save_path=post_upload['path']
     name =post_upload['datafile'].original_filename
     path = File.join("#{public_path}#{save_path}", name)
+          while  File.exist?("#{path}")
 
+            path_hash=change_path(path,name)#don't recreate !!!!!!!'/ok
+            path=path_hash[:path]
+            name=path_hash[:name]
+          end
     File.open(path, "wb") { |f| f.write(post_upload['datafile'].read) }
     if File.exist?("#{path}")
        notice='file uploaded'
+       uploaded_file.file_url=File.join(save_path,name)
+       uploaded_file.filename=name
+       uploaded_file.path=path
+       uploaded_file.content_type=post_upload[:datafile].content_type
+       uploaded_file.file_size=post_upload[:datafile].size
+       result=true
     else
        notice='error'
+       result=false
     end
     else
        notice='no content'
+       result=false
     end
-      return notice
+      return {:notice=>notice ,:result=>result}
     end
 
     def self.create_file_with_path(post_upload,public_path,path,uploaded_file)
@@ -52,7 +68,7 @@ class ServerFileOperation
 
           while  File.exist?("#{path}")
 
-            path=change_path(path)#don't recreate !!!!!!!'
+            path=change_path(path,name)#don't recreate !!!!!!!'/ok
 
           end
          File.open(path, "wb") { |f| f.write(post_upload['datafile'].read) }
@@ -98,7 +114,7 @@ class ServerFileOperation
       notice = '"%s" could not be deleted' % File.basename(file)
     end
       else
-       notice=  '"%s  is not there' %File.basename(file)
+       notice=  " #{file_path}  is not there #{File.basename(file)}"
     end
       return notice
   end
