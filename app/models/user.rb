@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 has_one :user_profile ,:dependent =>:destroy
 has_many :user_projects , :dependent =>:destroy #maybe not necessary
 has_many :projects, :through => :user_projects
@@ -37,6 +38,14 @@ has_many :clients ,:through => :user_clients
        return true
      end
   end
+  def create_home_directory(public_path)
+    self.home_directory=File.join('/data/users/',self.name)
+    ServerFileOperation.create_directory({:path=>'/data/users',:name=>self.name},public_path)
+
+  end
+  def self.create_home_directory(home_directory,public_path)
+    ServerFileOperation.create_directory(home_directory,public_path)
+  end
  private
 
  def encrypt_password
@@ -67,5 +76,6 @@ has_many :clients ,:through => :user_clients
       user = find_by_id(id)
       (user && user.salt == cookie_salt) ? user : nil
  end
+
 
 end

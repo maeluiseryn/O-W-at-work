@@ -75,7 +75,8 @@ def authenticate # doublon avec users controller
                  },
       :Projets=>{:user_projects=>link_to("Projets de l'utilisateur",current_user_projects_path)},
       :Gallerie=>{},
-      :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path)},
+      :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path),
+                  :user_files=>link_to('Explorer les fichier de l utilisateur',user_files_path)},
       :Liens=>{}}
 
     @arr.each_pair do|key,value|

@@ -82,6 +82,7 @@ class ServerFileOperation
 
     if secured_path?(path,public_path) && !File.exist?(create_path) && FileUtils.mkdir(create_path)
       notice = 'Directory "%s" was successfully created' % slugged_name
+
     else
       notice = 'Directory "%s" could not be created' % slugged_name
     end
@@ -90,14 +91,20 @@ class ServerFileOperation
 
   def self.delete(file,public_path)
     file_path = File.join(public_path, file)
+    if file_exist_on_disk(file_path)
     if secured_path?(file_path,public_path) && FileUtils.rm_r(file_path)
       notice = '"%s" was successfully deleted' % File.basename(file)
     else
       notice = '"%s" could not be deleted' % File.basename(file)
     end
+      else
+       notice=  '"%s  is not there' %File.basename(file)
+    end
       return notice
   end
-
+   def self.file_exist_on_disk (path)
+    File.exist?(path)
+  end
   def self.slugify(value)
     return value.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n, '').to_s\
           .downcase\
@@ -110,6 +117,8 @@ class ServerFileOperation
   def self.secured_path?(file_path,public_path)
     return File.exist?(file_path) && ! File.dirname(file_path).index(public_path).nil?
   end
+
+
   def self.list(current_path,public_path,current_url)
      dirs = []
      files = []
@@ -151,5 +160,7 @@ class ServerFileOperation
   def create_user_directory(home_directory,users_path)#user_path => root des users sur serveur , homedir = user.home_dir
 
   end
-
+   def self.directory_exist_on_disk (directory)
+     File.directory? directory
+  end
 end

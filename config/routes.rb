@@ -44,6 +44,7 @@ OW::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/file_browser' => 'file_browser#list', :as => :file_browser
+  match '/user_list' => 'file_browser#user_list', :as => :user_files
   match '/file_browser/delete' => 'file_browser#delete', :as => :delete_file_file_browser
   match '/file_browser/dir/create'  => 'file_browser#create_dir',  :as => :create_dir_file_browser
   match '/file_browser/file/create'  => 'file_browser#create_file',  :as => :create_file_file_browser

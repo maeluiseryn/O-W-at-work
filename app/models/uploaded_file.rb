@@ -3,28 +3,6 @@ class UploadedFile < ActiveRecord::Base
 
   validates :path , :uniqueness =>true
 
-  
-
-  def self.create_directory_on_disk (path)
-       if !directory_exist_on_disk path
-         Dir.mkdir path
-       end
-    end
-
-  def file_exist_on_disk?
-    File.exist? path
-  end
-
-  def directory_exist_on_disk?
-     File.directory? path
-  end
-  def self.file_exist_on_disk (path)
-    File.exist?(path)
-  end
-
-  def self.directory_exist_on_disk (directory)
-     File.directory? directory
-  end
 
   def disposition
     type=['application/pdf','text/html','text/plain','image/jpeg','image/gif','image/png']
@@ -52,9 +30,7 @@ def self.save(post_upload,public_path)
   end
 
   def delete_file(public_path)
-    if file_exist_on_disk?
     UploadedFile.delete(self.path,public_path)
-    end
   end
 
   def self.create_file(post_upload,public_path)

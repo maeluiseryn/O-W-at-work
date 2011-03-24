@@ -63,8 +63,10 @@ end
      @user = User.new(params[:user])
 
      respond_to do |format|
-       if @user.save
-         
+       if @user.valid?
+         define_path
+         @user.create_home_directory(@public_path)
+         @user.save
          format.html { redirect_to(@user, :notice => 'User was successfully created.') }
          format.xml  { render :xml => @user, :status => :created, :location => @user }
        else
