@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324142659) do
+ActiveRecord::Schema.define(:version => 20110328152813) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(:version => 20110324142659) do
     t.string   "reference"
     t.string   "client_type"
     t.string   "society"
+    t.string   "home_directory"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "description"
+    t.string   "content"
+    t.integer  "comment_owner_id"
+    t.string   "comment_owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contacts", :force => true do |t|
@@ -56,6 +67,23 @@ ActiveRecord::Schema.define(:version => 20110324142659) do
     t.integer  "client_id"
   end
 
+  create_table "invoices", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "total_sum"
+    t.date     "due_date"
+    t.integer  "remaining_sum"
+    t.integer  "percent_paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "invoice_id"
+    t.integer  "sum_paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "project_components", :force => true do |t|
     t.string   "component_type"
     t.string   "component_matter"
@@ -72,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20110324142659) do
     t.integer  "client_id"
     t.string   "project_state"
     t.integer  "project_ref"
+    t.string   "home_directory"
   end
 
   create_table "uploaded_files", :force => true do |t|

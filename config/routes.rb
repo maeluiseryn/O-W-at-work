@@ -1,4 +1,7 @@
 OW::Application.routes.draw do
+  resources :comments
+  match "/project/:project_id/comments"=>'comments#project_comments_index' ,:as=>:project_comments_index
+  match "/project/:project_id/comments/new"=>'comments#new' ,:as=>:new_project_comment
   resources :projects
 
   #resources :clients
@@ -29,6 +32,7 @@ OW::Application.routes.draw do
 
 
   match 'user_upload', :to => 'users#upload_a_file'
+  match 'project_upload', :to => 'projects#upload_a_file'
 
 
   match '/signup', :to => 'users#new'

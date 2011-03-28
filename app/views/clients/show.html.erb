@@ -46,7 +46,16 @@
    <legend><%= set_legend"Informations financiere de #{@client.name}"  %></legend>
   <%= if !@client.financial_data.nil? then render :partial => "financial_data_show", :object => @client.financial_data ,:as=>:financial_data end%>
 </fieldset>
-
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Has_project?</th>
+    <th></th>
+    <th></th>
+  </tr>
+<%=render :partial=> 'projects/project_list',:collection => @client.projects ,:as=>:project %>
+  </table>
  <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

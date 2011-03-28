@@ -5,7 +5,7 @@ include AASM
 has_one :financial_data
 has_many :projects
 has_many :addresses , :as => :place
-has_many :projects_addresses, :through => :projects, :source => :addresses
+#has_many :project_addresses, :through => :projects, :source => :addresses
 has_many :contacts , :as => :contact_ref
 has_many :user_clients , :dependent => :destroy
 has_many :users ,:through => :user_clients
@@ -66,4 +66,13 @@ end
 def get_client_type
     CLIENT_TYPE
 end
+
+ def create_home_directory(public_path)
+    self.home_directory=File.join("/data/clients/","c#{self.id.to_s}")
+    ServerFileOperation.create_directory({:path=>"/data/clients",:name=>"/c#{self.id.to_s}"},public_path)
+
+  end
+  def self.create_home_directory(home_directory,public_path)
+    ServerFileOperation.create_directory(home_directory,public_path)
+  end
 end

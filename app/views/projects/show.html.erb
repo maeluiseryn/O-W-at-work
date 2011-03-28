@@ -16,6 +16,7 @@
    <legend><%= set_legend"Composant de #{@project}"  %></legend>
   <%= if !@project.project_components.empty? then render :partial => "project_component_show", :collection => @project.project_components,:as=>:project_component end%>
 </fieldset>
-
+<%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%>
+<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', client_projects_path(@project.client_id) %>

@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def current_user_projects
+    session[:model_id]=nil
+    session[:model_name]=nil
     @projects=current_user.projects
     respond_to do |format|
       format.html # index.html.erb
@@ -10,9 +12,15 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    session[:model_id]=nil
+    session[:model]=nil
+    if params[:client_id]
+
     @client=Client.find(params[:client_id])
     @projects =@client.projects
-
+    else
+     @projects=Project.all
+     end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
@@ -23,7 +31,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
-
+    session[:model_id]=@project.id
+    session[:model]=@project.class
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }
@@ -59,8 +68,12 @@ class ProjectsController < ApplicationController
 
 
     respond_to do |format|
-      if @project.save
-        current_user.projects<<@project
+      if @project.valid?
+         define_path
+         current_user.projects<<@project
+         @project.create_home_directory(@public_path)
+         @project.save
+
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
@@ -97,4 +110,7 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+   def upload_a_file
+      redirect_to :controller =>'files', :action=>'upload'
+   end
 end

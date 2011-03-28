@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Project' ,new_client_project_path(@client) %>
+<%= link_to 'New Project' ,new_client_project_path(@client)unless @client==nil %>

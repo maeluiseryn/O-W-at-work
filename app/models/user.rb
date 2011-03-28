@@ -7,7 +7,8 @@ has_one :user_address, :through => :user_profile, :source => :address
 has_many :user_clients , :dependent =>:destroy
 has_many :clients ,:through => :user_clients
 has_many :uploaded_files ,:as =>:file_owner
- attr_accessor :password
+has_many :comments 
+attr_accessor :password
 
  attr_accessible :name , :email ,:password , :password_confirmation
 

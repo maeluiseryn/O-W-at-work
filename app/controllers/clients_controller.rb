@@ -70,6 +70,8 @@ class ClientsController < ApplicationController
       if @client.save
 
         current_user.clients<<@client
+        define_path
+        @client.create_home_directory(@public_path)
         @client.activated
         @client.save
         client_user=UserClient.assign_join_type_to_user_client(current_user.id,@client.id,"created_by_#{current_user.name}")
