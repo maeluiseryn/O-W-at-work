@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def current_user_projects
     session[:model_id]=nil
-    session[:model_name]=nil
+    session[:model]=nil
     @projects=current_user.projects
     respond_to do |format|
       format.html # index.html.erb

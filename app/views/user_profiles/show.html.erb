@@ -1,5 +1,5 @@
 
- <fieldset>
+
 <legend><%="Profil de #{profile_owner(@user_profile).name}"%></legend>
 
   <b>Nom:</b>
@@ -10,17 +10,13 @@
   <b>Prénom:</b>
   <%= @user_profile.surname %>
 </p>
-<fieldset>
-   <legend><%= set_legend"Addresse de #{@user_profile.name_surname_to_string}"  %></legend>
+<div id="addresses">
    <%= if @user_profile.address !=nil then render :partial => "shared/address_show" ,:object=> @user_profile.address ,:as=>:address end%>
-</fieldset>
-<fieldset>
-   <legend><%= set_legend"Informations de contact de #{@user_profile.name_surname_to_string}"  %></legend>
+</div>
+<div id="contacts">
   <%= if !@user_profile.contacts.empty? then render :partial => "shared/contact_show", :collection => @user_profile.contacts ,:as=>:contact end%>
-</fieldset>
+</div>
 
-</fieldset>
-
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
 
 <td><%= link_to 'Edit', edit_user_user_profiles_path(@user_profile.user_id) %></td>

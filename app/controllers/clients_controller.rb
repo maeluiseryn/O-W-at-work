@@ -20,6 +20,8 @@ class ClientsController < ApplicationController
 
   end
   def index
+    session[:model]=nil
+    session[:model_id]=nil
 
     @clients = Client.all
 
@@ -34,6 +36,8 @@ class ClientsController < ApplicationController
   def show
 
     @client = Client.find(params[:id])
+    session[:model]=@client.class
+    session[:model_id]=@client.id
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }

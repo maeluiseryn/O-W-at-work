@@ -27,15 +27,31 @@
             link_to 'Edit', edit_user_path(@user) %></td>
 <%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
             profile_show_or_create_link @user %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Has_project?</th>
-    <th></th>
-    <th></th>
-  </tr>
-<%=render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client %>
-</table>
+ <div id="info">
+        <ul>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#clients_table">Clients de <%=@user.name %></a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+        </ul>
+        <div id="intro">
+  			<p>
+  				Welcome to <strong>StarTrackr!</strong> the planet's premier celebrity tracking and monitoring service. Need to know where in the world the best bands, musicians or producers are within 2.2 square meters? You've come to the right place. We have a very special special on B-grade celebs this week, so hurry in!
+  			</p>
+        </div>
+
+     <div id="clients_table">
+
+       <table class="span-20">
+       <tr>
+         <th>Name</th>
+          <th>Surname</th>
+         <th>Has_project?</th>
+         <th></th>
+
+        </tr>
+        <%=render :partial=> 'clients/client_list',:collection => @user.clients ,:as=>:client %>
+       </table>
+     </div>
+</div>
 <%= link_to'upload' ,:controller =>'users' ,:action=>'upload_a_file'%>
 <%= link_to'voir dossier personnel' ,:controller =>'file_browser' ,:action=>'user_list'%>

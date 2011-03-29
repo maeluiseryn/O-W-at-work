@@ -1,5 +1,9 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function(){
+  $('#info').tabs();
+});
+
 function stretch_portal_content() {
             if ($(window).height() > $('body').innerHeight())
             {$('#container').height(
@@ -92,6 +96,7 @@ $(document).ready(function(){
   $('#contact :input').attr('disabled', 'disabled');
 
 } );});
+
 
 $(document).ready(function(){
 
