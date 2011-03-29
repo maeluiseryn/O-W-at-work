@@ -1,4 +1,5 @@
  class FilesController < ApplicationController
+
    before_filter :define_path
 
    def download

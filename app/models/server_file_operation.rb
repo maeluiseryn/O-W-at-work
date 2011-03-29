@@ -75,6 +75,7 @@ class ServerFileOperation
          if File.exist?("#{path}")
               notice='file uploaded'
               result=true
+              uploaded_file.file_url=File.join(save_path,name)
               uploaded_file.filename=name
               uploaded_file.path=path
               uploaded_file.content_type=post_upload[:datafile].content_type

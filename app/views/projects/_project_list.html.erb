@@ -1,6 +1,7 @@
  <tr>
-    <td><%= project.client_id %></td>
     <td><%= project.id %></td>
+    <td><%=project.client.surname+" "+project.client.name %></td>
+    <td><%= "P#{project.project_ref}" %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>

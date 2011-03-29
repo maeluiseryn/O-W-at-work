@@ -1,6 +1,28 @@
 module ApplicationHelper
+  def date
+    Time.now
+  end
+  def content_type_img(file)
+  if file.content_type=='image/png'
+    image_tag('file_png.png')
 
+  elsif file.content_type=='image/jpeg'
+    image_tag('file_jpg.png')
+  elsif file.content_type=='image/gif'
+    image_tag('file_gif.png')
+  elsif file.content_type=='image/tiff'
+    image_tag('file_tif.png')
+  elsif file.content_type=='application/zip'
+    image_tag('box_zip.png')
+  elsif  file.content_type=='application/vnd.ms-excel'
+     image_tag('file_xls.png')
+  elsif  file.content_type=='application/pdf'
+     image_tag('file_pdf.png')
+  else
+    file.content_type
+  end
 
+end
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
@@ -62,10 +84,10 @@ def authenticate # doublon avec users controller
   def populate_menu
     ret=''.html_safe
 
-      ret=content_tag(:ul,test,:class=>'topnav')
+      ret=content_tag(:ul,top_nav_li,:class=>'topnav')
       ret.html_safe
   end
-  def test
+  def top_nav_li
     ret=''.html_safe
     if signed_in?
     @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>
@@ -81,27 +103,27 @@ def authenticate # doublon avec users controller
       :Liens=>{}}
 
     @arr.each_pair do|key,value|
-      ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+test2(value))
+      ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+sub_nav_ul(value))
     end
     else
       return visitor_menu
     end
      ret.html_safe
   end
-  def test2(value)
+  def sub_nav_ul(value)
       ret=''.html_safe
-      ret=content_tag(:ul,test3(value),:class=>'subnav')
+      ret=content_tag(:ul,sub_nav_li(value),:class=>'subnav')
       ret.html_safe
   end
 
-  def test3(value)
+  def sub_nav_li(value)
       ret=''.html_safe
       value.each_value do |value2|
          ret=ret+content_tag(:li,value2)
       end
       ret.html_safe
   end
-end
+
   def visitor_menu
     return "<li><a href='#'>visitor</a><ul class='subnav'><li><a href='#{root_path}'>root_path</a></li></ul></li>".html_safe
   end
@@ -114,4 +136,6 @@ def admin_links(user)
 sure', :method => :delete %></ul>".html_safe
 end
 
+
+end
 end
