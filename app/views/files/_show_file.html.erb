@@ -5,6 +5,7 @@
       <!--<td><%# uploaded.file_url %></td>-->
      <td><%= content_type_img(uploaded) %></td>
      <td><%= number_to_human_size(uploaded.file_size) %></td>
+     <td><%= file_associated_with(uploaded)%></td>
      <td><a rel="<%= is_image?(uploaded) %>" href="<%= uploaded.file_url unless is_image?(uploaded)!='image' %>">
       <%= image_tag('image-x-generic.png') unless is_image?(uploaded)!= 'image' %>  </a> </td>
     <td><%= link_to 'Destroy', file_path(uploaded), :confirm => 'Are you sure?', :method => :delete %></td>

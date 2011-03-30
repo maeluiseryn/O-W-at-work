@@ -56,19 +56,25 @@
         <%=render :partial=> 'projects/project_list',:collection => @user.projects ,:as=>:project %>
        </table>
      </div>
-   <table id="files_table">
-     <tr>
+  <div id="files_table">
+   <table class="span-18">
+
+     <tr >
        <th>Id</th>
        <th>Name </th>
-      <!-- <th>Url</th> -->
+
        <th>Content_Type</th>
        <th>File_Size</th>
+       <th>Associé a</th>
+       <th></th>
+       <th></th>
        <th></th>
      </tr>
 
      <%= render :partial => 'files/show_file' ,:collection => @user.uploaded_files ,:as=>:uploaded%>
 
    </table>
+   </div> 
    <div id="comments">
      <table>
   <tr>

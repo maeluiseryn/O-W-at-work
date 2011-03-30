@@ -44,8 +44,11 @@ class ProjectsController < ApplicationController
   def new
     @client=Client.find(params[:client_id])
     @project=@client.projects.new(:client_id =>params[:client_id])
-    @project.contacts.build
-    @project.build_address
+    @project.contacts.build :contact_data =>@client.contacts.first.contact_data, :genre=>@client.contacts.first.genre,
+                            :description=>@client.contacts.first.description
+    @project.build_address :street=>@client.addresses.first.street ,:street_number=>@client.addresses.first.street_number,
+                            :floor=>@client.addresses.first.floor , :zip=>@client.addresses.first.zip ,
+                            :city=>@client.addresses.first.city , :country =>@client.addresses.first.country
     @project.project_components.build
 
     respond_to do |format|

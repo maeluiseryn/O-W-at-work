@@ -45,8 +45,9 @@
 
     <legend><%= set_legend 'Composant du projet' %></legend>
    <% f.fields_for :project_components do |project_component| %>
-            <%= render 'projects/project_component_fields' ,:f=>project_component%>
+            <%= render 'shared/project_component_fields' ,:f=>project_component%>
          <% end %>
+       <p><%= link_to_add_fields "Add  Component", f, :project_components %></p>
       </fieldset>
    </div>
   <div class="actions span-15">

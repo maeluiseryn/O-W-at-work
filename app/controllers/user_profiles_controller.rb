@@ -11,9 +11,13 @@ class UserProfilesController < ApplicationController
    end
 
   def show
+    if !params[:user_id].nil?
      user=User.find(params[:user_id])
      @user_profile=user.user_profile
      #@user_profile=UserProfile.find(params[:id])
+    else
+      @user_profile=UserProfile.find(params[:id])
+     end
   end
 
   def new
@@ -72,7 +76,11 @@ class UserProfilesController < ApplicationController
     end
   end
   def correct_user_profile
+    if params[:user_id].nil?
+     redirect_to(root_path,:notice =>'not authorized to access this profile ') unless current_user?(UserProfile.find(params[:id]).user)
+    else
      @user = User.find(params[:user_id])
      redirect_to(root_path,:notice =>'not authorized to access this profile ') unless current_user?(@user)
+    end
   end
 end

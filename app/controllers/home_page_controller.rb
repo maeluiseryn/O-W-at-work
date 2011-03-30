@@ -2,6 +2,7 @@ class HomePageController < ApplicationController
 
   def home
     if signed_in?
+      @model=UploadedFile.first
       @title=" Page d'acceuil "
       render 'home'
     else

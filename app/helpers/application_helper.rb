@@ -90,14 +90,15 @@ def authenticate # doublon avec users controller
   def top_nav_li
     ret=''.html_safe
     if signed_in?
-    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:profile=>
-        (profile_show_or_create_link(current_user)),:edit_user=>link_to('Editer l utilisateur',edit_user_path(current_user))},
+    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:user=>link_to('votre utilisateur',user_path(current_user)),
+                          :edit_user=>link_to('Editer l utilisateur',edit_user_path(current_user)),:profile=>
+        (profile_show_or_create_link(current_user))},
       :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('liste des clients',clients_path),
                  :current_user_client=>link_to("Clients de l'utilisateur",current_user_clients_path),
                  },
       :Projets=>{:user_projects=>link_to("Projets de l'utilisateur",current_user_projects_path),
                  :projects=>link_to(" tous les Projets ", projects_path)},
-      :Gallerie=>{},
+
       :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path),
                   :user_files=>link_to('Explorer les fichier de l utilisateur',user_files_path)},
       :Liens=>{}}
@@ -141,6 +142,47 @@ end
 def is_image?(file)
   if ['image/gif','image/tif','image/png','image/jpeg'].include? file.content_type
      'image'
+  end
+end
+def file_associated_with(file)
+  if file.file_owner.instance_of? User
+  file.file_owner.name
+  elsif file.file_owner.instance_of? Project
+    "C#{file.file_owner.client.id}P#{file.file_owner.project_ref}"
+  end
+end
+def redirect_back_to_owner_polymorphic(model)
+  if model.instance_of? Address
+     link_to 'Back', model.place
+  elsif model.instance_of? UploadedFile
+    link_to 'Back', model.file_owner
+  elsif model.instance_of? Contact
+    link_to 'Back', model.contact_ref
+  elsif model.instance_of? Comment
+    link_to 'Back', model.comment_owner
+  end
+
+end
+def render_object_or_collection(model)
+  if model.instance_of? Array
+     render_partial_collection model
+  else
+     render_partial_object model
+  end
+end
+
+def render_partial_object (model)
+  if model.instance_of? Address
+     render :partial => "shared/address_show" ,:object=> model ,:as=>:address
+  elsif model.instance_of? UploadedFile
+     render :partial => "files/show_file" ,:object=>model,:as=>:uploaded
+  end
+end
+def render_partial_collection (model)
+  if model[0].instance_of? Address
+     render :partial => "shared/address_show" ,:collection=> model ,:as=>:address
+  elsif model[0].instance_of? UploadedFile
+     render :partial => "files/show_file" ,:collection=>model,:as=>:uploaded
   end
 end
 #def link_if_image(file)

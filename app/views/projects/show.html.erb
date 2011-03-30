@@ -34,6 +34,7 @@
       <!-- <th>Url</th> -->
        <th>Content_Type</th>
        <th>File_Size</th>
+       <th>Associé a</th>
        <th></th>
      </tr>
 
@@ -61,5 +62,5 @@
 <%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%>
 <%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %>
 <%= link_to 'Edit', edit_project_path(@project) %>
-<%= link_to 'Back', client_projects_path(@project.client_id) %>
+<%= link_to 'Back', client_path(@project.client_id) %>
 <%= link_to'explorer les fichier' ,project_files_path(@project)%>
