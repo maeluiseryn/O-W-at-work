@@ -1,22 +1,65 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Client:</b>
-  <%= @project.client_id %>
-</p>
-<fieldset>
-   <legend><%= set_legend"Addresse de #{@project}"  %></legend>
+<div id="first_content">
+  <h3>Client:
+  <%=@project.client.titre+" "+@project.client.surname+" "+ @project.client.name %></h3>
+ <div class="span-18"> <%=link_to 'Voir le client',client_path(@project.client_id) %></div>
+</div>
+<div id="info" class="span-19">
+        <ul>
+
+          <li><a href="#addresses">Addresses de P<%=@project.project_ref %></a></li>
+          <li><a href="#contacts">Informations de contact de P<%=@project.project_ref %></a></li>
+          <li><a href="#components">Composants du project P<%=@project.project_ref %></a></li>
+          <li><a href="#files_table">Fichiers de P<%=@project.project_ref %></a></li>
+          <li><a href="#comments">Commentaire de P<%=@project.project_ref %></a></li>
+        </ul>
+
+<div id="addresses">
+
    <%= if !@project.address.nil? then render :partial => "shared/address_show" ,:object=> @project.address ,:as=>:address end%>
-</fieldset>
-<fieldset>
-   <legend><%= set_legend"Informations de contact de #{@project}"  %></legend>
+</div>
+<div id="contacts">
+
   <%= if !@project.contacts.empty? then render :partial => "shared/contact_show", :collection => @project.contacts ,:as=>:contact end%>
-</fieldset>
-<fieldset>
-   <legend><%= set_legend"Composant de #{@project}"  %></legend>
+</div>
+<div id="components">
   <%= if !@project.project_components.empty? then render :partial => "project_component_show", :collection => @project.project_components,:as=>:project_component end%>
-</fieldset>
+</div>
+
+<div id="files_table">
+<table >
+     <tr>
+       <th>Id</th>
+       <th>Name </th>
+      <!-- <th>Url</th> -->
+       <th>Content_Type</th>
+       <th>File_Size</th>
+       <th></th>
+     </tr>
+
+  <%= if !@project.uploaded_files.empty? then render :partial => "files/show_file", :collection => @project.uploaded_files,:as=>:uploaded end%>
+</table>
+</div>
+<div id="comments">
+     <table>
+  <tr>
+    <th>Reference projet</th>
+    <th>Description</th>
+    <th>Content</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+       <%= render :partial => 'comments/comment_list',:collection => @project.comments,:as=>:comment %>
+
+   </table>
+   </div>
+
+
+</div>
 <%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%>
-<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %> |
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %>
+<%= link_to 'Edit', edit_project_path(@project) %>
 <%= link_to 'Back', client_projects_path(@project.client_id) %>
+<%= link_to'explorer les fichier' ,project_files_path(@project)%>

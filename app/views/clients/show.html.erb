@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-
+<div id="first_content">
 <p>
   <b>Titre:</b>
   <%= @client.titre %>
@@ -34,18 +33,31 @@
  <b>Etat:</b>
  <%= @client.client_state %>
    </p>
-<fieldset>
+</div>
+<div id="info" class="span-19">
+        <ul>
+
+          <li><a href="#addresses">Addresse de <%=@client.surname %></a></li>
+          <li><a href="#contacts">Informations contact de <%=@client.surname %></a></li>
+          <li><a href="#financial">Informations Financieres de <%=@client.surname %></a></li>
+          <li><a href="#projects">Projets de <%=@client.surname %></a></li>
+        </ul>
+
+<div id="addresses"><fieldset>
    <legend><%= set_legend"Addresse de #{@client.name}"  %></legend>
    <%= if !@client.addresses.empty? then render :partial => "shared/address_show" ,:collection=> @client.addresses ,:as=>:address end%>
-</fieldset>
-<fieldset>
+</fieldset></div>
+<div id="contacts"><fieldset>
    <legend><%= set_legend"Informations de contact de #{@client.name}"  %></legend>
   <%= if !@client.contacts.empty? then render :partial => "shared/contact_show", :collection => @client.contacts ,:as=>:contact end%>
-</fieldset>
+</fieldset></div>
+<div id="financial">
 <fieldset>
    <legend><%= set_legend"Informations financiere de #{@client.name}"  %></legend>
   <%= if !@client.financial_data.nil? then render :partial => "financial_data_show", :object => @client.financial_data ,:as=>:financial_data end%>
 </fieldset>
+</div>
+<div id="projects">
 <table>
   <tr>
     <th>Name</th>
@@ -54,8 +66,11 @@
     <th></th>
     <th></th>
   </tr>
-<%=render :partial=> 'projects/project_list',:collection => @client.projects ,:as=>:project %>
+<%=render :partial=> 'projects/project_list',:collection => @client.projects ,:as=>:project unless @client.projects.empty?%>
   </table>
- <%= link_to 'Create Project ' ,client_projects_path(@client.id)%>
+</div>
+</div>
+
+<%= link_to 'Create Project ' ,new_client_project_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

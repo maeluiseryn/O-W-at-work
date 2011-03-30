@@ -9,13 +9,26 @@ class FileBrowserController < ApplicationController
     @breadcrumb=list[:breadcrumb]
   end
 
-  def user_list
-   define_root(current_user)
+  def user_files
+    session[:model]=current_user.class
+    session[:model_id]=current_user.id
+    define_root(current_user)
     list=UploadedFile.list(@current_path,@public_path,@current_url)
     @dirs=list[:dir]
     @files=list[:file]
     @breadcrumb=list[:breadcrumb]
    
+  end
+   def project_files
+    @project=Project.find(params[:project_id])
+    session[:model]=@project.class
+    session[:model_id]=@project.id
+    define_root(@project)
+    list=UploadedFile.list(@current_path,@public_path,@current_url)
+    @dirs=list[:dir]
+    @files=list[:file]
+    @breadcrumb=list[:breadcrumb]
+
   end
   def create_dir
     notice=UploadedFile.create_directory(params[:new_dir],@public_path)
@@ -24,7 +37,8 @@ class FileBrowserController < ApplicationController
 
 
   def create_file
-    notice=UploadedFile.create_file(params['post_upload'],@public_path,current_user)
+    model=session[:model].find(session[:model_id])
+    notice=UploadedFile.create_file(params['post_upload'],@public_path,model)
     redirect_to request.referer, :notice => notice
   end
 

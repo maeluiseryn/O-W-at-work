@@ -171,6 +171,8 @@ html ul.topnav li ul.subnav li a:hover { /*--Hover effect for subnav links--*/
 
 background-color: #f5f5f5;
 }
-
+#first_content {
+    min-height: 200px
+}
 /*#clients_table tbody tr:nth-child(2n) td, tbody tr.even td { background:red}
  

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Reference projet</th>
     <th>Description</th>
     <th>Content</th>
     <th>User</th>
@@ -10,16 +11,9 @@
     <th></th>
   </tr>
 
-<% @comments.each do |comment| %>
-  <tr>
-    <td><%= comment.description %></td>
-    <td><%= comment.content %></td>
-    <td><%= comment.user_id %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+
+  <%= render :partial => 'comment_list',:collection => @comments,:as=>:comment %>
+
 </table>
 
 <br />

@@ -12,7 +12,8 @@
     end
   end
   def index
-
+    session[:model]=current_user.class
+    session[:model_id]=current_user.id
     @uploaded_files = UploadedFile.all
 
     respond_to do |format|
@@ -24,6 +25,7 @@
   def post_upload
      if session[:model]==nil||session[:model_id]==nil
        model=current_user
+
      else
        model=session[:model].find(session[:model_id])
        session[:model]=nil
@@ -31,6 +33,7 @@
      end
 
      if UploadedFile.save(params[:post_upload],@public_path,model)[:result]==true
+
         redirect_to session[:referer] , :flash => { :success => "The file was successfully uploaded "  }
      else
         redirect_to session[:referer] , :flash => { :error => "Sorry , The file wasn't saved properly  " }

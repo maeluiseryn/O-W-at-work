@@ -29,8 +29,8 @@ aasm_column :project_state # defaults to aasm_state
       transitions :to => :dead, :from => [:active, :waiting]
     end
     def create_home_directory(public_path)
-    self.home_directory=File.join("/data/clients/c#{self.client.id.to_s}/","p#{self.project_ref.to_s}")
-    ServerFileOperation.create_directory({:path=>"/data/clients/c#{self.client.id.to_s}",:name=>"p#{self.project_ref.to_s}"},public_path)
+    self.home_directory=File.join("#{self.client.home_directory}/","p#{self.project_ref.to_s}")
+    ServerFileOperation.create_directory({:path=>"#{self.client.home_directory}",:name=>"p#{self.project_ref.to_s}"},public_path)
 
   end
   def self.create_home_directory(home_directory,public_path)

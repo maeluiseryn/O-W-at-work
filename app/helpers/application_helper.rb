@@ -138,4 +138,14 @@ end
 
 
 end
+def is_image?(file)
+  if ['image/gif','image/tif','image/png','image/jpeg'].include? file.content_type
+     'image'
+  end
+end
+#def link_if_image(file)
+ # if is_image?(file)
+  #  return "<a  rel='image' href='#{ file.file_url} '> #{ file.filename} </a>".html_safe
+  #end
+#end
 end
