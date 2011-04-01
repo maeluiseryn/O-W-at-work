@@ -1,4 +1,6 @@
 OW::Application.routes.draw do
+  resources :supports
+
   resources :comments
   match "/project/:project_id/comments"=>'comments#project_comments_index' ,:as=>:project_comments_index
   match "/project/:project_id/comments/new"=>'comments#new' ,:as=>:new_project_comment
@@ -58,7 +60,8 @@ OW::Application.routes.draw do
   match '/file_browser/delete' => 'file_browser#delete', :as => :delete_file_file_browser
   match '/file_browser/dir/create'  => 'file_browser#create_dir',  :as => :create_dir_file_browser
   match '/file_browser/file/create'  => 'file_browser#create_file',  :as => :create_file_file_browser
-
+  get "welcome/index"
+  resources :supports, :only => [:new, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

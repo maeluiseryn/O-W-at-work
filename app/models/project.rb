@@ -13,6 +13,15 @@ accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:descripti
 accepts_nested_attributes_for :address ,:project_components
 aasm_column :project_state # defaults to aasm_state
 
+    define_index do
+      set_property :enable_star => 1
+      set_property :min_infix_len => 3
+      indexes client_id
+      indexes project_ref
+      indexes client.surname , :as => :client_surname
+      indexes client.name ,:as=>:client_name
+      has  created_at, updated_at , project_state
+    end
     aasm_initial_state :created
 
     aasm_state :created

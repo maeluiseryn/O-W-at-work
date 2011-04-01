@@ -8,6 +8,8 @@ gem 'aasm'
 gem 'pg'
 gem 'mongrel'
 gem 'jquery-rails'
+gem 'thinking-sphinx'
+gem 'wkhtmltopdf-binary'
 
 # Use unicorn as the web server
 # gem 'unicorn'

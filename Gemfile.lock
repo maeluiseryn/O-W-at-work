@@ -69,10 +69,15 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    riddle (1.2.2)
+    thinking-sphinx (2.0.2)
+      activerecord (>= 3.0.3)
+      riddle (>= 1.2.2)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    wkhtmltopdf-binary (0.9.5.1)
 
 PLATFORMS
   ruby
@@ -83,3 +88,5 @@ DEPENDENCIES
   mongrel
   pg
   rails (= 3.0.3)
+  thinking-sphinx
+  wkhtmltopdf-binary

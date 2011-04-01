@@ -15,6 +15,19 @@ accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:descripti
 accepts_nested_attributes_for :financial_data
 accepts_nested_attributes_for :addresses
 
+  define_index do
+      set_property :enable_star => 1
+      set_property :min_infix_len => 3
+      indexes name , :sortable => true
+      indexes surname ,:sortable =>true
+      indexes surname ,:sortable =>true
+      indexes client_type, :sortable =>true
+      indexes id
+      has  created_at, updated_at
+
+end
+
+
 aasm_column :client_state # defaults to aasm_state
 
     aasm_initial_state :created

@@ -5,6 +5,7 @@ class HomePageController < ApplicationController
       @model=UploadedFile.first
       @title=" Page d'acceuil "
       render 'home'
+      
     else
       @title=' Visiteur'
       render 'visitor'

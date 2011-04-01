@@ -40,6 +40,18 @@
       </requirement>
       <source from="Gemfile" />
     </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="thinking-sphinx" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="wkhtmltopdf-binary" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
@@ -65,6 +77,9 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] daemons (v1.0.10, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/daemons-1.0.10)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.10.1, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/pg-0.10.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] aasm (v2.2.0, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/aasm-2.2.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] thinking-sphinx (v2.0.2, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/thinking-sphinx-2.0.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] riddle (v1.2.2, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/riddle-1.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] wkhtmltopdf-binary (v0.9.5.1, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/wkhtmltopdf-binary-0.9.5.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.8.7, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/rake-0.8.7)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.9, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/arel-2.0.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] builder (v2.1.2, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/builder-2.1.2)" level="application" />
@@ -80,7 +95,6 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] mime-types (v1.16, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/mime-types-1.16)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.9, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/treetop-1.4.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.3, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136/gems/activemodel-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rack (v1.2.1, /home/maeluiseryn/.rvm/gems/ruby-1.9.2-p136@global/gems/rack-1.2.1)" level="application" />
   </component>
 </module>
 
