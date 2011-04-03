@@ -1,6 +1,19 @@
-<h1>HomePage#home</h1>
-<%=link_to 'bug report',new_support_path%>
-<%=render_partial_object (@model)%>
-<%= redirect_back_to_owner_polymorphic(@model)%>
+<h1>Page D'acceuil utilisateur</h1>
 
+<h3><u> Connecté en tant que : <b><%= current_user.name %></b></u></h3>
+
+<% content_for :sidebar do %>
+
+      <ul id="sidebarmenu1">
+
+         <li>
+           <%= #noinspection RubyArgCount
+            link_to 'Nouveau client', new_client_path %>
+         </li>
+         <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
+            link_to 'Rechercher', search_new_search_path %>
+         </li>
+</ul>
+
+<% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110328152813) do
+ActiveRecord::Schema.define(:version => 20110403222743) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110328152813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "floor"
+    t.string   "description"
   end
 
   create_table "clients", :force => true do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110328152813) do
     t.string   "client_type"
     t.string   "society"
     t.string   "home_directory"
+    t.boolean  "delta",          :default => true, :null => false
   end
 
   create_table "comments", :force => true do |t|

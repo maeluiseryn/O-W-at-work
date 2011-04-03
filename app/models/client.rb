@@ -18,9 +18,11 @@ accepts_nested_attributes_for :addresses
   define_index do
       set_property :enable_star => 1
       set_property :min_infix_len => 3
+
+      set_property :delta => true
       indexes name , :sortable => true
       indexes surname ,:sortable =>true
-      indexes surname ,:sortable =>true
+     
       indexes client_type, :sortable =>true
       indexes id
       has  created_at, updated_at
@@ -87,5 +89,8 @@ end
   end
   def self.create_home_directory(home_directory,public_path)
     ServerFileOperation.create_directory(home_directory,public_path)
+  end
+  def field_weight
+    {:surname=>20 ,:name =>10,}
   end
 end

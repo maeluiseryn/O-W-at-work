@@ -11,7 +11,6 @@ has_many :comments , :as=> :comment_owner
 has_many :uploaded_files , :as=>:file_owner
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 accepts_nested_attributes_for :address ,:project_components
-aasm_column :project_state # defaults to aasm_state
 
     define_index do
       set_property :enable_star => 1
@@ -21,7 +20,9 @@ aasm_column :project_state # defaults to aasm_state
       indexes client.surname , :as => :client_surname
       indexes client.name ,:as=>:client_name
       has  created_at, updated_at , project_state
-    end
+      end
+aasm_column :project_state # defaults to aasm_state
+
     aasm_initial_state :created
 
     aasm_state :created

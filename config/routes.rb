@@ -1,4 +1,8 @@
 OW::Application.routes.draw do
+  get "search/new_search"
+
+  get "search/search_result"
+
   resources :supports
 
   resources :comments

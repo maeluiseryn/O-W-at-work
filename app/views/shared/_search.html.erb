@@ -1,0 +1,8 @@
+<% form_tag search_new_search_path, :method => 'get' do %>
+    <p>
+
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Chercher", :name => nil %> </p>
+      <%= render :partial => 'shared/search_options' %>
+
+<% end %>

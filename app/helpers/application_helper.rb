@@ -160,15 +160,27 @@ def redirect_back_to_owner_polymorphic(model)
     link_to 'Back', model.contact_ref
   elsif model.instance_of? Comment
     link_to 'Back', model.comment_owner
+
   end
+end
+def redirect_back_to_owner(model)
+  if model.instance_of? Project
+    link_to 'Client', model.client
+  end
+ 
 
 end
 def render_object_or_collection(model)
   if model.instance_of? Array
      render_partial_collection model
+  elsif model.instance_of? ThinkingSphinx::Search
+    array=model.to_a
+    render_object_or_collection array
   else
      render_partial_object model
+
   end
+
 end
 
 def render_partial_object (model)
@@ -183,6 +195,8 @@ def render_partial_collection (model)
      render :partial => "shared/address_show" ,:collection=> model ,:as=>:address
   elsif model[0].instance_of? UploadedFile
      render :partial => "files/show_file" ,:collection=>model,:as=>:uploaded
+  elsif model[0].instance_of? Client
+      render :partial => "clients/client_list" ,:collection=>model,:as=>:client
   end
 end
 #def link_if_image(file)

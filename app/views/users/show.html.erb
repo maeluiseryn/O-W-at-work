@@ -92,10 +92,27 @@
    </div>
 
 </div>
-<p><%= link_to'upload' ,:controller =>'users' ,:action=>'upload_a_file'%></p>
-<p><%= link_to'voir dossier personnel' ,user_files_path%></p>
-<p><%= link_to 'Back', users_path %></p>
-<p><%= #noinspection RubyArgCount
-            link_to 'Edit', edit_user_path(@user) %></p>
-<p><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
-            profile_show_or_create_link @user %></p>
+
+<% content_for :sidebar do %>
+
+      <ul id="sidebarmenu1">
+       <li>
+
+           <%= link_to'upload' ,:controller =>'users' ,:action=>'upload_a_file'%>
+         </li>
+         <li>
+           <%= link_to'voir dossier personnel' ,user_files_path%>
+         </li>
+         <li>
+           <%= link_to 'Back', users_path %>
+         </li>
+         <li>
+           <%= #noinspection RubyArgCount
+            link_to 'Edit', edit_user_path(@user) %>
+         </li>
+         <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
+            profile_show_or_create_link @user %>
+         </li>
+</ul>
+
+<% end %>
