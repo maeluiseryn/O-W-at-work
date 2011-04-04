@@ -15,7 +15,14 @@
   <b>Created at:</b>
   <%= @user.created_at %>
 </p>
-
+<p>
+  <b>Dossier utilisateur:</b>
+  <%= @user.home_directory %>
+</p>
+  <p>
+  <b>Etat de l'utilisateur:</b>
+  <%= @user.aasm_current_state %>
+</p>
 </div>
 
  <div id="info" class="span-19">

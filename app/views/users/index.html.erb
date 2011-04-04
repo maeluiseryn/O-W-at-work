@@ -7,8 +7,12 @@
     <th>Id</th>
     <th>Name</th>
     <th>Email</th>
-    <th>Created_at</th>
-    <th>Profile</th>
+    <th>Date de création</th>
+
+    <th>Dossier personnel</th>
+    <th>Etat</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -20,6 +24,8 @@
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.created_at %></td>
+    <td><%= user.home_directory %></td>
+     <td><%= user.aasm_current_state %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= profile_show_or_create_link user %></td>
     <td><%= link_to "Client de l'utilisateur",user_clients_path(user) %></td>

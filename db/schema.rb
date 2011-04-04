@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404124216) do
+ActiveRecord::Schema.define(:version => 20110404185342) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20110404124216) do
     t.string   "salt"
     t.string   "encrypted_password"
     t.string   "home_directory"
+    t.string   "user_state"
   end
 
 end

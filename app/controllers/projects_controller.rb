@@ -126,7 +126,6 @@ class ProjectsController < ApplicationController
    end
    def create_rendez_vous_fiche
      @project=Project.find(params[:id])
-
      respond_to do |format|
         format.html
         format.xml

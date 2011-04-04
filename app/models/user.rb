@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+include AASM
 has_one :user_profile ,:dependent =>:destroy
 has_many :user_projects , :dependent =>:destroy #maybe not necessary
 has_many :projects, :through => :user_projects
@@ -28,6 +28,31 @@ attr_accessor :password
  #validates :salt, :presence=> true
 
  before_save :encrypt_password
+aasm_column :user_state # defaults to aasm_state
+
+    aasm_initial_state :created
+
+    aasm_state :created
+    aasm_state :active
+    aasm_state :inactive
+    aasm_state :admin
+
+
+    aasm_event :activated do
+      transitions :to => :active, :from => [:created]
+    end
+    aasm_event :become_admin do
+      transitions :to => :admin, :from =>[:active]
+    end
+    aasm_event :lose_admin do
+      transitions :to => :active,:from=>[:admin]
+    end
+    aasm_event :deactivated do
+      transitions :to => :inactive, :from => [:active, :admin]
+    end
+    aasm_event :reactivated do
+      transitions :to => :active , :from => [:inactive]
+    end
 
  def has_password?(submitted_password)
    encrypted_password == encrypt(submitted_password)
