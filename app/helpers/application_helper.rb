@@ -204,4 +204,12 @@ end
   #  return "<a  rel='image' href='#{ file.file_url} '> #{ file.filename} </a>".html_safe
   #end
 #end
+ def pdf_image_tag(image, options = {})
+     options[:src] =File.join(Rails.root.to_s,'/public/images/' + image)
+     tag(:img, options)
+ end
+  def pdf_image_path(image)
+     opt =File.join(Rails.root.to_s,'/public/images/' + image)
+     return opt
+  end
 end

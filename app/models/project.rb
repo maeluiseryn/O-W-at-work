@@ -50,4 +50,7 @@ aasm_column :project_state # defaults to aasm_state
      ref_number=Client.find(self.client_id).projects.count
      self.project_ref=ref_number+1
   end
+  def send_fiche_de_rendez_vous
+     Document.fiche_de_rendez_vous(self).deliver
+  end
 end

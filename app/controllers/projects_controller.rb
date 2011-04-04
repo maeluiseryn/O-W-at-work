@@ -124,4 +124,22 @@ class ProjectsController < ApplicationController
    def upload_a_file
       redirect_to :controller =>'files', :action=>'upload'
    end
+   def create_rendez_vous_fiche
+     @project=Project.find(params[:id])
+
+     respond_to do |format|
+        format.html
+        format.xml
+        format.pdf do
+        render :pdf => "my_pdf", # pdf will download as my_pdf.pdf
+        :layout => 'pdf', # uses views/layouts/pdf.haml
+        :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
+      end
+    end
+   end
+   def send_fiche_de_rendez_vous_mail
+     project=Project.find params[:id]
+     project.send_fiche_de_rendez_vous
+     redirect_to(request.referer,:notice =>"fiche de rendez-vous envoy&eacute;e")
+  end
 end

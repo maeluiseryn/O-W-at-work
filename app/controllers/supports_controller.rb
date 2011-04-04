@@ -12,6 +12,7 @@
 	      flash[:alert] = "You must fill all fields."
 	      render 'new'
 	    end
-	  end
+    end
+    
 	end
 

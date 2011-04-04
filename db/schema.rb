@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403222743) do
+ActiveRecord::Schema.define(:version => 20110404124216) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110403222743) do
     t.string   "project_state"
     t.integer  "project_ref"
     t.string   "home_directory"
+    t.string   "project_type"
   end
 
   create_table "uploaded_files", :force => true do |t|

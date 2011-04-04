@@ -59,8 +59,26 @@
 
 
 </div>
-<%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%>
-<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %>
-<%= link_to 'Edit', edit_project_path(@project) %>
-<%= link_to 'Back', client_path(@project.client_id) %>
+<% content_for :sidebar do %>
+
+      <ul id="sidebarmenu1">
+       <li>
+<%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%></li>
+        <li>
+<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %></li>
+        <li>
+<%= link_to 'Edit', edit_project_path(@project) %></li><li>
+<%= link_to 'Back', client_path(@project.client_id) %></li><li>
 <%= link_to'explorer les fichier' ,project_files_path(@project)%>
+       </li>
+        <li>
+<%= link_to'creer fiche de rendez-vous' ,fiche_de_rendez_vous_path(@project)%>
+       </li>
+<li>
+<%= link_to'creer fiche de rendez-vous en pdf ' ,fiche_de_rendez_vous_path(@project,:format=>'pdf')%>
+       </li>
+        <li>
+<%= link_to'envoyer fiche de rendez-vous par mail ' ,fiche_de_rendez_vous_mail_path(@project)%>
+       </li>
+       </ul>
+<% end%>

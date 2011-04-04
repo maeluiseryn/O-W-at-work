@@ -1,4 +1,6 @@
 OW::Application.routes.draw do
+  resources :documents
+
   get "search/new_search"
 
   get "search/search_result"
@@ -45,7 +47,8 @@ OW::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/redirect', :to =>'application#redirect_to_last_visited'
-
+  match '/projects/:id/fiche_de_rendez_vous',:to=>'projects#create_rendez_vous_fiche' ,:as=>:fiche_de_rendez_vous
+  match '/projects/:id/fiche_de_rendez_vous_mail',:to=>'projects#send_fiche_de_rendez_vous_mail' ,:as=>:fiche_de_rendez_vous_mail
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier
