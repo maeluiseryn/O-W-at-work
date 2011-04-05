@@ -15,15 +15,21 @@
         </ul>
 
 <div id="addresses">
-
-   <%= if !@project.address.nil? then render :partial => "shared/address_show" ,:object=> @project.address ,:as=>:address end%>
+<table>
+   <%= if !@project.address.nil? then render :partial => "shared/address_list" ,:object=> @project.address ,:as=>:address end%>
+</table>
 </div>
 <div id="contacts">
+ <table>
+  <%= if !@project.contacts.empty? then render :partial => "shared/contact_list", :collection => @project.contacts ,:as=>:contact end%>
+ </table>
 
-  <%= if !@project.contacts.empty? then render :partial => "shared/contact_show", :collection => @project.contacts ,:as=>:contact end%>
 </div>
 <div id="components">
-  <%= if !@project.project_components.empty? then render :partial => "project_component_show", :collection => @project.project_components,:as=>:project_component end%>
+<table>
+  <%= if !@project.project_components.empty? then render :partial => "project_component_list", :collection => @project.project_components,:as=>:project_component end%>
+</table>
+
 </div>
 
 <div id="files_table">
@@ -72,7 +78,7 @@
 <%= link_to'explorer les fichier' ,project_files_path(@project)%>
        </li>
         <li>
-<%= link_to'creer fiche de rendez-vous' ,fiche_de_rendez_vous_path(@project)%>
+<%= link_to('creer fiche de rendez-vous' ,fiche_de_rendez_vous_path(@project),:target=>'_blank')%>
        </li>
 <li>
 <%= link_to'creer fiche de rendez-vous en pdf ' ,fiche_de_rendez_vous_path(@project,:format=>'pdf')%>

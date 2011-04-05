@@ -166,6 +166,8 @@ end
 def redirect_back_to_owner(model)
   if model.instance_of? Project
     link_to 'Client', model.client
+  elsif model.instance_of? Payment
+    link_to 'Facture', model.payments
   end
  
 
@@ -185,14 +187,14 @@ end
 
 def render_partial_object (model)
   if model.instance_of? Address
-     render :partial => "shared/address_show" ,:object=> model ,:as=>:address
+     render :partial => "shared/address_list" ,:object=> model ,:as=>:address
   elsif model.instance_of? UploadedFile
      render :partial => "files/show_file" ,:object=>model,:as=>:uploaded
   end
 end
 def render_partial_collection (model)
   if model[0].instance_of? Address
-     render :partial => "shared/address_show" ,:collection=> model ,:as=>:address
+     render :partial => "shared/address_list" ,:collection=> model ,:as=>:address
   elsif model[0].instance_of? UploadedFile
      render :partial => "files/show_file" ,:collection=>model,:as=>:uploaded
   elsif model[0].instance_of? Client

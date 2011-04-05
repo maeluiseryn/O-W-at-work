@@ -45,11 +45,15 @@
 
 <div id="addresses"><fieldset>
    <legend><%= set_legend"Addresse de #{@client.name}"  %></legend>
-   <%= if !@client.addresses.empty? then render :partial => "shared/address_show" ,:collection=> @client.addresses ,:as=>:address end%>
+  <table>
+   <%= if !@client.addresses.empty? then render :partial => "shared/address_list" ,:collection=> @client.addresses ,:as=>:address end%>
+  </table>
 </fieldset></div>
 <div id="contacts"><fieldset>
    <legend><%= set_legend"Informations de contact de #{@client.name}"  %></legend>
-  <%= if !@client.contacts.empty? then render :partial => "shared/contact_show", :collection => @client.contacts ,:as=>:contact end%>
+  <table>
+  <%= if !@client.contacts.empty? then render :partial => "shared/contact_list", :collection => @client.contacts ,:as=>:contact end%>
+  </table>
 </fieldset></div>
 <div id="financial">
 <fieldset>

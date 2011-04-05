@@ -1,10 +1,11 @@
 class Address < ActiveRecord::Base
   belongs_to :place , :polymorphic => true
-  validates :street , :city , :country , :presence => true
+  validates :description ,:street , :city  , :presence => true
   validates :street_number, :zip , :presence => true , :numericality => true
 define_index do
   set_property :enable_star => 1
   set_property :min_infix_len => 3
+  indexes description
   indexes street
   indexes zip
   indexes city

@@ -152,7 +152,7 @@
 			* @tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
 			*/
 			.preheaderContent div a:link, .preheaderContent div a:visited{
-				/*@editable*/ color:#336699;
+				/*@editable color:#336699;*/
 				/*@editable*/ font-weight:normal;
 				/*@editable*/ text-decoration:underline;
 			}
@@ -166,7 +166,7 @@
 			* @theme header
 			*/
 			#templateHeader{
-				/*@editable*/ background-color:#D8E2EA;
+				/*@editable background-color:#D8E2EA;*/
 				/*@editable*/ border-bottom:0;
 			}
 
@@ -192,7 +192,7 @@
 			* @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
 			*/
 			.headerContent a:link, .headerContent a:visited{
-				/*@editable*/ color:#336699;
+				/*@editable color:#336699;*/
 				/*@editable*/ font-weight:normal;
 				/*@editable*/ text-decoration:underline;
 			}
@@ -390,7 +390,7 @@
 		</tr>
     </table>
 
- <strong><u>Personne de contact: <%=@project.client.name+' '+@project.client.surname%></u></strong>
+ <strong><u>Personne de contact:</u><%=@project.client.name.capitalize+' '+@project.client.surname.capitalize %><%=(' Société :'+@project.client.society.capitalize) unless @project.client.society.blank? %></strong>
 
  <br>
  <br>

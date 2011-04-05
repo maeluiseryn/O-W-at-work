@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     if !@client.addresses.empty?
     @project.build_address :street=>@client.addresses.first.street ,:street_number=>@client.addresses.first.street_number,
                             :floor=>@client.addresses.first.floor , :zip=>@client.addresses.first.zip ,
-                            :city=>@client.addresses.first.city , :country =>@client.addresses.first.country
+                            :city=>@client.addresses.first.city , :country =>@client.addresses.first.country ,:description =>@client.addresses.first.description
     else
     @project.build_address
     end
@@ -127,7 +127,9 @@ class ProjectsController < ApplicationController
    def create_rendez_vous_fiche
      @project=Project.find(params[:id])
      respond_to do |format|
-        format.html
+        format.html do
+          render :layout => 'pdf'
+        end
         format.xml
         format.pdf do
         render :pdf => "my_pdf", # pdf will download as my_pdf.pdf

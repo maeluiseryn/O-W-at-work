@@ -69,7 +69,12 @@ class ClientsController < ApplicationController
   # POST /clients.xml
   def create
     @client = Client.new(params[:client])
-
+    @client.addresses.each do |addresse|
+      addresse.description=@client.surname+" "+@client.name
+    end
+    @client.contacts.each do |contact|
+      contact.description=@client.surname+" "+@client.name
+    end
     respond_to do |format|
       if @client.save
 

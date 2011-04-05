@@ -5,18 +5,8 @@
   <table border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
 
    <thead class="fixedHeader">
-     <tr>
-    <th>Titre</th>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Reference</th>
-    <th>Client_type</th>
-    <th>Society</th>
-    <th>Has_project?</th>
-    <th>State</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <tr>
+    <%=yield :thead%>
   </tr>
   </thead>
   <tbody class="scrollContent">
@@ -26,3 +16,15 @@
   </table>
 </div>
 <%end%>
+<% content_for :thead do %>
+ <th>Titre</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Reference</th>
+    <th>Client_type</th>
+    <th>Society</th>
+    <th>Has_project?</th>
+    <th>State</th>
+    <th></th>
+
+<% end%>
