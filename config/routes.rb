@@ -26,6 +26,8 @@ OW::Application.routes.draw do
   resources :clients do
     resources :projects
   end
+  match "/clients/:id/change_state"=>"clients#change_state",:as=>:client_change_state
+
   match "/current_user_projects"=>'projects#current_user_projects',:as =>:current_user_projects
   match "/current_user_clients"=>'clients#current_user_clients',:as =>:current_user_clients
   match "/user_clients/:user_id"=>'clients#user_clients',:as =>:user_clients
@@ -49,6 +51,7 @@ OW::Application.routes.draw do
   match '/redirect', :to =>'application#redirect_to_last_visited'
   match '/projects/:id/fiche_de_rendez_vous',:to=>'projects#create_rendez_vous_fiche' ,:as=>:fiche_de_rendez_vous
   match '/projects/:id/fiche_de_rendez_vous_mail',:to=>'projects#send_fiche_de_rendez_vous_mail' ,:as=>:fiche_de_rendez_vous_mail
+  match '/projects/:id/SAV_form' ,:to=>'projects#send_SAV_form_mail',:as=>:send_SAV_form_mail
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier

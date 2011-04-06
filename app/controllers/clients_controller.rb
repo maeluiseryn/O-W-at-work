@@ -70,10 +70,10 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(params[:client])
     @client.addresses.each do |addresse|
-      addresse.description=@client.surname+" "+@client.name
+      addresse.description=(@client.surname+" "+@client.name)unless !addresse.description.blank?
     end
     @client.contacts.each do |contact|
-      contact.description=@client.surname+" "+@client.name
+      contact.description=(@client.surname+" "+@client.name) unless !contact.description.blank?
     end
     respond_to do |format|
       if @client.save
@@ -120,5 +120,11 @@ class ClientsController < ApplicationController
       format.html { redirect_to(clients_url) }
       format.xml  { head :ok }
     end
+  end
+   def change_state
+    @client =Client.find(params[:id])
+    @client.closed
+    @client.save
+    redirect_to request.referer
   end
 end

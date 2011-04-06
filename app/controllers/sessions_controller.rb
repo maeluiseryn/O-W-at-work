@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         if signed_in?
         redirect_back_or user
         else
-        redirect_to request.referer ,:notice => 'pui'
+        redirect_to request.referer
         end
     end
   end

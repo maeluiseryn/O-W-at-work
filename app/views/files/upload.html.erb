@@ -2,7 +2,7 @@
 <%= form_tag  'post_upload',
                         :multipart => true do %>
 <%=session[:model_name]   %>
-<p><label for="post_upload">Select File</label> :
+<p><label for="post_upload">Choisir un fichier</label> :
 <%= file_field 'post_upload', 'datafile' %></p>
-<%= submit_tag "Upload" %>
+<%= submit_tag "Envoyer" %>
 <% end %>

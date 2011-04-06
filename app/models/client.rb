@@ -2,15 +2,19 @@ class Client < ActiveRecord::Base
 CLIENT_TITRE=['Monsieur','Madame','Mr','Mde' ]
 CLIENT_TYPE=['Independant','Entreprise','Particulier','Autre']
 include AASM
-has_one :financial_data
-has_many :projects
-has_many :addresses , :as => :place
+
+has_one   :financial_data
+
+has_many  :projects
+has_many  :addresses , :as => :place
+has_many  :contacts , :as => :contact_ref
+has_many  :user_clients , :dependent => :destroy
+has_many  :users ,:through => :user_clients
 #has_many :project_addresses, :through => :projects, :source => :addresses
-has_many :contacts , :as => :contact_ref
-has_many :user_clients , :dependent => :destroy
-has_many :users ,:through => :user_clients
+
 validates :name , :surname , :presence => true
 validates :titre ,:presence=>true ,:inclusion => {:in =>CLIENT_TITRE  }
+
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 accepts_nested_attributes_for :financial_data
 accepts_nested_attributes_for :addresses

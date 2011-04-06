@@ -141,6 +141,11 @@ class ProjectsController < ApplicationController
    def send_fiche_de_rendez_vous_mail
      project=Project.find params[:id]
      project.send_fiche_de_rendez_vous
-     redirect_to(request.referer,:notice =>"fiche de rendez-vous envoy&eacute;e")
-  end
+     redirect_to(request.referer,:notice =>"Fiche de rendez-vous envoy&eacute;e")
+   end
+   def send_sav_form_mail
+     project=Project.find params[:id]
+     project.send_SAV_form
+    redirect_to(request.referer,:notice =>"Formulaire de service apres-vente envoy&eacute;e")
+   end
 end

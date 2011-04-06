@@ -1,11 +1,11 @@
-<h1>Listing comments</h1>
+<h1>Liste des Commentaires</h1>
 
 <table>
   <tr>
     <th>Reference projet</th>
     <th>Description</th>
-    <th>Content</th>
-    <th>User</th>
+    <th>Contenu</th>
+    <th>Utilisateur</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,5 +18,5 @@
 
 <br />
 
-<%= link_to 'New Comment', new_project_comment_path unless params[:project_id]==nil %>
-<%= link_to 'back to project', project_path(params[:project_id]) unless params[:project_id]==nil %>
+<%= link_to 'Nouveau Commentaire', new_project_comment_path unless params[:project_id]==nil %>
+<%= link_to 'Retour au projet', project_path(params[:project_id]) unless params[:project_id]==nil %>

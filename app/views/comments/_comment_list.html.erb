@@ -3,7 +3,7 @@
   <td><%= comment.description %></td>
   <td><%= truncate(comment.content, :length => 80) %></td>
   <td><%= comment.user.name %></td>
-  <td><%= link_to 'Show', comment %></td>
-  <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-  <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  <td><%= link_to 'Voir', comment %></td>
+  <td><%= link_to 'Modifier', edit_comment_path(comment) %></td>
+  <td><%= link_to 'Détruire', comment, :confirm => 'Êtes-vous sûre?', :method => :delete %></td>
 </tr>

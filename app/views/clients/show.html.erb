@@ -5,12 +5,12 @@
   <%= @client.titre %>
 </p>
 <p>
-  <b>Name:</b>
+  <b>Prénom:</b>
   <%= @client.name %>
 </p>
 
 <p>
-  <b>Surname:</b>
+  <b>Nom:</b>
   <%= @client.surname %>
 </p>
 <p>
@@ -64,9 +64,9 @@
 <div id="projects">
 <table>
   <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Has_project?</th>
+    <th>Nom du client</th>
+    <th>Ref Projet</th>
+    <th>Etat du projet</th>
     <th></th>
     <th></th>
   </tr>
@@ -78,3 +78,7 @@
 <%= link_to 'Create Project ' ,new_client_project_path(@client.id)%>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+<%= link_to 'Activer Client', client_change_state_path(@client) %>
+
+
+

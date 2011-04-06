@@ -1,7 +1,7 @@
 <%= form_for @project do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2><%= pluralize(@project.errors.count, "error") %> Erreurs empèche ce Projet d'être sauvé:</h2>
 
       <ul>
       <% @project.errors.full_messages.each do |msg| %>
@@ -27,7 +27,7 @@
     
       <div id='contact' class='span-12'>
        <fieldset>
-        <legend><%= set_legend 'Contactes' %></legend>
+        <legend><%= set_legend 'Contacts' %></legend>
         <% f.fields_for :contacts do |contacts_form| %>
             <%= render 'shared/contact_fields' ,:f=>contacts_form%>
          <% end %>

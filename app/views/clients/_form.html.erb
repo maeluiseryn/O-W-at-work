@@ -15,13 +15,14 @@
     <%= f.label :titre ,'Titre' %><br>
     <%= f.select(:titre, get_client_titre) %><br>
 </div>
-<div class="field">
-    <%= f.label :name ,'Prénom' %><br />
-    <%= f.text_field :name %>
-</div>
+
 <div class="field">
     <%= f.label :surname ,'Nom' %><br />
     <%= f.text_field :surname %>
+</div>
+<div class="field">
+    <%= f.label :name ,'Prénom' %><br />
+    <%= f.text_field :name %>
 </div>
 <div class="field">
     <%= f.label :reference ,'Connu par le biais de '%><br />
@@ -44,8 +45,9 @@
 
 
     <legend><%= set_legend 'Adresse' %></legend>
-    <%= f.fields_for :addresses do |address_form| %>
-        <%= render 'shared/address_fields',:f=>address_form %>
+     <h4>Addresse de Facturation</h4>
+     <%= f.fields_for :addresses do |address_form| %>
+        <%= render 'shared/address_fields_without_description',:f=>address_form %>
      <% end %>
      <p><%= link_to_add_fields "Ajouter une Adresse", f, :addresses %></p>
    </fieldset>
@@ -55,8 +57,9 @@
   <div id='contact' class='span-12'>
     <fieldset>
     <legend><%= set_legend 'Contacts' %></legend>
+    <h4>Contact Principal</h4>
     <% f.fields_for :contacts do |contact_form| %>
-        <%= render 'shared/contact_fields' ,:f=>contact_form%>
+        <%= render 'shared/contact_fields_without_description' ,:f=>contact_form%>
      <% end %>
     <p><%= link_to_add_fields "Ajouter un Contact", f, :contacts %></p>
    </fieldset>
@@ -65,7 +68,8 @@
     <fieldset>
 
     <legend><%= set_legend 'Donnée financiere' %></legend>
-   <%= f.fields_for :financial_data do |financial_data_form| %>
+
+      <%= f.fields_for :financial_data do |financial_data_form| %>
 
         <%= render "financial_data_fields",:f=>financial_data_form %>
      <% end %>

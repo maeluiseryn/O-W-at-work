@@ -1,18 +1,22 @@
 class Project < ActiveRecord::Base
 before_create :create_ref
 include AASM
+
 belongs_to :client
+
+has_one  :address ,  :as => :place
+
 has_many :user_projects
 has_many :users, :through => :user_projects
 has_many :project_components
-has_one  :address ,  :as => :place
 has_many :contacts , :as=> :contact_ref
 has_many :comments , :as=> :comment_owner
 has_many :uploaded_files , :as=>:file_owner
+
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 accepts_nested_attributes_for :address ,:project_components
 
-    define_index do
+define_index do
       set_property :enable_star => 1
       set_property :min_infix_len => 3
       indexes client_id
@@ -20,7 +24,7 @@ accepts_nested_attributes_for :address ,:project_components
       indexes client.surname , :as => :client_surname
       indexes client.name ,:as=>:client_name
       has  created_at, updated_at , project_state
-      end
+end
 aasm_column :project_state # defaults to aasm_state
 
     aasm_initial_state :created
@@ -52,5 +56,8 @@ aasm_column :project_state # defaults to aasm_state
   end
   def send_fiche_de_rendez_vous
      Document.fiche_de_rendez_vous(self).deliver
+  end
+  def send_sav_form
+     Document.SAV_form(self).deliver
   end
 end

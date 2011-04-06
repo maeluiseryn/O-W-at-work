@@ -1,11 +1,11 @@
  <tr>
-    <td><%= project.id %></td>
+
     <td><%=project.client.surname.capitalize+" "+project.client.name %></td>
     <td><%= "C#{project.client_id}P#{project.project_ref}" %></td>
     <td><%= project.aasm_current_state %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Voir', project %></td>
+    <td><%= link_to 'Modifier', edit_project_path(project) %></td>
    <td><%= redirect_back_to_owner(project) %></td>
 
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Détruire', project, :confirm => 'Etes vous sûres ?', :method => :delete %></td>
   </tr>
