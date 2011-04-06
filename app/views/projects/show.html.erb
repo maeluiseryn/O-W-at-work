@@ -12,6 +12,7 @@
           <li><a href="#components">Composants du project P<%=@project.project_ref %></a></li>
           <li><a href="#files_table">Fichiers de P<%=@project.project_ref %></a></li>
           <li><a href="#comments">Commentaire de P<%=@project.project_ref %></a></li>
+          <li><a href="#invoices">Factures de P<%=@project.project_ref %></a></li>
         </ul>
 
 <div id="addresses">
@@ -62,8 +63,20 @@
 
    </table>
    </div>
-
-
+<div id="invoices">
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Total sum</th>
+    <th>Due date</th>
+    <th>Remaining sum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+     <%= render :partial => 'invoices/invoice_list',:collection => @project.invoices,:as=>:invoice %>
+</table>
+</div>
 </div>
 <% content_for :sidebar do %>
 

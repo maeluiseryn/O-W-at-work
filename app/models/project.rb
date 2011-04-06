@@ -12,7 +12,7 @@ has_many :project_components
 has_many :contacts , :as=> :contact_ref
 has_many :comments , :as=> :comment_owner
 has_many :uploaded_files , :as=>:file_owner
-
+has_many :invoices
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 accepts_nested_attributes_for :address ,:project_components
 
@@ -31,9 +31,13 @@ aasm_column :project_state # defaults to aasm_state
 
     aasm_state :created
     aasm_state :active
+    aasm_state :offer
+    aasm_state :waiting_payment # not sure
+    aasm_state :production
+    aasm_state :closed
     aasm_state :waiting
+    aasm_state :archive
     aasm_state :dead
-
 
     aasm_event :activated do
       transitions :to => :active, :from => [:created]

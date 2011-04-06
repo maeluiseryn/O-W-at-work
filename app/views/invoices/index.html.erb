@@ -1,0 +1,21 @@
+<h1>Listing invoices</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Total sum</th>
+    <th>Due date</th>
+    <th>Remaining sum</th>
+    <th>Date de création</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+  <%= render :partial => '_invoice_list' ,:collection=>@invoices ,:as=>:invoice %>
+
+</table>
+
+<br />
+
+<%= link_to 'New Invoice', new_invoice_path %>

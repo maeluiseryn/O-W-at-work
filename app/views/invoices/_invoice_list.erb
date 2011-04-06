@@ -1,0 +1,10 @@
+<tr>
+  <td><%= invoice.project_id %></td>
+  <td><%= invoice.total_sum %></td>
+  <td><%= invoice.due_date %></td>
+  <td><%= invoice.remaining_sum %></td>
+  <td><%= invoice.created_at %></td>
+  <td><%= link_to 'Show', invoice %></td>
+  <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+  <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

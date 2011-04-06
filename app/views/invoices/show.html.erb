@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Project:</b>
+  <%= @invoice.project_id %>
+</p>
+
+<p>
+  <b>Total sum:</b>
+  <%= @invoice.total_sum %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @invoice.due_date %>
+</p>
+
+<p>
+  <b>Remaining sum:</b>
+  <%= @invoice.remaining_sum %>
+</p>
+<p>
+  <b>Date de création:</b>
+  <%= @invoice.created_at %>
+</p>
+
+<table>
+  <tr>
+    <th>
+      ref facture
+    </th>
+    <th>
+      Somme payée
+    </th>
+    <th>
+      Créer le
+    </th>
+  </tr>
+  <%@invoice.payments.each do |payment|%>
+     <tr>
+       <td>
+         <%=payment.invoice_id %>
+       </td>
+       <td>
+         <%=payment.sum_paid %>
+       </td>
+       <td>
+         <%=payment.created_at %>
+       </td>
+     </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
