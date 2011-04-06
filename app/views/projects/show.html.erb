@@ -2,6 +2,8 @@
 <div id="first_content">
   <h3>Client:
   <%=@project.client.titre+" "+@project.client.surname+" "+ @project.client.name %></h3>
+  <h4>Client:
+  <%=@project.project_type%></h4>
  <div class="span-18"> <%=link_to 'Voir le client',client_path(@project.client_id) %></div>
 </div>
 <div id="info" class="span-19">
@@ -100,6 +102,9 @@
 <%= link_to'envoyer fiche de rendez-vous par mail ' ,fiche_de_rendez_vous_mail_path(@project)%>
        </li>    <li>
 <%= link_to'envoyer formulaire SAV par mail ' ,send_SAV_form_mail_path(@project)%>
+       </li>
+<li>
+<%= link_to'Créer une facture' , new_project_invoice_path(@project)%>
        </li>
        </ul>
 <% end%>

@@ -91,6 +91,7 @@ class InvoicesController < ApplicationController
            respond_to do |format|
            format.html # new.html.erb
            format.xml  { render :xml => @invoice }
+           format.js
          end
     end
 

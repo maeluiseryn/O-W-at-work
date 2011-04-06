@@ -1,8 +1,8 @@
 OW::Application.routes.draw do
   resources :invoices
-  match "/invoices/:invoice_id/payments/new"=>'invoices#new_payment' ,:as=>:payments
+  match "/invoices/:invoice_id/payments/new"=>'invoices#new_payment' ,:as=>:new_payments
    match "/invoices/:invoice_id/payments/create"=>'invoices#create_payment' ,:as=>:payments
-  match "/invoices/:invoice_id/payments/:payment_id"=>'invoices#destroy_payment',:as=>:payments_destroy
+  match "/payments/:payment_id"=>'invoices#destroy_payment',:as=>:payments_destroy
   resources :documents
 
   get "search/new_search"
@@ -17,6 +17,7 @@ OW::Application.routes.draw do
 
   resources :projects do
     resources :invoices
+    
   end
 
   #resources :clients

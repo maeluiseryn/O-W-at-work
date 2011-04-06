@@ -11,7 +11,10 @@
     </div>
   <% end %>
 
-
+ <div class="field">
+    <%= f.label :project_type,'Type de projet' %><br />
+    <%= f.select( :project_type, get_project_type) %>
+  </div>
 
  <div id="address" class="span-12">
     <fieldset>

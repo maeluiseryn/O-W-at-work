@@ -33,6 +33,9 @@
  <b>Etat:</b>
  <%= @client.client_state %>
    </p>
+  <b>Disponibilité:</b>
+ <%= @client.disponibility %>
+   </p>
 </div>
 <div id="info" class="span-19">
         <ul>
@@ -74,11 +77,28 @@
   </table>
 </div>
 </div>
+<% content_for :sidebar do %>
 
+      <ul id="sidebarmenu1">
+
+        <li>
 <%= link_to 'Create Project ' ,new_client_project_path(@client.id)%>
-<%= link_to 'Edit', edit_client_path(@client) %> |
+       </li>
+<li>
+<%= link_to 'Edit', edit_client_path(@client) %>
+       </li>
+        <li>
 <%= link_to 'Back', clients_path %>
+       </li>    <li>
 <%= link_to 'Activer Client', client_change_state_path(@client) %>
+       </li>
+       </ul>
+<% end%>
+
+
+
+
+
 
 
 

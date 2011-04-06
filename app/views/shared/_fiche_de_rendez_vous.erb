@@ -398,7 +398,7 @@
 <table width="100%" border="0" >
 
    <tr><td  width="50%" ><u><strong>Informations de contact: </strong></u> </td>
-    <td  width="50%" ><u><strong>Disponibilit&eacute;e</strong></u></td>
+    <td  width="50%" ><u><strong><%='Disponibilitée' unless @project.client.disponibility.blank?%></strong></u></td>
   </tr>
 
 
@@ -414,7 +414,7 @@
   <%end%>
   <tr>
   <td align="left" valign="top" ></td>
-    <td align="left" valign="top" >En journ&eacute;e du lundi au vendredi .</td>
+    <td align="left" valign="top" ><%= @project.client.disponibility %> </td>
  </tr>
   </table><br>
   <hr>
@@ -452,10 +452,10 @@
  <%end%>
 
    <tr>
-	<td align="left" valign="top" class="auc">Devis assurance:110&euro; + TVA </td>
-    <td align="left" valign="top" class="auc"> R&eacute;parations : </td>
+	<td align="left" valign="top" class="auc"><%=" Réparations : oui " unless (@project.project_type!='Reparation' )%><%=" Réparations : oui " unless (@project.project_type!='Assurance' ) %></td>
+    <td align="left" valign="top" class="auc"><%=("Devis assurance:110euro; + TVA ") unless @project.project_type!='Assurance'%> </td>
 
-	<td align="left" valign="top" class="auc">Client Inform&eacute;: </td>
+	<td align="left" valign="top" class="auc"></td>
 
   </tr>
   </table>

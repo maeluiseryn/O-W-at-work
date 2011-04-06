@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+PROJECT_TYPE=['Projet standard' ,'Fourniture', 'Reparation' , 'Assurance']
 before_create :create_ref
 include AASM
 
@@ -63,5 +64,8 @@ aasm_column :project_state # defaults to aasm_state
   end
   def send_sav_form
      Document.SAV_form(self).deliver
+  end
+  def self.get_project_type
+    PROJECT_TYPE
   end
 end

@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Client:</b>
+  <%=@invoice.project.client.surname+' '+ @invoice.project.client.name%>
+</p>
+
+<p>
   <b>Project:</b>
-  <%= @invoice.project_id %>
+  <%='C'+@invoice.project.client.id.to_s+'P'+@invoice.project.project_ref.to_s %>
 </p>
 
 <p>
@@ -23,7 +28,7 @@
   <b>Date de création:</b>
   <%= @invoice.created_at %>
 </p>
-
+<div id="payments_table">
 <table>
   <tr>
     <th>
@@ -47,9 +52,33 @@
        <td>
          <%=payment.created_at %>
        </td>
+        <td>
+         <%=link_to 'destroy', payments_destroy_path(payment.id) %>
+       </td>
      </tr>
   <% end %>
 </table>
+</div>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<% content_for :sidebar do %>
+
+      <ul id="sidebarmenu1">
+
+        <li>
+          <%= link_to 'Nouveau paiement js', new_payments_path(@invoice,:format=>:js),:remote=>true %>
+       </li>
+<li>
+         <%= link_to 'Nouveau paiement', new_payments_path(@invoice) %> |
+       </li>
+        <li>
+         <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+       </li>    <li>
+         <%= link_to 'Back', invoices_path %>
+       </li>
+       </ul>
+<% end%>
+
+ 
+
+
+
