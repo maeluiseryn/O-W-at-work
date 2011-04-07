@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @message_box %> |
-<%= link_to 'Back', message_boxes_path %>
+<%= link_to 'Back', redirect_back_to_owner_polymorphic(@message_box) %>

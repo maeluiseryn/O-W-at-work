@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Voir', @comment %> |
-<%= link_to 'Retour', comments_path %>
+<%= link_to 'Retour', message_box_comments_path(@comment.comment_owner) %>

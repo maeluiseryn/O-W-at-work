@@ -126,9 +126,19 @@ class ProjectsController < ApplicationController
    end
    def create_rendez_vous_fiche
      @project=Project.find(params[:id])
+
+
      respond_to do |format|
         format.html do
-          render :layout => 'pdf'
+
+          options={:pdf => "my_pdf", # pdf will download as my_pdf.pdf
+        :layout => 'pdf', # uses views/layouts/pdf.haml
+        :save_only=>true,
+         :save_to_file =>File.join(Rails.root.to_s, "/public#{@project.home_directory}/P#{@project.client_id}C#{@project.project_ref}-#{@project.client.surname}.pdf"),
+        :show_as_html => params[:debug].present?}
+
+          render_with_wicked_pdf(options)
+          render :layout => 'pdf', :pdf_file=>true
         end
         format.xml
         format.pdf do

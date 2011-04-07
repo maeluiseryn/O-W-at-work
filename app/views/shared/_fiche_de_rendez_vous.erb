@@ -348,7 +348,8 @@
                                                <%if request==nil%>
                                                <div id="image"><img src="http://192.168.254.54:3000/images/BANNIERE.png" alt="banniere" ></div>
                                                <%elsif request.format=="text/html"%>
-                                               <%= image_tag('BANNIERE.png') %>
+
+                                                  <%= image_tag('BANNIERE.png') %> <%= pdf_image_tag('BANNIERE.png',:alt=>'') %>
                                                <%elsif request.format=="application/pdf"%>
                                                <%= pdf_image_tag('BANNIERE.png') %>
                                               <%end%>
@@ -398,7 +399,7 @@
 <table width="100%" border="0" >
 
    <tr><td  width="50%" ><u><strong>Informations de contact: </strong></u> </td>
-    <td  width="50%" ><u><strong><%='Disponibilité' unless @project.client.disponibility.blank?%></strong></u></td>
+    <td  width="50%" ><u><strong><% if !@project.client.disponibility.blank?%>Disponibilit&eacute;<%end%></strong></u></td>
   </tr>
 
 

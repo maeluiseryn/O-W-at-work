@@ -105,7 +105,7 @@ aasm_column :user_state # defaults to aasm_state
       (user && user.salt == cookie_salt) ? user : nil
  end
  def  message_box_create
-   build_message_box(:description =>name)
+   build_message_box(:description =>name ,:box_type=>'user_box')
    message_box.save
   
  end

@@ -72,7 +72,7 @@ aasm_column :project_state # defaults to aasm_state
     "C#{client_id}P#{project_ref}"
   end
   def message_box_create
-   build_message_box(:description =>self.project_ref_string+" "+client.surname.capitalize)
+   build_message_box(:description =>self.project_ref_string+" "+client.surname.capitalize,:box_type=>'project_box')
    message_box.save
   end
 end

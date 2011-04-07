@@ -160,7 +160,8 @@ def redirect_back_to_owner_polymorphic(model)
     link_to 'Back', model.contact_ref
   elsif model.instance_of? Comment
     link_to 'Back', model.comment_owner
-
+  elsif model.instance_of? MessageBox
+    link_to 'Back', model.box_owner
   end
 end
 def redirect_back_to_owner(model)
@@ -214,4 +215,5 @@ end
      opt =File.join(Rails.root.to_s,'/public/images/' + image)
      return opt
   end
+
 end

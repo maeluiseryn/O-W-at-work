@@ -35,8 +35,10 @@
      if UploadedFile.save(params[:post_upload],@public_path,model)[:result]==true
 
         redirect_to session[:referer] , :flash => { :success => "The file was successfully uploaded "  }
+        session[:referer]=nil
      else
         redirect_to session[:referer] , :flash => { :error => "Sorry , The file wasn't saved properly  " }
+        session[:referer]=nil
      end
 
    end

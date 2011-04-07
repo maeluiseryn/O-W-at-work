@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-    <%=session[:message_box_id ]%>
-    <%='p'+params[:message_box_id ]%>
+
+
    <%if session[:message_box_id].nil? %>
         <%= f.select(:message_box_id,get_availlable_message_box_list)  %>
    <%else%>

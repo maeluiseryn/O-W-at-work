@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= session %>
+
 <p>
   <b>Description:</b>
   <%= @message_box.description %>
@@ -14,4 +14,4 @@
 </table>
 <%= link_to 'Nouveau message', new_message_box_comment_path(@message_box) %> |
 <%= link_to 'Edit', edit_message_box_path(@message_box) %> |
-<%= link_to 'Back', message_boxes_path %>
+<%= link_to 'Back', redirect_back_to_owner_polymorphic(@message_box) %>

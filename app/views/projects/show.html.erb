@@ -111,5 +111,8 @@
         <li>
 <%= link_to'Activer project' , activate_project_path(@project)%>
        </li>
-       </ul>
+       <li>
+      <%= (link_to 'Boite a message utilisateur ',message_box_path(@project.message_box.id ))unless @project.message_box.nil? %>
+      </li>
+      </ul>
 <% end%>
