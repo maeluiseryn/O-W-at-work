@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 include AASM
 has_one :user_address, :through => :user_profile, :source => :address
 has_one :user_profile ,:dependent =>:destroy
-
+has_one :message_box , :as=>:box_owner
 has_many :user_projects , :dependent =>:destroy #maybe not necessary
 has_many :projects, :through => :user_projects
 has_many :user_clients , :dependent =>:destroy
@@ -34,7 +34,7 @@ aasm_column :user_state # defaults to aasm_state
 
     aasm_initial_state :created
 
-    aasm_state :created
+    aasm_state :created , :exit => :message_box_create
     aasm_state :active
     aasm_state :inactive
     aasm_state :admin
@@ -104,6 +104,10 @@ aasm_column :user_state # defaults to aasm_state
       user = find_by_id(id)
       (user && user.salt == cookie_salt) ? user : nil
  end
-
+ def  message_box_create
+   build_message_box(:description =>name)
+   message_box.save
+  
+ end
 
 end

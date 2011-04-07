@@ -120,6 +120,9 @@
          <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
             profile_show_or_create_link @user %>
          </li>
+        <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
+            (link_to 'Boite a message utilisateur ',message_box_path(@user.message_box.id ))unless @user.message_box.nil? %>
+         </li>
 </ul>
 
 <% end %>

@@ -2,8 +2,12 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.xml
   def index
+    if params[:project_id].nil?
     @invoices = Invoice.all
-
+    else
+    @project=Project.find(params[:project_id])
+    @invoices=@project.invoices
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @invoices }

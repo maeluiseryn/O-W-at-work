@@ -47,7 +47,8 @@
        <th></th>
      </tr>
 
-  <%= if !@project.uploaded_files.empty? then render :partial => "files/show_file", :collection => @project.uploaded_files,:as=>:uploaded end%>
+  <%= if !@project.uploaded_files.empty? then render :partial => "files/show_file", :collection => @project.uploaded_files,
+                                                     :as=>:uploaded end%>
 </table>
 </div>
 <div id="comments">
@@ -61,7 +62,8 @@
     <th></th>
     <th></th>
   </tr>
-       <%= render :partial => 'comments/comment_list',:collection => @project.comments,:as=>:comment %>
+       <%= (render :partial => 'comments/comment_list',:collection => @project.message_box.comments,:as=>:comment)unless
+                   @project.message_box.nil? %>
 
    </table>
    </div>
@@ -85,8 +87,8 @@
       <ul id="sidebarmenu1">
        <li>
 <%= link_to'upload' ,:controller =>'projects' ,:action=>'upload_a_file'%></li>
-        <li>
-<%= link_to 'Ajouter un commentaire', new_project_comment_path(@project.id) %></li>
+      
+
         <li>
 <%= link_to 'Edit', edit_project_path(@project) %></li><li>
 <%= link_to 'Back', client_path(@project.client_id) %></li><li>
@@ -105,6 +107,9 @@
        </li>
 <li>
 <%= link_to'Créer une facture' , new_project_invoice_path(@project)%>
+       </li>
+        <li>
+<%= link_to'Activer project' , activate_project_path(@project)%>
        </li>
        </ul>
 <% end%>

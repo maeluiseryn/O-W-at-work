@@ -90,17 +90,17 @@ def authenticate # doublon avec users controller
   def top_nav_li
     ret=''.html_safe
     if signed_in?
-    @arr={:Utilisateurs=>{:user_list=>link_to('liste des utilisateurs',users_path),:user=>link_to('votre utilisateur',user_path(current_user)),
-                          :edit_user=>link_to('Editer l utilisateur',edit_user_path(current_user)),:profile=>
+    @arr={:Utilisateurs=>{:user_list=>link_to('Liste des utilisateurs',users_path),:user=>link_to('Votre utilisateur',user_path(current_user)),
+                          :edit_user=>link_to('Modifier utilisateur',edit_user_path(current_user)),:profile=>
         (profile_show_or_create_link(current_user))},
-      :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('liste des clients',clients_path),
+      :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('Liste des clients',clients_path),
                  :current_user_client=>link_to("Clients de l'utilisateur",current_user_clients_path),
                  },
       :Projets=>{:user_projects=>link_to("Projets de l'utilisateur",current_user_projects_path),
-                 :projects=>link_to(" tous les Projets ", projects_path)},
+                 :projects=>link_to(" Tous les Projets ", projects_path)},
 
       :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path),
-                  :user_files=>link_to('Explorer les fichier de l utilisateur',user_files_path)},
+                  :user_files=>link_to('Explorer les fichiers utilisateurs',user_files_path)},
       :Liens=>{}}
 
     @arr.each_pair do|key,value|

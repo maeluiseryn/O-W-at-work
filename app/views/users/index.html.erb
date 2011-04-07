@@ -31,6 +31,7 @@
     <td><%= link_to "Client de l'utilisateur",user_clients_path(user) %></td>
     <td><%= #noinspection RubyArgCount
             link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Activate', activate_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

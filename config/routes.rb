@@ -1,4 +1,8 @@
 OW::Application.routes.draw do
+  resources :message_boxes do
+    resources:comments
+  end
+
   resources :invoices
   match "/invoices/:invoice_id/payments/new"=>'invoices#new_payment' ,:as=>:new_payments
    match "/invoices/:invoice_id/payments/create"=>'invoices#create_payment' ,:as=>:payments
@@ -12,8 +16,8 @@ OW::Application.routes.draw do
   resources :supports
 
   resources :comments
-  match "/project/:project_id/comments"=>'comments#project_comments_index' ,:as=>:project_comments_index
-  match "/project/:project_id/comments/new"=>'comments#new' ,:as=>:new_project_comment
+ # match "/project/:project_id/comments"=>'comments#project_comments_index' ,:as=>:project_comments_index
+  #match "/project/:project_id/comments/new"=>'comments#new' ,:as=>:new_project_comment
 
   resources :projects do
     resources :invoices
@@ -34,6 +38,12 @@ OW::Application.routes.draw do
   resources :clients do
     resources :projects
   end
+  match "/comments/:id/read"=>"comments#read_comment",:as=>:read_comment
+  match "/comments/:id/archive"=>"comments#archive_comment",:as=>:archive_comment
+  match "/comments/:id/trash"=>"comments#trash_comment",:as=>:trash_comment
+  match "/projects/:id/activate_project"=>"projects#activate_project",:as=>:activate_project
+  match "/users/:id/activate_user"=>"users#activate_user",:as=>:activate_user
+  match "/projects/:id/activate_project"=>"projects#activate_project",:as=>:activate_project
   match "/clients/:id/change_state"=>"clients#change_state",:as=>:client_change_state
 
   match "/current_user_projects"=>'projects#current_user_projects',:as =>:current_user_projects

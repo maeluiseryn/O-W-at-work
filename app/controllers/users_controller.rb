@@ -79,7 +79,13 @@ end
       session[:model_id]=current_user.id
       session[:model]=current_user.class
       redirect_to :controller =>'files', :action=>'upload'
-   end
+      end
+  def activate_user
+    @user=User.find(params[:id])
+    @user.activated
+    @user.save(false)
+    redirect_to request.referer
+  end
    private
   # def authenticate
    #  deny_access unless signed_in?
@@ -88,4 +94,5 @@ end
      @user = User.find(params[:id])
      redirect_to(users_path,:notice =>'not authorized to access this user') unless current_user?(@user)
   end
+
 end

@@ -14,7 +14,11 @@
   <b>User:</b>
   <%= @comment.user_id %>
 </p>
-
-
+<table>
+  <%= render :partial =>'shared/contact_list' ,:collection=>@comment.contacts , :as =>:contact %>
+</table>
+<%= link_to 'Lu', read_comment_path(@comment) %>
+<%= link_to 'Archive', archive_comment_path(@comment) %>
+<%= link_to 'Corbeille', trash_comment_path(@comment) %>
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= redirect_back_to_owner_polymorphic(@comment) %>

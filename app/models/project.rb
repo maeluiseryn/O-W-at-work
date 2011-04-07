@@ -11,7 +11,7 @@ has_many :user_projects
 has_many :users, :through => :user_projects
 has_many :project_components
 has_many :contacts , :as=> :contact_ref
-has_many :comments , :as=> :comment_owner
+has_one :message_box ,:as =>:box_owner
 has_many :uploaded_files , :as=>:file_owner
 has_many :invoices
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
@@ -30,7 +30,7 @@ aasm_column :project_state # defaults to aasm_state
 
     aasm_initial_state :created
 
-    aasm_state :created
+    aasm_state :created ,:exit=> :message_box_create
     aasm_state :active
     aasm_state :offer
     aasm_state :waiting_payment # not sure
@@ -67,5 +67,12 @@ aasm_column :project_state # defaults to aasm_state
   end
   def self.get_project_type
     PROJECT_TYPE
+  end
+  def project_ref_string
+    "C#{client_id}P#{project_ref}"
+  end
+  def message_box_create
+   build_message_box(:description =>self.project_ref_string+" "+client.surname.capitalize)
+   message_box.save
   end
 end

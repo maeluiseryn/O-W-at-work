@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406195153) do
+ActiveRecord::Schema.define(:version => 20110407101948) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20110406195153) do
     t.string   "comment_owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_state"
   end
 
   create_table "contacts", :force => true do |t|
@@ -75,6 +76,15 @@ ActiveRecord::Schema.define(:version => 20110406195153) do
     t.float    "total_sum"
     t.date     "due_date"
     t.float    "remaining_sum"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_boxes", :force => true do |t|
+    t.string   "description"
+    t.string   "box_type"
+    t.integer  "box_owner_id"
+    t.string   "box_owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

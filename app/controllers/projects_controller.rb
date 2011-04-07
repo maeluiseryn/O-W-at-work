@@ -148,4 +148,10 @@ class ProjectsController < ApplicationController
      project.send_SAV_form
     redirect_to(request.referer,:notice =>"Formulaire de service apres-vente envoy&eacute;e")
    end
+  def activate_project
+    @project =Project.find(params[:id])
+    @project.activated
+    @project.save
+    redirect_to request.referer
+  end
 end

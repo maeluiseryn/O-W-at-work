@@ -73,7 +73,7 @@
         <li>
          <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
        </li>    <li>
-         <%= link_to 'Back', invoices_path %>
+         <%= link_to 'Back', project_invoices_path(@invoice.project_id) %>
        </li>
        </ul>
 <% end%>
