@@ -83,7 +83,8 @@ end
   def activate_user
     @user=User.find(params[:id])
     @user.activated
-    @user.save(false)
+    @user.save_switch=true
+    @user.save(:validate =>false)
     redirect_to request.referer
   end
    private

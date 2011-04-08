@@ -2,7 +2,7 @@
 <div id="first_content">
   <h3>Client:
   <%=@project.client.titre+" "+@project.client.surname+" "+ @project.client.name %></h3>
-  <h4>Client:
+  <h4>Type de projet:
   <%=@project.project_type%></h4>
  <div class="span-18"> <%=link_to 'Voir le client',client_path(@project.client_id) %></div>
 </div>
@@ -39,10 +39,10 @@
 <table >
      <tr>
        <th>Id</th>
-       <th>Name </th>
+       <th>Nom du fichier </th>
       <!-- <th>Url</th> -->
-       <th>Content_Type</th>
-       <th>File_Size</th>
+       <th>Type de fichier</th>
+       <th>Taille </th>
        <th>Associé a</th>
        <th></th>
      </tr>

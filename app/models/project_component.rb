@@ -1,5 +1,5 @@
 class ProjectComponent < ActiveRecord::Base
-  COMPONENT_TYPE=['Chassis','Porte de Garage','Porte de Jardin','Porte de rue','Volet','Veranda','Velux']
+  COMPONENT_TYPE=['Chassis','Porte de Garage','Porte de Jardin','Porte de rue','Velux','Veranda','Vitrage','Volet']
   COMPONENT_MATTER=['Aluminium','Bois','PVC']
 
   belongs_to :project

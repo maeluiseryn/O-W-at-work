@@ -70,6 +70,7 @@ OW::Application.routes.draw do
   match '/projects/:id/fiche_de_rendez_vous',:to=>'projects#create_rendez_vous_fiche' ,:as=>:fiche_de_rendez_vous
   match '/projects/:id/fiche_de_rendez_vous_mail',:to=>'projects#send_fiche_de_rendez_vous_mail' ,:as=>:fiche_de_rendez_vous_mail
   match '/projects/:id/SAV_form' ,:to=>'projects#send_SAV_form_mail',:as=>:send_SAV_form_mail
+  match '/project/:id/follow_project', :to=>'projects#follow_project', :as=>:follow_project
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier

@@ -10,7 +10,8 @@ has_many :clients ,:through => :user_clients
 has_many :uploaded_files ,:as =>:file_owner
 has_many :comments 
 
-attr_accessor :password
+attr_accessor :password , :save_switch
+
 
  attr_accessible :name , :email ,:password , :password_confirmation
 
@@ -77,10 +78,14 @@ aasm_column :user_state # defaults to aasm_state
  private
 
  def encrypt_password
+   if self.save_switch==true
+    logger.info '*'*15 + 'True' + '*'*15
+   else
    self.salt = make_salt if new_record?
    self.encrypted_password = encrypt(password)
- end
 
+   end
+end
 
  def encrypt(string)
    secure_hash("#{salt}--#{string}")

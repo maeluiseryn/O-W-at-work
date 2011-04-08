@@ -164,4 +164,9 @@ class ProjectsController < ApplicationController
     @project.save
     redirect_to request.referer
   end
+  def follow_project
+    @project=Project.find(params[:id])
+    current_user.user_projects<<@project
+    redirect_to(request.referer ,:notice => "Association faite")
+  end
 end
