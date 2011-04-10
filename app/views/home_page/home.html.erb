@@ -3,7 +3,7 @@
 <h3><u> Connecté en tant que : </u><b><%= current_user.name %></b></h3>
 
 <% content_for :sidebar do %>
-
+<div id="vertmenu">
       <ul id="sidebarmenu1">
 
          <li>
@@ -14,6 +14,6 @@
             link_to 'Rechercher', search_new_search_path %>
          </li>
 </ul>
-
+</div>
 <% end %>
 

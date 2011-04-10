@@ -3,6 +3,8 @@ class FileBrowserController < ApplicationController
   before_filter :define_path
 
   def list
+    session[:model_id]=nil
+    session[:model]=nil
     list=UploadedFile.list(@current_path,@public_path,@current_url)
     @dirs=list[:dir]
     @files=list[:file]

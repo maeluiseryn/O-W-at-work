@@ -98,6 +98,7 @@ $(document).ready(function(){
 } );});
 
 
+
 $(document).ready(function(){
 
 	$("ul.subnav").parent().append("<span></span>"); //Only shows drop down trigger when js is enabled - Adds empty span tag after ul.subnav
@@ -120,3 +121,21 @@ $(document).ready(function(){
 	});
 
 });
+
+$("#model_type").live("change", function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: "Client/test",  //I think, it could be something else
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function(data) {
+        return $( data.client.client_type).insertAfter('#test');
+
+
+    },
+    error: function(xhr,exception,status) {
+
+    }
+  });
+});
+

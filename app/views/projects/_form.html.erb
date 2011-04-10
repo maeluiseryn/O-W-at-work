@@ -34,7 +34,7 @@
         <% f.fields_for :contacts do |contacts_form| %>
             <%= render 'shared/contact_fields' ,:f=>contacts_form%>
          <% end %>
-        <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
+        <p><%= link_to_add_fields "Ajouter Contact", f, :contacts %></p>
        </fieldset>
      </div>
 
@@ -50,7 +50,7 @@
    <% f.fields_for :project_components do |project_component| %>
             <%= render 'shared/project_component_fields' ,:f=>project_component%>
          <% end %>
-       <p><%= link_to_add_fields "Add  Component", f, :project_components %></p>
+       <p><%= link_to_add_fields "Ajouter  Composant", f, :project_components %></p>
       </fieldset>
    </div>
   <div class="actions span-15">

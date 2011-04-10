@@ -13,5 +13,5 @@
 <%=render :partial=>'comments/comment_list', :collection=>@message_box.comments ,:as=>:comment%>
 </table>
 <%= link_to 'Nouveau message', new_message_box_comment_path(@message_box) %> |
-<%= link_to 'Edit', edit_message_box_path(@message_box) %> |
-<%= link_to 'Back', redirect_back_to_owner_polymorphic(@message_box) %>
+<%= link_to 'Modifier', edit_message_box_path(@message_box) %> |
+<%=  redirect_back_to_owner_polymorphic(@message_box) %>

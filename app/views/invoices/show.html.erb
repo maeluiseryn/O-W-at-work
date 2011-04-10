@@ -53,7 +53,7 @@
          <%=payment.created_at %>
        </td>
         <td>
-         <%=link_to 'destroy', payments_destroy_path(payment.id) %>
+         <%=link_to 'Detruire', payments_destroy_path(payment.id) %>
        </td>
      </tr>
   <% end %>
@@ -61,7 +61,7 @@
 </div>
 
 <% content_for :sidebar do %>
-
+  <div id="vertmenu">
       <ul id="sidebarmenu1">
 
         <li>
@@ -71,11 +71,12 @@
          <%= link_to 'Nouveau paiement', new_payments_path(@invoice) %> |
        </li>
         <li>
-         <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+         <%= link_to 'Modifier', edit_invoice_path(@invoice) %> |
        </li>    <li>
-         <%= link_to 'Back', project_invoices_path(@invoice.project_id) %>
+         <%= link_to 'Retour', project_invoices_path(@invoice.project_id) %>
        </li>
        </ul>
+  </div>
 <% end%>
 
  

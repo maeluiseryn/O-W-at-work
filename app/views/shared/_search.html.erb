@@ -1,8 +1,15 @@
 <% form_tag search_new_search_path, :method => 'get' do %>
+    <div id="search">
     <p>
 
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "Chercher", :name => nil %> </p>
-      <%= render :partial => 'shared/search_options' %>
+    <% if params[:model_type].nil? %>
+    <%= render :partial => 'shared/search_options'  %>
+    <% else %>
+    <%= hidden_field_tag :model_type ,params[:model_type] %>
+      <div id= "options_link"><%= link_to 'Options', search_options_path(:format=>:js),:remote=>true %></div>
 
+    <%end%>
+</div>
 <% end %>

@@ -36,7 +36,7 @@
 
     <legend><%= set_legend 'Addresse' %></legend>
     <%= f.fields_for :address do |address_form| %>
-        <%= render 'shared/address_fields',:f=>address_form %>
+        <%= render 'shared/address_fields_without_description',:f=>address_form %>
      <% end %>
 
    </fieldset>
@@ -46,7 +46,7 @@
    <fieldset>
     <legend><%= set_legend 'Contactes' %></legend>
     <% f.fields_for :contacts do |contact_form| %>
-        <%= render 'shared/contact_fields' ,:f=>contact_form%>
+        <%= render 'shared/contact_fields_without_description' ,:f=>contact_form%>
      <% end %>
     <p><%= link_to_add_fields "Add Contact", f, :contacts %></p>
    </fieldset>

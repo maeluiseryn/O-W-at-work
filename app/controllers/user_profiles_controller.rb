@@ -35,7 +35,12 @@ class UserProfilesController < ApplicationController
   end
  def create
     @user_profile = UserProfile.create(params[:user_profile])
+   @user_profile.address.description=(@user_profile.surname+" "+@user_profile.name)unless !@user_profile.address.description.blank?
 
+
+    @user_profile.contacts.each do |contact|
+      contact.description=(@user_profile.surname+" "+@user_profile.name) unless !contact.description.blank?
+    end
     respond_to do |format|
       if @user_profile.valid?
 

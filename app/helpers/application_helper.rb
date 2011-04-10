@@ -90,7 +90,7 @@ def authenticate # doublon avec users controller
   def top_nav_li
     ret=''.html_safe
     if signed_in?
-    @arr={:Utilisateurs=>{:user_list=>link_to('Liste des utilisateurs',users_path),:user=>link_to('Votre utilisateur',user_path(current_user)),
+    @arr={:Utilisateurs=>{:user=>link_to('Votre utilisateur',user_path(current_user)),
                           :edit_user=>link_to('Modifier utilisateur',edit_user_path(current_user)),:profile=>
         (profile_show_or_create_link(current_user))},
       :Clients=>{:clients=>link_to('Nouveau client',new_client_path),:client_list=>link_to('Liste des clients',clients_path),
@@ -101,8 +101,9 @@ def authenticate # doublon avec users controller
 
       :Fichiers=>{:file_browser=>link_to('Explorer les fichiers',file_browser_path),
                   :user_files=>link_to('Explorer les fichiers utilisateurs',user_files_path)},
-      :Liens=>{}}
-
+      :Messages=>{:message_box=>link_to('Mes messages',message_box_path(current_user.message_box)),:new_message=>link_to('Nouveau message',
+                                                                              new_message_box_comment_path(current_user.message_box))} ,
+      :Recherche=>{:Global=>link_to('Globale',search_new_search_path)}}
     @arr.each_pair do|key,value|
       ret=ret+content_tag(:li,"<a href='#'>#{key}</a>".html_safe+sub_nav_ul(value))
     end
@@ -214,6 +215,14 @@ end
   def pdf_image_path(image)
      opt =File.join(Rails.root.to_s,'/public/images/' + image)
      return opt
+  end
+  def user_name_list
+    array=[]
+    users=User.all
+    users.each do |user|
+       array<<[user.name , user.id]
+    end
+    array
   end
 
 end

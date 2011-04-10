@@ -1,0 +1,7 @@
+2011-01-12 23:58:03 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "postgres"
+FATAL:  password authentication failed for user "postgres"
+
+2011-01-13 00:00:27 ERROR  : Error connecting to the server: fe_sendauth: no password supplied
+
+2011-01-13 00:00:43 ERROR  : Error connecting to the server: fe_sendauth: no password supplied
+

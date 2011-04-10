@@ -174,5 +174,50 @@ background-color: #f5f5f5;
 #first_content {
     min-height: 200px
 }
+#vertmenu {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 100%;
+ 
+  padding: 0px;
+  margin: 0px;
+  }
+
+  #vertmenu h1 {
+  display: block;
+  background-color:#FF9900;
+  font-size: 90%;
+  padding: 3px 0 5px 3px;
+  border: 1px solid #000000;
+  color: #333333;
+  margin: 0px;
+  width:159px;
+  }
+
+  #vertmenu ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  }
+  #vertmenu ul li {
+  margin: 0px;
+  padding: 0px;
+  border-bottom:1px solid #999999;
+  }
+  #vertmenu ul li a {
+  font-size: 120%;
+  display: block;
+  border-bottom: 1px  #C39C4E;
+  padding: 8px 0px 3px 6px;
+  text-decoration: none;
+  color: #0066cc;
+  
+  }
+
+  #vertmenu ul li a:hover, #vertmenu ul li a:focus {
+  color: #000000;
+  background-color: #eeeeee;
+  }
+
 #fiche_de_rendez_vous tbody tr:nth-child(2n) td, tbody tr.even td { background:none}
 /*#clients_table tbody tr:nth-child(2n) td, tbody tr.even td { background:red}

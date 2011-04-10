@@ -1,7 +1,8 @@
-<h1>Listing clients</h1>
+<h1>Liste des clients</h1>
 
-<table>
+<table id="clients_table" class="tablesorter">
   <tr>
+    <thead>
     <th>Titre</th>
     <th>Prénom</th>
     <th>Nom</th>
@@ -10,9 +11,15 @@
     <th>Entreprise</th>
     <th>A des projets ?</th>
     <th>Etat du projet</th>
-    <th></th>
-  </tr>
+    <th>a</th>
+    <th>b</th>
+    <th>c</th>
+ 
+    </thead>
+
+  <tbody>
 <%= render :partial => 'client_list',:collection => @clients ,:as=>:client %>
+</tbody>
 </table>
 
 <br />

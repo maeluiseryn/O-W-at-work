@@ -18,13 +18,23 @@ class SearchController < ApplicationController
   def search_result
   end
   def search_options
-    @options={
-                #:page => params[:page], :per_page => params[:per_page], :star => true,
-                 #:field_weights => { :title => 20, :tags => 10, :body => 5 }
-                :page => params[:page], :per_page => params[:per_page], :star => true,
-                 #:field_weights => session[:search_model].field_weight
-    }
-
+   # @options={
+   #             #:page => params[:page], :per_page => params[:per_page], :star => true,
+   #              #:field_weights => { :title => 20, :tags => 10, :body => 5 }
+   #             :page => params[:page], :per_page => params[:per_page], :star => true,
+   #              #:field_weights => session[:search_model].field_weight
+   # }
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
+  end
+  def test
+     @object=params[:model_id].constantize.last
+     respond_to do |format|
+      format.html # index.html.erb
+      format.json {render :json=>@object}
+    end
   end
   
 end

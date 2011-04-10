@@ -101,7 +101,7 @@
 </div>
 
 <% content_for :sidebar do %>
-
+<div id="vertmenu">
       <ul id="sidebarmenu1">
        <li>
 
@@ -111,7 +111,7 @@
            <%= link_to'voir dossier personnel' ,user_files_path%>
          </li>
          <li>
-           <%= link_to 'Back', users_path %>
+           <%= link_to 'Back', root_path %>
          </li>
          <li>
            <%= #noinspection RubyArgCount
@@ -124,5 +124,5 @@
             (link_to 'Boite a message utilisateur ',message_box_path(@user.message_box.id ))unless @user.message_box.nil? %>
          </li>
 </ul>
-
+</div>
 <% end %>

@@ -155,7 +155,7 @@ class ProjectsController < ApplicationController
    end
    def send_sav_form_mail
      project=Project.find params[:id]
-     project.send_SAV_form
+     project.send_sav_form
     redirect_to(request.referer,:notice =>"Formulaire de service apres-vente envoy&eacute;e")
    end
   def activate_project
@@ -166,7 +166,13 @@ class ProjectsController < ApplicationController
   end
   def follow_project
     @project=Project.find(params[:id])
-    current_user.user_projects<<@project
+    current_user.projects<<@project
     redirect_to(request.referer ,:notice => "Association faite")
+  end
+  def assign_project
+    @user=User.find(params[:user_id])
+    @project=Project.find(params[:id])
+    @user.projects<<@project
+    redirect_to request.referer ,:notice=>"u #{@user } ,p#{@project}"
   end
 end

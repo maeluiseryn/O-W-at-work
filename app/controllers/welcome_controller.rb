@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      render_with_wicked_pdf(options)
+      #render_with_wicked_pdf(options)
 
       format.pdf do
         render :pdf => "my_pdf", # pdf will download as my_pdf.pdf

@@ -65,7 +65,7 @@
 </fieldset>
 </div>
 <div id="projects">
-<table>
+<table id="projects_table" class="tablesorter"> 
   <tr>
     <th>Nom du client</th>
     <th>Ref Projet</th>
@@ -78,21 +78,23 @@
 </div>
 </div>
 <% content_for :sidebar do %>
-
+<div id="vertmenu">
       <ul id="sidebarmenu1">
 
         <li>
 <%= link_to 'Create Project ' ,new_client_project_path(@client.id)%>
        </li>
-<li>
+   <li>
+<%= link_to 'Activer Client', client_change_state_path(@client) %>
+       </li>
+        <li>
 <%= link_to 'Edit', edit_client_path(@client) %>
        </li>
         <li>
 <%= link_to 'Back', clients_path %>
-       </li>    <li>
-<%= link_to 'Activer Client', client_change_state_path(@client) %>
-       </li>
+       </li> 
        </ul>
+    </div>
 <% end%>
 
 

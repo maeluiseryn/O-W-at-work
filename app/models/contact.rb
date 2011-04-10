@@ -21,4 +21,7 @@ end
 def self.get_contact_type
   CONTACT_TYPE
 end
+  def contact_to_s
+    self.genre+": "+self.contact_data+"."
+  end
 end

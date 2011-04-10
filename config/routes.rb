@@ -10,8 +10,9 @@ OW::Application.routes.draw do
   resources :documents
 
   get "search/new_search"
-
+  get "search/search_options",:as =>:search_options
   get "search/search_result"
+ match "search/:model_id/test"=>"search#test"
 
   resources :supports
 
@@ -52,8 +53,8 @@ OW::Application.routes.draw do
 
   get "sessions/new"
 
-  get "files/upload"
-
+  match "files/upload", :to =>'files#upload' ,:as =>'upload_files'
+  match "files/post_upload", :to =>'files#post_upload' ,:as =>'post_upload'
   get "files/index"
 
   get "users/show"
@@ -70,7 +71,8 @@ OW::Application.routes.draw do
   match '/projects/:id/fiche_de_rendez_vous',:to=>'projects#create_rendez_vous_fiche' ,:as=>:fiche_de_rendez_vous
   match '/projects/:id/fiche_de_rendez_vous_mail',:to=>'projects#send_fiche_de_rendez_vous_mail' ,:as=>:fiche_de_rendez_vous_mail
   match '/projects/:id/SAV_form' ,:to=>'projects#send_SAV_form_mail',:as=>:send_SAV_form_mail
-  match '/project/:id/follow_project', :to=>'projects#follow_project', :as=>:follow_project
+  match '/project/:id/follow',:to=>'projects#follow_project',:as=>:follow_project
+  match '/project/:id/assign',:to=>'projects#assign_project',:as=>:assign_project
   resources :user_profiles
   resources :users do
     resource :user_profiles # a verifier
@@ -79,6 +81,7 @@ OW::Application.routes.draw do
 
   post "files/post_upload"
   match 'files/download' =>'files#download'
+
   resources :files
   resources :sessions, :only => [:new, :create, :destroy]
 
