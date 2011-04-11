@@ -13,6 +13,7 @@ has_many :contacts , :as=> :contact_ref
 has_one :message_box ,:as =>:box_owner
 has_many :uploaded_files , :as=>:file_owner
 has_many :invoices
+has_many :project_actions
 accepts_nested_attributes_for :contacts ,:reject_if => lambda { |a| a[:description].blank? && a[:contact_data].blank? } ,:allow_destroy => true
 accepts_nested_attributes_for :address ,:project_components
 

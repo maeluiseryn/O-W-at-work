@@ -201,7 +201,12 @@ def render_partial_collection (model)
      render :partial => "files/show_file" ,:collection=>model,:as=>:uploaded
   elsif model[0].instance_of? Client
       render :partial => "clients/client_list" ,:collection=>model,:as=>:client
-  end
+
+   elsif model[0].instance_of? Project
+      render :partial => "projects/project_list" ,:collection=>model,:as=>:project
+   elsif model[0].instance_of? Contact
+      render :partial => "shared/contact_list" ,:collection=>model,:as=>:contact
+   end
 end
 #def link_if_image(file)
  # if is_image?(file)

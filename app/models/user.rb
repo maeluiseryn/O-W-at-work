@@ -8,7 +8,8 @@ has_many :projects, :through => :user_projects
 has_many :user_clients , :dependent =>:destroy
 has_many :clients ,:through => :user_clients
 has_many :uploaded_files ,:as =>:file_owner
-has_many :comments 
+has_many :comments
+has_many :project_actions
 
 attr_accessor :password , :save_switch
 

@@ -1,4 +1,6 @@
 OW::Application.routes.draw do
+  resources :project_actions
+
   resources :message_boxes do
     resources:comments
   end
@@ -22,6 +24,7 @@ OW::Application.routes.draw do
 
   resources :projects do
     resources :invoices
+    resources :project_actions
     
   end
 

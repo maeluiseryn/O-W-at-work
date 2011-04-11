@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @project_action.description %>
+</p>
+
+<p>
+  <b>Action type:</b>
+  <%= @project_action.action_type %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @project_action.user_id %>
+</p>
+
+<p>
+  <b>Action result:</b>
+  <%= @project_action.action_result %>
+</p>
+
+<p>
+  <b>Action state:</b>
+  <%= @project_action.action_state %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @project_action.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_action_path(@project_action) %> |
+<%= link_to 'Back', project_actions_path %>

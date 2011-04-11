@@ -39,7 +39,12 @@ class FileBrowserController < ApplicationController
 
 
   def create_file
-    model=session[:model].find(session[:model_id])
+    if session[:model].nil?
+      model=current_user
+    else
+      model=session[:model].find(session[:model_id])
+    end
+
     notice=UploadedFile.create_file(params['post_upload'],@public_path,model)
     redirect_to request.referer, :notice => notice
   end

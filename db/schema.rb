@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408095127) do
+ActiveRecord::Schema.define(:version => 20110411091529) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(:version => 20110408095127) do
     t.datetime "updated_at"
   end
 
+  create_table "project_actions", :force => true do |t|
+    t.string   "description"
+    t.string   "action_type"
+    t.integer  "user_id"
+    t.string   "action_result"
+    t.string   "action_state"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "project_components", :force => true do |t|
     t.string   "component_type"
     t.string   "component_matter"
@@ -115,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20110408095127) do
     t.integer  "project_ref"
     t.string   "home_directory"
     t.string   "project_type"
-    t.float    "project_price"
     t.string   "remark"
+    t.float    "project_price"
   end
 
   create_table "uploaded_files", :force => true do |t|

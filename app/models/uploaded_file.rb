@@ -2,7 +2,13 @@ class UploadedFile < ActiveRecord::Base
   belongs_to :file_owner, :polymorphic =>true
 
   validates :path , :uniqueness =>true
-
+define_index do
+      set_property :enable_star => 1
+      set_property :min_infix_len => 3
+      indexes filename
+      indexes content_type
+      has  created_at, updated_at
+end
   def file_exist_on_disk?
     ServerFileOperation.file_exist_on_disk(self.path)
   end

@@ -105,23 +105,23 @@
       <ul id="sidebarmenu1">
        <li>
 
-           <%= link_to'upload' ,:controller =>'users' ,:action=>'upload_a_file'%>
+           <%= link_to'Uploader' ,:controller =>'users' ,:action=>'upload_a_file'%>
          </li>
          <li>
-           <%= link_to'voir dossier personnel' ,user_files_path%>
+           <%= link_to'Fichiers' ,user_files_path%>
          </li>
          <li>
-           <%= link_to 'Back', root_path %>
+           <%= link_to 'Retour', root_path %>
          </li>
          <li>
            <%= #noinspection RubyArgCount
-            link_to 'Edit', edit_user_path(@user) %>
+            link_to 'Modifier', edit_user_path(@user) %>
          </li>
          <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
             profile_show_or_create_link @user %>
          </li>
         <li><%= #noinspection RubyArgCountlink_to 'Profile',user_user_profiles_path(@user)
-            (link_to 'Boite a message utilisateur ',message_box_path(@user.message_box.id ))unless @user.message_box.nil? %>
+            (link_to 'Messages ',message_box_path(@user.message_box.id ))unless @user.message_box.nil? %>
          </li>
 </ul>
 </div>
